@@ -1,6 +1,5 @@
 ---
 title: "Charaf Eddine BENARAB"
-image: profile.jpg
 about:
   template: trestles
   links:
@@ -10,11 +9,12 @@ about:
     - icon: linkedin
       text: LinkedIn
       href: https://linkedin.com/in/benarab-charaf-eddine
+    - icon: envelope
+      text: Email
+      href: mailto:charafeddineben@gmail.com
 ---
 
-## Bio
-
-I am an **Independent Researcher** exploring the frontiers of **Local Intelligence**. My work focuses on **Context State Decoupling (CSD)** and **Neuro-Symbolic Architectures**, aiming to bridge the gap between deterministic software protocols and probabilistic reasoning kernels. By treating context as a structured graph rather than a linear stream, I build systems that achieve "Infinite Context" on sovereign hardware.
+I am a researcher specializing in Artificial Intelligence and Computer Science. My work currently focuses on Neuro-Symbolic architectures and the efficiency of Small Language Models (SLMs).
 
 ## Education
 
