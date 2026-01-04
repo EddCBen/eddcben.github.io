@@ -1,5 +1,6 @@
 project:
   type: website
+  output-dir: docs
 
 website:
   title: "Eddcben's Blog"
@@ -9,9 +10,18 @@ website:
         text: Home
       - href: about.qmd
         text: About
+    right:
+      - icon: github
+        href: https://github.com/eddcben
+        aria-label: GitHub
 
 format:
   html:
     theme: cosmo
     css: styles.css
     toc: true
+    code-fold: true
+    smooth-scroll: true
+    html-math-method: katex
+    mermaid:
+      theme: default
