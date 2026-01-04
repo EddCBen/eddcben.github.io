@@ -1,14 +1,15 @@
 ---
 title: "Projects"
 listing:
-  contents: "*/index.qmd"
+  contents: 
+    - "cascade-context-protocol/index.qmd"
   sort: "date desc"
   type: default
   categories: true
   sort-ui: false
   filter-ui: false
 page-layout: full
-title-block-banner: false
+title-block-banner: true
 ---
 
 ## Active Development
