@@ -1,14 +1,27 @@
 <svg width="1200" height="600" viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg" style="background-color: transparent;">
   <style>
-    .node-box { fill: #ffffff; stroke: #000000; stroke-width: 2; }
-    .node-enc { fill: #ffffff; stroke: #000000; stroke-width: 1.5; }
-    .text-title { font-family: 'Libre Baskerville', 'Times New Roman', serif; font-size: 16px; fill: #000000; text-anchor: middle; font-weight: bold; }
-    .text-body { font-family: 'Libre Baskerville', 'Times New Roman', serif; font-size: 12px; fill: #000000; text-anchor: middle; }
-    .text-small { font-family: 'Libre Baskerville', 'Times New Roman', serif; font-size: 10px; fill: #000000; text-anchor: middle; }
-    .edge { stroke: #000000; stroke-width: 1.5; fill: none; }
-    .edge-dim { stroke: #999999; stroke-width: 1; fill: none; stroke-dasharray: 4; }
-    .pulse { fill: #000000; }
-    
+    /* Global Fonts */
+    .font-latex { font-family: 'Times New Roman', serif; }
+    .font-sans { font-family: 'Helvetica', 'Arial', sans-serif; }
+
+    /* Latex Style (Neural) */
+    .latex-box { fill: #ffffff; stroke: #000000; stroke-width: 2; shape-rendering: crispEdges; }
+    .latex-grid { stroke: #cccccc; stroke-width: 1; }
+    .latex-text { font-family: 'Times New Roman', serif; font-size: 14px; fill: #000000; text-anchor: middle; font-style: italic; }
+    .latex-title { font-family: 'Times New Roman', serif; font-size: 16px; fill: #000000; text-anchor: middle; font-weight: bold; }
+    .latex-edge { stroke: #000000; stroke-width: 1.5; fill: none; marker-end: url(#arrow); }
+
+    /* ReactFlow Style (Symbolic) */
+    .rf-node { fill: #ffffff; stroke: #333333; stroke-width: 2; rx: 8; ry: 8; filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.1)); }
+    .rf-handle { fill: #ffffff; stroke: #333333; stroke-width: 2; }
+    .rf-edge { stroke: #555555; stroke-width: 2; fill: none; }
+    .rf-text { font-family: 'Helvetica', 'Arial', sans-serif; font-size: 12px; fill: #333333; text-anchor: middle; font-weight: 500; }
+    .rf-label { font-family: 'Helvetica', 'Arial', sans-serif; font-size: 10px; fill: #666666; text-anchor: middle; background-color: white; }
+
+    /* Animations */
+    .pulse-neural { fill: #000000; }
+    .pulse-token { fill: #333333; stroke: white; stroke-width: 1; }
+
     @keyframes flow {
       0% { offset-distance: 0%; opacity: 0; }
       10% { opacity: 1; }
@@ -16,140 +29,171 @@
       100% { offset-distance: 100%; opacity: 0; }
     }
     
-    .anim-flow-fast { animation: flow 2s linear infinite; }
-    .anim-flow-med { animation: flow 3s linear infinite; }
-    .anim-flow-slow { animation: flow 4s linear infinite; }
-
+    .anim-fast { animation: flow 1.5s linear infinite; }
+    .anim-med { animation: flow 3s linear infinite; }
+    .anim-slow { animation: flow 4s linear infinite; }
   </style>
 
-  <!-- === SECTION 1: MULTI-MODAL INPUTS (Left) === -->
-  <!-- 5 Encoders vertically stacked -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#000" />
+    </marker>
+  </defs>
+
+  <!-- ================= LEFT: NEURAL SYSTEM (Latex Style) ================= -->
+  
   <g transform="translate(50, 100)">
+    <!-- Encoders: Stacked Matrices -->
     <!-- Text -->
-    <rect x="0" y="0" width="50" height="40" class="node-enc" />
-    <text x="25" y="25" class="text-small">Text</text>
+    <rect x="0" y="0" width="60" height="40" class="latex-box" />
+    <path d="M 0 20 L 60 20 M 30 0 L 30 40" class="latex-grid" />
+    <text x="30" y="-10" class="latex-text">Enc_{txt}</text>
+
     <!-- Image -->
-    <rect x="0" y="60" width="50" height="40" class="node-enc" />
-    <text x="25" y="85" class="text-small">Image</text>
+    <rect x="0" y="70" width="60" height="40" class="latex-box" />
+    <path d="M 0 90 L 60 90 M 30 70 L 30 110" class="latex-grid" />
+    <text x="30" y="60" class="latex-text">Enc_{img}</text>
+
     <!-- Audio -->
-    <rect x="0" y="120" width="50" height="40" class="node-enc" />
-    <text x="25" y="145" class="text-small">Audio</text>
-    <!-- Video -->
-    <rect x="0" y="180" width="50" height="40" class="node-enc" />
-    <text x="25" y="205" class="text-small">Video</text>
-    <!-- Sensor -->
-    <rect x="0" y="240" width="50" height="40" class="node-enc" />
-    <text x="25" y="265" class="text-small">Sensor</text>
+    <rect x="0" y="140" width="60" height="40" class="latex-box" />
+    <path d="M 0 160 L 60 160 M 30 140 L 30 180" class="latex-grid" />
+    <text x="30" y="130" class="latex-text">Enc_{aud}</text>
   </g>
 
-  <!-- === SECTION 2: AGGREGATOR (Mid-Left) === -->
-  <!-- Funnel Shape -->
-  <path d="M 200 100 L 250 200 L 250 280 L 200 380 Z" stroke="black" stroke-width="2" fill="none" />
-  <text x="200" y="245" class="text-small" transform="rotate(-90 215 240)">Aggregator</text>
+  <!-- Aggregation: Mathematical Operator -->
+  <g transform="translate(200, 160)">
+    <circle cx="0" cy="0" r="25" class="latex-box" />
+    <text x="0" y="5" class="latex-title" style="font-size: 24px;">+</text>
+    <text x="0" y="40" class="latex-text">Concat</text>
+  </g>
 
-  <!-- Connections Inputs -> Aggregator -->
-  <path d="M 100 120 C 150 120, 150 150, 200 150" class="edge" />
-  <path d="M 100 180 C 150 180, 150 190, 200 200" class="edge" />
-  <path d="M 100 240 L 200 240" class="edge" />
-  <path d="M 100 300 C 150 300, 150 290, 200 280" class="edge" />
-  <path d="M 100 360 C 150 360, 150 330, 200 330" class="edge" />
+  <!-- Connections: Inputs -> Aggregator -->
+  <path d="M 110 20 L 175 160" class="latex-edge" marker-end="url(#arrow)" />
+  <path d="M 110 90 L 175 160" class="latex-edge" marker-end="url(#arrow)" />
+  <path d="M 110 160 L 175 160" class="latex-edge" marker-end="url(#arrow)" />
 
-  <!-- === SECTION 3: REASONING UNIT (LLM) (Top-Center) === -->
-  <rect x="400" y="50" width="160" height="80" class="node-box" />
-  <text x="480" y="85" class="text-title">Reasoning Unit</text>
-  <text x="480" y="105" class="text-body">(LLM / SLM)</text>
+  <!-- Reasoning Unit (LLM): Stacked Layers -->
+  <g transform="translate(300, 100)">
+    <rect x="0" y="0" width="120" height="120" class="latex-box" />
+    <line x1="0" y1="30" x2="120" y2="30" class="latex-box" />
+    <line x1="0" y1="60" x2="120" y2="60" class="latex-box" />
+    <line x1="0" y1="90" x2="120" y2="90" class="latex-box" />
+    <text x="60" y="20" class="latex-text">L_N</text>
+    <text x="60" y="50" class="latex-text">...</text>
+    <text x="60" y="80" class="latex-text">L_2</text>
+    <text x="60" y="110" class="latex-text">L_1</text>
+    <text x="60" y="-10" class="latex-title">LLM_\theta</text>
+  </g>
 
-  <!-- === SECTION 4: CONTEXT ORCHESTRATOR (Center) === -->
-  <rect x="400" y="200" width="160" height="120" class="node-box" />
-  <text x="480" y="255" class="text-title">Context</text>
-  <text x="480" y="275" class="text-title">Orchestrator</text>
-
-  <!-- Connections Aggregator -> Orchestrator -->
-  <path d="M 250 240 L 400 260" class="edge" />
-  <!-- Anim -->
-  <circle r="3" class="pulse">
-     <animateMotion dur="2s" repeatCount="indefinite" path="M 250 240 L 400 260" />
-  </circle>
-
-  <!-- Connections Orchestrator <-> Reasoning Unit -->
-  <path d="M 480 200 L 480 130" class="edge" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
-  <circle r="3" class="pulse">
-     <animateMotion dur="1s" repeatCount="indefinite" path="M 480 200 L 480 130" />
-  </circle>
-  <circle r="3" class="pulse">
-     <animateMotion dur="1s" begin="0.5s" repeatCount="indefinite" path="M 480 130 L 480 200" />
-  </circle>
-
-  <!-- === SECTION 5: EXECUTION GRAPH (Right) === -->
-  <!-- Root Node -->
-  <circle cx="650" cy="260" r="10" stroke="black" fill="white" stroke-width="2" />
+  <!-- Connect Aggregator -> LLM -->
+  <path d="M 225 160 L 300 160" class="latex-edge" />
   
-  <!-- Curved Branches using Bezier (C) -->
+  <!-- Neural Pulse Animation -->
+  <circle r="3" class="pulse-neural">
+    <animateMotion dur="2s" repeatCount="indefinite" path="M 110 20 L 175 160 L 300 160" />
+  </circle>
+
+
+  <!-- ================= RIGHT: EXECUTION GRAPH (ReactFlow Style) ================= -->
+
+  <!-- Orchestrator as the "Bridge" Node -->
+  <g transform="translate(500, 120)">
+    <rect x="0" y="0" width="140" height="80" class="rf-node" />
+    <!-- Handles -->
+    <circle cx="0" cy="40" r="5" class="rf-handle" />
+    <circle cx="140" cy="40" r="5" class="rf-handle" />
+    
+    <text x="70" y="45" class="rf-text" style="font-weight: bold;">Context Orchestrator</text>
+  </g>
+
+  <!-- Connection LLM -> Orchestrator -->
+  <path d="M 420 160 L 500 160" class="latex-edge" stroke-dasharray="5,5" />
+
+
+  <!-- Graph Nodes -->
   
-  <!-- Branch 1: Top (Search) -->
-  <path d="M 660 260 C 750 260, 750 150, 850 150" class="edge" id="path1" />
-  <rect x="850" y="130" width="100" height="40" class="node-box" />
-  <text x="900" y="155" class="text-body">Search Node</text>
-  <circle r="3" class="pulse">
-     <animateMotion class="anim-flow-med">
-       <mpath href="#path1"/>
-     </animateMotion>
-  </circle>
+  <!-- Node A: Search -->
+  <g transform="translate(750, 50)">
+    <rect x="0" y="0" width="100" height="50" class="rf-node" />
+    <circle cx="0" cy="25" r="5" class="rf-handle" /> <!-- Input Handle -->
+    <circle cx="100" cy="25" r="5" class="rf-handle" /> <!-- Output Handle -->
+    <text x="50" y="30" class="rf-text">Search Tool</text>
+  </g>
 
-  <!-- Branch 2: Mid-Top (Code) -->
-  <path d="M 660 260 C 750 260, 750 220, 850 220" class="edge" id="path2" />
-  <rect x="850" y="200" width="100" height="40" class="node-box" />
-  <text x="900" y="225" class="text-body">Code Exec</text>
-   <circle r="3" class="pulse">
-     <animateMotion class="anim-flow-fast" begin="0.5s">
-       <mpath href="#path2"/>
-     </animateMotion>
-  </circle>
+  <!-- Node B: Code -->
+  <g transform="translate(750, 150)">
+    <rect x="0" y="0" width="100" height="50" class="rf-node" />
+    <circle cx="0" cy="25" r="5" class="rf-handle" />
+    <circle cx="100" cy="25" r="5" class="rf-handle" />
+    <text x="50" y="30" class="rf-text">Code Sandbox</text>
+  </g>
 
-  <!-- Branch 3: Mid-Bottom (RAG) -->
-  <path d="M 660 260 C 750 260, 750 300, 850 300" class="edge" id="path3" />
-  <rect x="850" y="280" width="100" height="40" class="node-box" />
-  <text x="900" y="305" class="text-body">Vector RAG</text>
-  <circle r="3" class="pulse">
-     <animateMotion class="anim-flow-fast" begin="1s">
-       <mpath href="#path3"/>
-     </animateMotion>
-  </circle>
+  <!-- Node C: Database -->
+  <g transform="translate(750, 250)">
+    <rect x="0" y="0" width="100" height="50" class="rf-node" />
+    <circle cx="0" cy="25" r="5" class="rf-handle" />
+    <circle cx="100" cy="25" r="5" class="rf-handle" />
+    <text x="50" y="30" class="rf-text">Vector Map</text>
+  </g>
 
-  <!-- Branch 4: Bottom (API) -->
-  <path d="M 660 260 C 750 260, 750 380, 850 380" class="edge" id="path4" />
-  <rect x="850" y="360" width="100" height="40" class="node-box" />
-  <text x="900" y="385" class="text-body">Ext API</text>
-  <circle r="3" class="pulse">
-     <animateMotion class="anim-flow-slow" begin="0.2s">
-       <mpath href="#path4"/>
-     </animateMotion>
-  </circle>
+  <!-- Leaf Nodes -->
+  <!-- L1 -->
+  <g transform="translate(950, 50)">
+    <rect x="0" y="0" width="80" height="40" class="rf-node" style="stroke: #666;" />
+    <circle cx="0" cy="20" r="5" class="rf-handle" />
+    <text x="40" y="25" class="rf-text" style="fill:#666;">Result</text>
+  </g>
 
-  <!-- Secondary Branches (Graph Depth) -->
+  <!-- L2 -->
+  <g transform="translate(950, 180)">
+    <rect x="0" y="0" width="80" height="40" class="rf-node" style="stroke: #666;" />
+    <circle cx="0" cy="20" r="5" class="rf-handle" />
+    <text x="40" y="25" class="rf-text" style="fill:#666;">Output</text>
+  </g>
+
+  <!-- ReactFlow Curves -->
+  <!-- Orch -> Search -->
+  <path d="M 640 160 C 690 160, 690 75, 750 75" class="rf-edge" id="edge1" />
+  <!-- Orch -> Code -->
+  <path d="M 640 160 C 690 160, 690 175, 750 175" class="rf-edge" id="edge2" />
+  <!-- Orch -> DB -->
+  <path d="M 640 160 C 690 160, 690 275, 750 275" class="rf-edge" id="edge3" />
+  
   <!-- Search -> Result -->
-  <path d="M 950 150 C 1000 150, 1000 120, 1050 120" class="edge" id="path1a" />
-  <rect x="1050" y="100" width="80" height="40" class="node-box" />
-  <text x="1090" y="125" class="text-small">Result</text>
-  <circle r="3" class="pulse">
-     <animateMotion class="anim-flow-med" begin="1.5s">
-       <mpath href="#path1a"/>
-     </animateMotion>
-  </circle>
-
+  <path d="M 850 75 C 900 75, 900 70, 950 70" class="rf-edge" id="edge4" />
   <!-- Code -> Output -->
-  <path d="M 950 220 C 1000 220, 1000 240, 1050 240" class="edge" id="path2a" />
-  <rect x="1050" y="220" width="80" height="40" class="node-box" />
-  <text x="1090" y="245" class="text-small">Output</text>
-  <circle r="3" class="pulse">
-     <animateMotion class="anim-flow-fast" begin="1.5s">
-       <mpath href="#path2a"/>
-     </animateMotion>
+  <path d="M 850 175 C 900 175, 900 200, 950 200" class="rf-edge" id="edge5" />
+
+  <!-- Graph Animations (Tokens) -->
+  <circle r="4" class="pulse-token">
+    <animateMotion class="anim-med">
+      <mpath href="#edge1"/>
+    </animateMotion>
+  </circle>
+  <circle r="4" class="pulse-token">
+    <animateMotion class="anim-med" begin="0.5s">
+      <mpath href="#edge2"/>
+    </animateMotion>
+  </circle>
+  <circle r="4" class="pulse-token">
+    <animateMotion class="anim-slow" begin="1s">
+      <mpath href="#edge3"/>
+    </animateMotion>
+  </circle>
+  
+  <circle r="4" class="pulse-token">
+    <animateMotion class="anim-fast" begin="1.5s">
+      <mpath href="#edge4"/>
+    </animateMotion>
+  </circle>
+   <circle r="4" class="pulse-token">
+    <animateMotion class="anim-fast" begin="2s">
+      <mpath href="#edge5"/>
+    </animateMotion>
   </circle>
   
   <!-- Labels -->
-  <text x="75" y="80" class="text-title">Inputs</text>
-  <text x="225" y="80" class="text-title">Aggregation</text>
-  <text x="800" y="50" class="text-title">Symbolic Execution Graph</text>
-  
+  <text x="250" y="350" class="latex-title" style="font-size: 20px;">Neural Controller (Latex)</text>
+  <text x="800" y="350" class="rf-text" style="font-size: 20px;">Execution Graph (ReactFlow)</text>
+
 </svg>
