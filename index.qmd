@@ -29,7 +29,7 @@ title-block-banner: false
 </div>
 
 <figure class="architecture-figure paper-figure-wide">
-  <img src="assets/images/architecture.svg?v=6" alt="Animated System Architecture" class="animated-svg">
+  <img src="assets/images/architecture.svg?v=7" alt="Animated System Architecture" class="animated-svg">
   <figcaption><strong>Figure 1:</strong> Unified Neuro-Symbolic Architecture. Multi-modal inputs (left) are consolidated via an Aggregator before being processed by a Reasoning Unit (LLM). The Context Orchestrator then dynamically generates and navigates a non-linear Execution Graph (right) with curved symbolic pathways.</figcaption>
 </figure>
 
