@@ -14,6 +14,20 @@
     "text": "Context State Decoupling: A Neuro-Symbolic Approach to Infinite Context\n\n\n\nResearch\n\nArchitecture\n\nNeuro-Symbolic AI\n\nSLM\n\n\n\n\n\n\n\n\n\nJan 4, 2026\n\n\n\n\n\nNo matching items"
   },
   {
+    "objectID": "work/projects/index.html",
+    "href": "work/projects/index.html",
+    "title": "Projects",
+    "section": "",
+    "text": "The following projects represent core architectural research and deployed protocols."
+  },
+  {
+    "objectID": "work/projects/index.html#active-development",
+    "href": "work/projects/index.html#active-development",
+    "title": "Projects",
+    "section": "",
+    "text": "The following projects represent core architectural research and deployed protocols."
+  },
+  {
     "objectID": "posts/welcome/index.html",
     "href": "posts/welcome/index.html",
     "title": "Welcome to my AI Lab",
@@ -42,11 +56,32 @@
     "text": "Implementation\nBelow is a PyTorch tensor initialization:\nimport torch\n\n# Define a simple tensor\nx = torch.tensor([[1, 2], [3, 4]])\nprint(f\"Tensor shape: {x.shape}\")"
   },
   {
-    "objectID": "work/projects/index.html",
-    "href": "work/projects/index.html",
-    "title": "AI Experiments",
+    "objectID": "work/projects/cascade-context-protocol/index.html",
+    "href": "work/projects/cascade-context-protocol/index.html",
+    "title": "Cascade Context Protocol",
     "section": "",
-    "text": "Here is a list of my repositories:\n\nCDLL\nCNN-for-Text-Classification\nK-Nearest-Neighbor"
+    "text": "In the current landscape of Large Language Models, “intelligence” is strictly bound by the context window. To reason about a sequence, the model must hold every token in active memory. This creates the “Linear Bottleneck”: as history grows, cost and latency explode, effectively lobotomizing long-running agents.\nThe Cascade Context Protocol (CCP) proposes a radical shift: treating conversation not as a stream, but as a Graph."
+  },
+  {
+    "objectID": "work/projects/cascade-context-protocol/index.html#the-infinite-context-problem",
+    "href": "work/projects/cascade-context-protocol/index.html#the-infinite-context-problem",
+    "title": "Cascade Context Protocol",
+    "section": "",
+    "text": "In the current landscape of Large Language Models, “intelligence” is strictly bound by the context window. To reason about a sequence, the model must hold every token in active memory. This creates the “Linear Bottleneck”: as history grows, cost and latency explode, effectively lobotomizing long-running agents.\nThe Cascade Context Protocol (CCP) proposes a radical shift: treating conversation not as a stream, but as a Graph."
+  },
+  {
+    "objectID": "work/projects/cascade-context-protocol/index.html#architecture-the-glass-box-engine",
+    "href": "work/projects/cascade-context-protocol/index.html#architecture-the-glass-box-engine",
+    "title": "Cascade Context Protocol",
+    "section": "Architecture: The “Glass Box” Engine",
+    "text": "Architecture: The “Glass Box” Engine\nCCP functions as a neuro-symbolic middleware that sits between the user and the LLM. It intercepts inputs and processes them through a transparent cognitive loop.\n\n1. Semantic Segmentation\nUnlike naive chunkers that split text every 500 tokens, CCP uses a Semantic Segmenter. It analyzes syntactic boundaries to break streams into atomic units of intent called ContextBlocks. This ensures that “memory” is stored as complete thoughts, not fragmented text.\n\n\n2. The Execution Graph (Hippocampus)\nThese blocks are not just stored in a list; they become nodes in a persistent Directed Acyclic Graph (DAG). * Logical State: The DAG represents the “Long-Term Memory”. * localized Processing: When a new query arrives, the system traverses the graph, retrieving only the connected nodes relevant to the current thought.\n\n\n3. Neuro-Symbolic Loop (Prefrontal Cortex)\nThe reasoning engine is fully decoupled from the storage. * Retrieval: A hybrid vector + regex search finds tools. * Synthesis: The LLM acts as a temporary processor, generating arguments for tool execution. * Update: Tool results are fed back into the Graph as new nodes."
+  },
+  {
+    "objectID": "work/projects/cascade-context-protocol/index.html#why-this-matters",
+    "href": "work/projects/cascade-context-protocol/index.html#why-this-matters",
+    "title": "Cascade Context Protocol",
+    "section": "Why This Matters",
+    "text": "Why This Matters\nBy offloading the “state” to a graph structure, the LLM allows for Infinite Context with constant-time (O(k)) retrieval costs. The agent can remember a detail from 1 million tokens ago just as easily as the previous sentence, without clogging its context window.\nThis is the foundation of Sovereign AI: systems that can run on consumer hardware yet maintain the cognitive continuity of massive cloud clusters."
   },
   {
     "objectID": "work/research/reasoning/context-state-decoupling/index.html",
@@ -103,6 +138,13 @@
     "title": "Context State Decoupling: A Neuro-Symbolic Approach to Infinite Context",
     "section": "5. Discussion",
     "text": "5. Discussion\nBy offloading “remembering” to a structured database, we reduce the cognitive load on the model. This implies that massive parameter counts (70B+) are not required for long-context coherence. A finely-tuned SLM (e.g., 3B-7B parameters), when equipped with CSD, can outperform larger models in tasks requiring high-fidelity recall over long horizons, as demonstrated in similar approaches like MemGPT [2] and GraphRAG [3]."
+  },
+  {
+    "objectID": "work/research/reasoning/context-state-decoupling/index.html#reference-implementation",
+    "href": "work/research/reasoning/context-state-decoupling/index.html#reference-implementation",
+    "title": "Context State Decoupling: A Neuro-Symbolic Approach to Infinite Context",
+    "section": "Reference Implementation",
+    "text": "Reference Implementation\nThe Cascade Context Protocol (CCP) serves as a live application of the Context State Decoupling theory. It implements the “State Offloading” and “Localized Processing” mechanisms described above to achieve infinite context reasoning.\n\nView Repository"
   },
   {
     "objectID": "work/research/reasoning/context-state-decoupling/index.html#references",

@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-01-04">
+<meta name="dcterms.date" content="2025-12-10">
 
-<title>Context State Decoupling: A Neuro-Symbolic Approach to Infinite Context – Charaf’s Blog</title>
+<title>Cascade Context Protocol – Charaf’s Blog</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,24 +24,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../../../">
-<script src="../../../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../../../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../../site_libs/bootstrap/bootstrap-0b37c64f34216b628666a8dac638b53b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-0b37c64f34216b628666a8dac638b53b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -115,7 +114,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../../../../styles.css">
+<link rel="stylesheet" href="../../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -125,7 +124,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../../../index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Charaf’s Blog</span>
     </a>
   </div>
@@ -136,19 +135,19 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../../../index.html"> 
+    <a class="nav-link" href="../../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../../about.html"> 
+    <a class="nav-link" href="../../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../../work/research/index.html"> 
+    <a class="nav-link" href="../../../work/research/index.html"> 
 <span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../../work/projects/index.html"> 
+    <a class="nav-link" href="../../../work/projects/index.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
 </ul>
@@ -172,145 +171,85 @@ window.Quarto = {
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
-   
   <ul>
-  <li><a href="#abstract" id="toc-abstract" class="nav-link active" data-scroll-target="#abstract">Abstract</a></li>
-  <li><a href="#the-linear-paradox" id="toc-the-linear-paradox" class="nav-link" data-scroll-target="#the-linear-paradox">1. The Linear Paradox</a></li>
-  <li><a href="#the-decoupling-thesis" id="toc-the-decoupling-thesis" class="nav-link" data-scroll-target="#the-decoupling-thesis">2. The Decoupling Thesis</a></li>
-  <li><a href="#graph-topology-as-memory" id="toc-graph-topology-as-memory" class="nav-link" data-scroll-target="#graph-topology-as-memory">3. Graph Topology as Memory</a></li>
-  <li><a href="#neuro-symbolic-retrieval" id="toc-neuro-symbolic-retrieval" class="nav-link" data-scroll-target="#neuro-symbolic-retrieval">4. Neuro-Symbolic Retrieval</a></li>
-  <li><a href="#the-cognitive-loop" id="toc-the-cognitive-loop" class="nav-link" data-scroll-target="#the-cognitive-loop">4.1 The Cognitive Loop</a></li>
-  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion">5. Discussion</a></li>
-  <li><a href="#reference-implementation" id="toc-reference-implementation" class="nav-link" data-scroll-target="#reference-implementation">Reference Implementation</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#the-infinite-context-problem" id="toc-the-infinite-context-problem" class="nav-link active" data-scroll-target="#the-infinite-context-problem">The Infinite Context Problem</a></li>
+  <li><a href="#architecture-the-glass-box-engine" id="toc-architecture-the-glass-box-engine" class="nav-link" data-scroll-target="#architecture-the-glass-box-engine">Architecture: The “Glass Box” Engine</a>
+  <ul class="collapse">
+  <li><a href="#semantic-segmentation" id="toc-semantic-segmentation" class="nav-link" data-scroll-target="#semantic-segmentation">1. Semantic Segmentation</a></li>
+  <li><a href="#the-execution-graph-hippocampus" id="toc-the-execution-graph-hippocampus" class="nav-link" data-scroll-target="#the-execution-graph-hippocampus">2. The Execution Graph (Hippocampus)</a></li>
+  <li><a href="#neuro-symbolic-loop-prefrontal-cortex" id="toc-neuro-symbolic-loop-prefrontal-cortex" class="nav-link" data-scroll-target="#neuro-symbolic-loop-prefrontal-cortex">3. Neuro-Symbolic Loop (Prefrontal Cortex)</a></li>
+  </ul></li>
+  <li><a href="#why-this-matters" id="toc-why-this-matters" class="nav-link" data-scroll-target="#why-this-matters">Why This Matters</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-about-solana column-body">
+  <div class="about-entity">
+    <div class="entity-contents">
+      <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Context State Decoupling: A Neuro-Symbolic Approach to Infinite Context</h1>
-<p class="subtitle lead">Dissociating Logical State from Ephemeral Inference in Small Language Models</p>
+<h1 class="title">Cascade Context Protocol</h1>
+<p class="subtitle lead">A Neuro-Symbolic Architecture for Infinite Context</p>
   <div class="quarto-categories">
-    <div class="quarto-category">Research</div>
     <div class="quarto-category">Architecture</div>
-    <div class="quarto-category">Neuro-Symbolic AI</div>
-    <div class="quarto-category">SLM</div>
+    <div class="quarto-category">Python</div>
+    <div class="quarto-category">Neuro-Symbolic</div>
   </div>
   </div>
-
-
-
 <div class="quarto-title-meta">
-
-    
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 4, 2026</p>
+      <p class="date">December 10, 2025</p>
     </div>
   </div>
-  
-    
   </div>
-  
-
-
-</header>
-
-
-<section id="abstract" class="level2">
-<h2 class="anchored" data-anchor-id="abstract">Abstract</h2>
-<p>The scaling laws of Transformer architectures are currently bound by the quadratic cost of the attention mechanism, limiting the effective reasoning horizon of Large Language Models (LLMs). This paper proposes <strong>Context State Decoupling (CSD)</strong>, a neuro-symbolic architecture that dissociates the logical state of a conversation (persisted as a Directed Acyclic Graph) from the ephemeral inference compute (the LLM). By treating the LLM not as a container of state but as a purely functional transition kernel, we demonstrate a pathway to effectively “infinite” context windows with constant memory complexity <span class="math inline">O(k)</span> for Small Language Models (SLMs).</p>
-</section>
-<section id="the-linear-paradox" class="level2">
-<h2 class="anchored" data-anchor-id="the-linear-paradox">1. The Linear Paradox</h2>
-<p>In the standard Transformer paradigm, “intelligence” is strictly bound by the context window <span class="math inline">W</span>. To reason about a sequence of length <span class="math inline">N</span>, the model must maintain a Key-Value (KV) cache for all previous tokens.</p>
-<p>The computational cost of the attention mechanism for a sequence of length <span class="math inline">N</span> is traditionally:</p>
-<p><span class="math display">
-\text{Cost}_{attn} \propto O(N^2)
-</span></p>
-<p>While optimizations like FlashAttention and linear attention variants reduce this burden, they do not solve the semantic noise problem. As <span class="math inline">N \to \infty</span>, the probability of attention heads attending to irrelevant historical tokens increases, degrading reasoning performance—a phenomenon known as “Lost in the Middle” [1].</p>
-<p>Currently, systems address this via a <strong>Sliding Window</strong> approach, truncating history <span class="math inline">H_{t-k}</span>. This results in catastrophic forgetting, where the “self” of the agent is destroyed every time the window shifts.</p>
-</section>
-<section id="the-decoupling-thesis" class="level2">
-<h2 class="anchored" data-anchor-id="the-decoupling-thesis">2. The Decoupling Thesis</h2>
-<p>We propose that the conflation of <strong>State</strong> (Memory) and <strong>Compute</strong> (Inference) is a category error in current architectures. Drawing inspiration from the distinction between the <em>Hippocampus</em> (episodic memory) and the <em>Prefrontal Cortex</em> (working memory/reasoning), we propose <strong>Context State Decoupling (CSD)</strong>.</p>
-<p>The architecture separates the system into two distinct components:</p>
-<ol type="1">
-<li><strong>The Logical State (Symbolic Substrate):</strong> An evolving, persistent Directed Acyclic Graph (DAG) storing facts, events, and causal dependencies.</li>
-<li><strong>The Inference Engine (Neural Substrate):</strong> An SLM acting as a stateless function <span class="math inline">f(x)</span> that synthesizes state updates.</li>
-</ol>
-</section>
-<section id="graph-topology-as-memory" class="level2">
-<h2 class="anchored" data-anchor-id="graph-topology-as-memory">3. Graph Topology as Memory</h2>
-<p>Instead of a linear array of tokens <span class="math inline">T = [t_1, t_2, ..., t_N]</span>, the conversation state is stored as a graph <span class="math inline">G = (V, E)</span>.</p>
-<ul>
-<li><strong>Vertices (<span class="math inline">V</span>):</strong> Atomic “Context Blocks”—semantically segmented units of user intent or system insight.</li>
-<li><strong>Edges (<span class="math inline">E</span>):</strong> Causal or temporal relationships between blocks (e.g., <code>[User Request] -&gt; [Clarification]</code>).</li>
-</ul>
-<figure class="architecture-figure paper-figure-wide figure">
-<img src="../../../../assets/clog/csd_architecture.svg" alt="CSD Architecture vs Standard Linear Context" class="scientific-diagram figure-img">
-<figcaption>
-<strong>Figure 1:</strong> The CSD Architecture vs Standard Linear Context. Visualizing the shift from linear buffering to cyclic graph retrieval.
-</figcaption>
-</figure>
-</section>
-<section id="neuro-symbolic-retrieval" class="level2">
-<h2 class="anchored" data-anchor-id="neuro-symbolic-retrieval">4. Neuro-Symbolic Retrieval</h2>
-<p>When the system receives input <span class="math inline">I_t</span>, it constructs a <strong>Localized Context</strong> (<span class="math inline">C_{local}</span>) rather than loading the full history. This is a retrieval operation defined as:</p>
-<p><span class="math display">
-C_{local} = R(I_t, G) = \text{Top}_k(Sim(I_t, V)) \cup N(\text{Top}_k)
-</span></p>
-<p>Where: * <span class="math inline">Sim</span> is a cosine similarity function in vector space. * <span class="math inline">N</span> represents the topological neighbors (parent/child nodes) in the DAG, preserving causal continuity.</p>
-</section>
-<section id="the-cognitive-loop" class="level2">
-<h2 class="anchored" data-anchor-id="the-cognitive-loop">4.1 The Cognitive Loop</h2>
-<p>The inference process becomes a recurring loop:</p>
-<ol type="1">
-<li><strong>Segmentation:</strong> Input is parsed into an atomic intent <span class="math inline">v_{new}</span>.</li>
-<li><strong>Retrieval:</strong> <span class="math inline">C_{local}</span> is fetched from <span class="math inline">G</span>.</li>
-<li><strong>Synthesis:</strong> The SLM generates the response <span class="math inline">r</span> and a state update <span class="math inline">u</span>. <span class="math display">
-(r, u) = \text{SLM}(v_{new}, C_{local})
-</span></li>
-<li><strong>Update:</strong> <span class="math inline">u</span> is committed to <span class="math inline">G</span>, creating edges based on the retrieval path.</li>
-</ol>
-</section>
-<section id="discussion" class="level2">
-<h2 class="anchored" data-anchor-id="discussion">5. Discussion</h2>
-<p>By offloading “remembering” to a structured database, we reduce the cognitive load on the model. This implies that massive parameter counts (70B+) are not required for long-context coherence. A finely-tuned SLM (e.g., 3B-7B parameters), when equipped with CSD, can outperform larger models in tasks requiring high-fidelity recall over long horizons, as demonstrated in similar approaches like MemGPT [2] and GraphRAG [3].</p>
-</section>
-<section id="reference-implementation" class="level2">
-<h2 class="anchored" data-anchor-id="reference-implementation">Reference Implementation</h2>
-<p>The <strong>Cascade Context Protocol (CCP)</strong> serves as a live application of the Context State Decoupling theory. It implements the “State Offloading” and “Localized Processing” mechanisms described above to achieve infinite context reasoning.</p>
-<div style="text-align: center; margin: 2rem 0;">
-<p><a href="https://github.com/EddCBen/cascade-context-protocol" class="btn btn-outline-primary" style="padding: 0.5rem 1.5rem; border: 1px solid #333; color: #333; text-decoration: none; border-radius: 4px; font-family: monospace;">View Repository</a></p>
+</header> <div class="about-links">
+  <a href="https://github.com/EddCBen/cascade-context-protocol" class="about-link" rel="" target="">
+    <i class="bi bi-github"></i>
+     <span class="about-link-text">Github</span>
+  </a>
 </div>
+      <div class="about-contents"><main class="content" id="quarto-document-content">
+
+<section id="the-infinite-context-problem" class="level2">
+<h2 data-anchor-id="the-infinite-context-problem">The Infinite Context Problem</h2>
+<p>In the current landscape of Large Language Models, “intelligence” is strictly bound by the context window. To reason about a sequence, the model must hold every token in active memory. This creates the “Linear Bottleneck”: as history grows, cost and latency explode, effectively lobotomizing long-running agents.</p>
+<p>The <strong>Cascade Context Protocol (CCP)</strong> proposes a radical shift: treating conversation not as a stream, but as a <strong>Graph</strong>.</p>
 </section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
-<ol type="1">
-<li>Liu, N. F., et al.&nbsp;(2024). <em>Lost in the Middle: How Language Models Use Long Contexts</em>. arXiv preprint.</li>
-<li>Packer, C., et al.&nbsp;(2023). <em>MemGPT: Towards LLMs as Operating Systems</em>. arXiv:2310.08560.</li>
-<li>Edge, D., et al.&nbsp;(2024). <em>From Local to Global: A Graph RAG Approach to Query-Focused Summarization</em>. Microsoft Research.</li>
-</ol>
-
+<section id="architecture-the-glass-box-engine" class="level2">
+<h2 data-anchor-id="architecture-the-glass-box-engine">Architecture: The “Glass Box” Engine</h2>
+<p>CCP functions as a neuro-symbolic middleware that sits between the user and the LLM. It intercepts inputs and processes them through a transparent cognitive loop.</p>
+<section id="semantic-segmentation" class="level3">
+<h3 data-anchor-id="semantic-segmentation">1. Semantic Segmentation</h3>
+<p>Unlike naive chunkers that split text every 500 tokens, CCP uses a <strong>Semantic Segmenter</strong>. It analyzes syntactic boundaries to break streams into atomic units of intent called <code>ContextBlocks</code>. This ensures that “memory” is stored as complete thoughts, not fragmented text.</p>
+</section>
+<section id="the-execution-graph-hippocampus" class="level3">
+<h3 data-anchor-id="the-execution-graph-hippocampus">2. The Execution Graph (Hippocampus)</h3>
+<p>These blocks are not just stored in a list; they become nodes in a persistent <strong>Directed Acyclic Graph (DAG)</strong>. * <strong>Logical State</strong>: The DAG represents the “Long-Term Memory”. * <strong>localized Processing</strong>: When a new query arrives, the system traverses the graph, retrieving only the connected nodes relevant to the current thought.</p>
+</section>
+<section id="neuro-symbolic-loop-prefrontal-cortex" class="level3">
+<h3 data-anchor-id="neuro-symbolic-loop-prefrontal-cortex">3. Neuro-Symbolic Loop (Prefrontal Cortex)</h3>
+<p>The reasoning engine is fully decoupled from the storage. * <strong>Retrieval</strong>: A hybrid vector + regex search finds tools. * <strong>Synthesis</strong>: The LLM acts as a temporary processor, generating arguments for tool execution. * <strong>Update</strong>: Tool results are fed back into the Graph as new nodes.</p>
+</section>
+</section>
+<section id="why-this-matters" class="level2">
+<h2 data-anchor-id="why-this-matters">Why This Matters</h2>
+<p>By offloading the “state” to a graph structure, the LLM allows for <strong>Infinite Context</strong> with constant-time (<span class="math inline">O(k)</span>) retrieval costs. The agent can remember a detail from 1 million tokens ago just as easily as the previous sentence, without clogging its context window.</p>
+<p>This is the foundation of <strong>Sovereign AI</strong>: systems that can run on consumer hardware yet maintain the cognitive continuity of massive cloud clusters.</p>
 
 
 </section>
-
-</main> <!-- /main -->
+</main></div>
+    </div>
+    <img src="../../../assets/clog/ccp_architecture.svg" class="about-image
+  rounded " style="width: 15em;">
+  </div>
+</div>
+ <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     
@@ -707,5 +646,5 @@ C_{local} = R(I_t, G) = \text{Top}_k(Sim(I_t, V)) \cup N(\text{Top}_k)
 
 
 
-<script src="../../../../site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
