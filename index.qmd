@@ -17,7 +17,7 @@ title-block-banner: false
 <div class="academic-container">
 
 <div class="paper-header">
-# Cross-Modal, Task-Agnostic Neural Networks: Intersections with Neuro-Symbolic RAG, Execution Graphs & Context Engineering
+# Deep Intersections
 <div class="author-block">Charaf Eddine BENARAB</div>
 <div class="institution-block">Independent Researcher</div>
 </div>
@@ -25,12 +25,12 @@ title-block-banner: false
 <div class="abstract-section">
 **Abstract.** This research log documents the exploration of intersections between small language models, context-orchestration, and execution graphs. We propose a novel framework for cross-modality reasoning.
 <br><br>
-**Keywords:** *Cross-Modality, Execution Graphs, Context-Orchestration, SLMs*
+**Keywords:** *SLM, Neuro-Symbolic, Protocol Design, Context Engineering*
 </div>
 
 <figure class="architecture-figure paper-figure-wide">
-  <img src="assets/images/architecture.svg?v=10" alt="Animated System Architecture" class="animated-svg">
-  <figcaption><strong>Figure 1:</strong> Unified Neuro-Symbolic Architecture. Multi-modal inputs (left) are consolidated via an Aggregator before being processed by a Reasoning Unit (LLM). The Context Orchestrator then dynamically generates and navigates a non-linear Execution Graph (right) with curved symbolic pathways.</figcaption>
+  <img src="assets/images/architecture.svg?v=11" alt="Animated System Architecture" class="animated-svg">
+  <figcaption><strong>Figure 1:</strong> Template for Software Protocol SLM Enhancement. A standardized architecture for integrating Small Language Models (SLMs) into deterministic software protocols. The Central Reasoning Unit (CRU) acts as the probabilistic kernel, bridging multi-modal inputs with a structured, verifiable Execution Graph.</figcaption>
 </figure>
 
 ## Research Log
