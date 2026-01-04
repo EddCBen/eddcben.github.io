@@ -34,7 +34,7 @@ By **decoupling** these components, we can achieve "Infinite Context" without in
 Instead of a linear stream of tokens, the conversation state is stored as a **Directed Acyclic Graph (DAG)** in a persistent Vector Database.
 
 <figure class="architecture-figure">
-  <img src="/assets/images/context_dag.svg" alt="Context State DAG" class="scientific-diagram">
+  <img src="/assets/clog/context_dag.svg" alt="Context State DAG" class="scientific-diagram">
   <figcaption><strong>Figure 1:</strong> Context State DAG Topology. Visualizing the atomic segmentation of user intent into persistent graph nodes.</figcaption>
 </figure>
 
