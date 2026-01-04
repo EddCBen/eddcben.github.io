@@ -11,7 +11,3 @@ listing:
 page-layout: full
 title-block-banner: true
 ---
-
-## Active Development
-
-The following projects represent core architectural research and deployed protocols.
