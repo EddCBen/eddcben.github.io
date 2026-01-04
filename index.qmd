@@ -5,6 +5,8 @@ toc: false
 section-divs: false
 
 title-block-banner: false
+resources:
+  - assets/images/architecture.svg
 ---
 
 <div class="academic-container">
