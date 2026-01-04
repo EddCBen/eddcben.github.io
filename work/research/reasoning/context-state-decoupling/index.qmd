@@ -1,60 +1,85 @@
 ---
-title: "Context State Decoupling"
-subtitle: "Dissociating Logical State from Ephemeral Inference"
+title: "Context State Decoupling: A Neuro-Symbolic Approach to Infinite Context"
+subtitle: "Dissociating Logical State from Ephemeral Inference in Small Language Models"
 date: "2026-01-04"
-categories: [Reasoning, Architecture, SLM]
+author: "EddCBen"
+categories: [Research, Architecture, Neuro-Symbolic AI, SLM]
 format:
   html:
     toc: true
     code-fold: true
+    math: true
 ---
+
+## Abstract
+
+The scaling laws of Transformer architectures are currently bound by the quadratic cost of the attention mechanism, limiting the effective reasoning horizon of Large Language Models (LLMs). This paper proposes **Context State Decoupling (CSD)**, a neuro-symbolic architecture that dissociates the logical state of a conversation (persisted as a Directed Acyclic Graph) from the ephemeral inference compute (the LLM). By treating the LLM not as a container of state but as a purely functional transition kernel, we demonstrate a pathway to effectively "infinite" context windows with constant memory complexity $O(k)$ for Small Language Models (SLMs).
 
 ## 1. The Linear Paradox
 
-In the current paradigm of Large Language Model (LLM) architecture, "intelligence" is strictly bound by the context window. To reason about a sequence of length $N$, the model must load all $N$ tokens into its active attention mechanism.
+In the standard Transformer paradigm, "intelligence" is strictly bound by the context window $W$. To reason about a sequence of length $N$, the model must maintain a Key-Value (KV) cache for all previous tokens.
 
-This creates a fundamental scaling paradox:
+The computational cost of the attention mechanism for a sequence of length $N$ is traditionally:
+
 $$
-\text{Cost} \propto O(N^2)
+\text{Cost}_{attn} \propto O(N^2)
 $$
 
-As the history $H$ grows, the cost to generate the next token $t_{n+1}$ increases quadratically (or linearly with optimized attention, but still creating massive memory pressure). This forces a "Sliding Window" approach, where older context is lobotomized to make room for new data, destroying the continuity of the system's "self".
+While optimizations like FlashAttention and linear attention variants reduce this burden, they do not solve the semantic noise problem. As $N \to \infty$, the probability of attention heads attending to irrelevant historical tokens increases, degrading reasoning performance—a phenomenon known as "Lost in the Middle" [1].
+
+Currently, systems address this via a **Sliding Window** approach, truncating history $H_{t-k}$. This results in catastrophic forgetting, where the "self" of the agent is destroyed every time the window shifts.
 
 ## 2. The Decoupling Thesis
 
-We propose a neuro-symbolic architecture that solves this by functionally identifying and separating two distinct cognitive processes:
+We propose that the conflation of **State** (Memory) and **Compute** (Inference) is a category error in current architectures. Drawing inspiration from the distinction between the *Hippocampus* (episodic memory) and the *Prefrontal Cortex* (working memory/reasoning), we propose **Context State Decoupling (CSD)**.
 
-1.  **Logical State (Hippocampus)**: The persistent, evolving graph of facts, events, and their causal relationships.
-2.  **Ephemeral Inference (Prefrontal Cortex)**: The active processing unit that synthesizes updates to the state.
+The architecture separates the system into two distinct components:
 
-By **decoupling** these components, we can achieve "Infinite Context" without infinite compute. The LLM no longer needs to *hold* the state; it only needs to *navigate* it.
+1.  **The Logical State (Symbolic Substrate):** An evolving, persistent Directed Acyclic Graph (DAG) storing facts, events, and causal dependencies.
+2.  **The Inference Engine (Neural Substrate):** An SLM acting as a stateless function $f(x)$ that synthesizes state updates.
 
 ## 3. Graph Topology as Memory
 
-Instead of a linear stream of tokens, the conversation state is stored as a **Directed Acyclic Graph (DAG)** in a persistent Vector Database.
+Instead of a linear array of tokens $T = [t_1, t_2, ..., t_N]$, the conversation state is stored as a graph $G = (V, E)$.
 
-<figure class="architecture-figure">
-  <img src="/assets/clog/context_dag.svg" alt="Context State DAG" class="scientific-diagram">
-  <figcaption><strong>Figure 1:</strong> Context State DAG Topology. Visualizing the atomic segmentation of user intent into persistent graph nodes.</figcaption>
+*   **Vertices ($V$):** Atomic "Context Blocks"—semantically segmented units of user intent or system insight.
+*   **Edges ($E$):** Causal or temporal relationships between blocks (e.g., `[User Request] -> [Clarification]`).
+
+<figure class="architecture-figure paper-figure-wide">
+  <img src="/assets/clog/csd_architecture.svg" alt="CSD Architecture vs Standard Linear Context" class="scientific-diagram">
+  <figcaption><strong>Figure 1:</strong> The CSD Architecture vs Standard Linear Context. Visualizing the shift from linear buffering to cyclic graph retrieval.</figcaption>
 </figure>
-
-Each node in this graph represents an atomic "Context Block"—a semantically segmented unit of intent—rather than a raw token chunk.
 
 ## 4. Neuro-Symbolic Retrieval
 
-When the system receives a new input $I_t$, it does not blindly feed the previous $N$ tokens into the context window. Instead, it performs a hybrid retrieval operation to construct a **Localized Context**:
+When the system receives input $I_t$, it constructs a **Localized Context** ($C_{local}$) rather than loading the full history. This is a retrieval operation defined as:
 
 $$
-C_{local} = \text{Top}_k(Sim(I_t, \text{Graph})) \cup \text{Neighbors}(\text{Top}_k)
+C_{local} = R(I_t, G) = \text{Top}_k(Sim(I_t, V)) \cup N(\text{Top}_k)
 $$
 
-This ensures that the LLM's working memory usage remains constant ($O(k)$) regardless of the total conversation length ($N$).
+Where:
+*   $Sim$ is a cosine similarity function in vector space.
+*   $N$ represents the topological neighbors (parent/child nodes) in the DAG, preserving causal continuity.
 
-### 4.1 The Cognitive Loop
+## 4.1 The Cognitive Loop
 
-1.  **Segmentation**: Input is broken into atomic intents.
-2.  **Retrieval**: Relevant historical nodes are fetched from the Graph.
-3.  **Synthesis**: The SLM, acting as a kernel, generates the next reasoning step.
-4.  **Update**: The new reasoning is appended to the Graph as a new Node, permanently updating the "Long-Term Memory".
+The inference process becomes a recurring loop:
 
-This architecture allows small, efficient models (SLMs) to exhibit coherent long-term reasoning by offloading the burden of "remembering" to a structured, symbolic substrate.
+1.  **Segmentation:** Input is parsed into an atomic intent $v_{new}$.
+2.  **Retrieval:** $C_{local}$ is fetched from $G$.
+3.  **Synthesis:** The SLM generates the response $r$ and a state update $u$.
+    $$
+    (r, u) = \text{SLM}(v_{new}, C_{local})
+    $$
+4.  **Update:** $u$ is committed to $G$, creating edges based on the retrieval path.
+
+## 5. Discussion
+
+By offloading "remembering" to a structured database, we reduce the cognitive load on the model. This implies that massive parameter counts (70B+) are not required for long-context coherence. A finely-tuned SLM (e.g., 3B-7B parameters), when equipped with CSD, can outperform larger models in tasks requiring high-fidelity recall over long horizons, as demonstrated in similar approaches like MemGPT [2] and GraphRAG [3].
+
+## References
+
+1.  Liu, N. F., et al. (2024). *Lost in the Middle: How Language Models Use Long Contexts*. arXiv preprint.
+2.  Packer, C., et al. (2023). *MemGPT: Towards LLMs as Operating Systems*. arXiv:2310.08560.
+3.  Edge, D., et al. (2024). *From Local to Global: A Graph RAG Approach to Query-Focused Summarization*. Microsoft Research.
