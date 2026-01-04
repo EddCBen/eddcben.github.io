@@ -17,9 +17,9 @@ title-block-banner: false
 <div class="academic-container">
 
 <div class="paper-header">
-# Deep Intersections: Cross-Modal Neural Networks & Execution Contexts
-<div class="author-block">Charaf Eddine</div>
-<div class="institution-block">Arkiom Research Lab</div>
+# Cross-Modal, Task-Agnostic Neural Networks: Intersections with Neuro-Symbolic RAG, Execution Graphs & Context Engineering
+<div class="author-block">Charaf Eddine BENARAB</div>
+<div class="institution-block">Independent Researcher</div>
 </div>
 
 <div class="abstract-section">
@@ -30,7 +30,7 @@ title-block-banner: false
 
 <figure class="architecture-figure paper-figure-wide">
   <img src="assets/images/architecture.svg" alt="Animated System Architecture" class="animated-svg">
-  <figcaption><strong>Figure 1:</strong> Dynamic visualization of the Cross-Modal Context Orchestration framework. Data flows from multimodal inputs through the Transformer encoding layers, triggering the Context Orchestrator to traverse the Execution Graph.</figcaption>
+  <figcaption><strong>Figure 1:</strong> Unified Neuro-Symbolic Architecture. Multi-modal inputs (left) are consolidated via an Aggregator before being processed by a Reasoning Unit (LLM). The Context Orchestrator then dynamically generates and navigates a non-linear Execution Graph (right) with curved symbolic pathways.</figcaption>
 </figure>
 
 ## Research Log
