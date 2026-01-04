@@ -2,9 +2,16 @@
   {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "About",
+    "title": "Charaf Eddine BENARAB",
     "section": "",
-    "text": "About this blog"
+    "text": "I am a researcher specializing in Artificial Intelligence and Computer Science. My work currently focuses on Neuro-Symbolic architectures and the efficiency of Small Language Models (SLMs)."
+  },
+  {
+    "objectID": "about.html#education",
+    "href": "about.html#education",
+    "title": "Charaf Eddine BENARAB",
+    "section": "Education",
+    "text": "Education\nUniversity of Electronic Science and Technology of China (UESTC) | Chengdu, China M.Sc. in Computer Science (Computational Intelligence) | 2019 – 2022\n\nAdvisor: Professor Gui Shenglin\nResearch: Conducted computational intelligence research focusing on Transformers, NLP, and Deep Learning.\n\nIGEE (formerly INELEC) | Boumerdes, Algeria B.Eng. in Electrical Engineering | 2014 – 2018"
   },
   {
     "objectID": "work/projects/index.html",

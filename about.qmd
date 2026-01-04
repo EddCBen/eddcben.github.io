@@ -6,11 +6,8 @@ about:
     - icon: github
       text: Github
       href: https://github.com/eddcben
-    - icon: linkedin
-      text: LinkedIn
-      href: https://linkedin.com/in/benarab-charaf-eddine
     - icon: envelope
-      text: Email
+      text: charafeddineben@gmail.com
       href: mailto:charafeddineben@gmail.com
 ---
 
