@@ -2,7 +2,6 @@
 title: "Context State Decoupling: A Neuro-Symbolic Approach to Infinite Context"
 subtitle: "Dissociating Logical State from Ephemeral Inference in Small Language Models"
 date: "2026-01-04"
-author: "EddCBen"
 categories: [Research, Architecture, Neuro-Symbolic AI, SLM]
 format:
   html:

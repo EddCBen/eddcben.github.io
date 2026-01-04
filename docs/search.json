@@ -58,9 +58,9 @@
   {
     "objectID": "work/projects/index.html",
     "href": "work/projects/index.html",
-    "title": "AI Experiments",
+    "title": "Projects",
     "section": "",
-    "text": "Here is a list of my repositories:\n\nCDLL\nCNN-for-Text-Classification\nK-Nearest-Neighbor"
+    "text": "The following projects represent core architectural research and deployed protocols."
   },
   {
     "objectID": "work/research/index.html",
@@ -138,5 +138,12 @@
     "title": "Context State Decoupling: A Neuro-Symbolic Approach to Infinite Context",
     "section": "Reference Implementation",
     "text": "Reference Implementation\nThe Cascade Context Protocol (CCP) serves as a live application of the Context State Decoupling theory. It implements the “State Offloading” and “Localized Processing” mechanisms described above to achieve infinite context reasoning.\n\nView Repository"
+  },
+  {
+    "objectID": "work/projects/index.html#active-development",
+    "href": "work/projects/index.html#active-development",
+    "title": "Projects",
+    "section": "",
+    "text": "The following projects represent core architectural research and deployed protocols."
   }
 ]
