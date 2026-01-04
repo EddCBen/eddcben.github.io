@@ -7,57 +7,15 @@
     "text": "About this blog"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Welcome to the Lab",
-    "section": "",
-    "text": "Interests: cross-modal neural networks, execution graphs, context-orchestration and small language model intersections"
-  },
-  {
-    "objectID": "projects.html",
-    "href": "projects.html",
-    "title": "AI Experiments",
-    "section": "",
-    "text": "Here is a list of my repositories:\n\nCDLL\nCNN-for-Text-Classification\nK-Nearest-Neighbor"
-  },
-  {
-    "objectID": "posts/welcome/index.html",
-    "href": "posts/welcome/index.html",
-    "title": "Welcome to my AI Lab",
-    "section": "",
-    "text": "This is a proof-of-concept post demonstrating scientific publishing capabilities with Quarto."
-  },
-  {
-    "objectID": "posts/welcome/index.html#mathematical-formulation",
-    "href": "posts/welcome/index.html#mathematical-formulation",
-    "title": "Welcome to my AI Lab",
-    "section": "Mathematical Formulation",
-    "text": "Mathematical Formulation\nWe can render complex equations using LaTeX. For example, the Cross-Entropy Loss function:\n\nL_{CE} = - \\sum_{i=1}^{C} t_i \\log(p_i)\n\nWhere: - t_i is the truth label. - p_i is the Softmax probability for the i^{th} class."
-  },
-  {
-    "objectID": "posts/welcome/index.html#architecture-diagram",
-    "href": "posts/welcome/index.html#architecture-diagram",
-    "title": "Welcome to my AI Lab",
-    "section": "Architecture Diagram",
-    "text": "Architecture Diagram\nHere is a simple Neural Network visualizations using Mermaid.js:\n\n\n\n\n\ngraph LR\n    A[Input Layer] --&gt; B(Hidden Layer)\n    B --&gt; C{Activation}\n    C --&gt; D[Output Layer]\n    style A fill:#f9f,stroke:#333,stroke-width:2px\n    style D fill:#ccf,stroke:#333,stroke-width:2px"
-  },
-  {
-    "objectID": "posts/welcome/index.html#implementation",
-    "href": "posts/welcome/index.html#implementation",
-    "title": "Welcome to my AI Lab",
-    "section": "Implementation",
-    "text": "Implementation\nBelow is a PyTorch tensor initialization:\nimport torch\n\n# Define a simple tensor\nx = torch.tensor([[1, 2], [3, 4]])\nprint(f\"Tensor shape: {x.shape}\")"
-  },
-  {
-    "objectID": "index.html#latest-research",
-    "href": "index.html#latest-research",
-    "title": "Welcome to the Lab",
-    "section": "Latest Research",
-    "text": "Latest Research"
-  },
-  {
     "objectID": "work/projects/index.html",
     "href": "work/projects/index.html",
+    "title": "Projects",
+    "section": "",
+    "text": "The following projects represent core architectural research and deployed protocols."
+  },
+  {
+    "objectID": "work/projects/index.html#active-development",
+    "href": "work/projects/index.html#active-development",
     "title": "Projects",
     "section": "",
     "text": "The following projects represent core architectural research and deployed protocols."
@@ -72,6 +30,13 @@
   {
     "objectID": "work/research/reasoning/context-state-decoupling/index.html",
     "href": "work/research/reasoning/context-state-decoupling/index.html",
+    "title": "Context State Decoupling: A Neuro-Symbolic Approach to Infinite Context",
+    "section": "",
+    "text": "The scaling laws of Transformer architectures are currently bound by the quadratic cost of the attention mechanism, limiting the effective reasoning horizon of Large Language Models (LLMs). This paper proposes Context State Decoupling (CSD), a neuro-symbolic architecture that dissociates the logical state of a conversation (persisted as a Directed Acyclic Graph) from the ephemeral inference compute (the LLM). By treating the LLM not as a container of state but as a purely functional transition kernel, we demonstrate a pathway to effectively “infinite” context windows with constant memory complexity O(k) for Small Language Models (SLMs)."
+  },
+  {
+    "objectID": "work/research/reasoning/context-state-decoupling/index.html#abstract",
+    "href": "work/research/reasoning/context-state-decoupling/index.html#abstract",
     "title": "Context State Decoupling: A Neuro-Symbolic Approach to Infinite Context",
     "section": "",
     "text": "The scaling laws of Transformer architectures are currently bound by the quadratic cost of the attention mechanism, limiting the effective reasoning horizon of Large Language Models (LLMs). This paper proposes Context State Decoupling (CSD), a neuro-symbolic architecture that dissociates the logical state of a conversation (persisted as a Directed Acyclic Graph) from the ephemeral inference compute (the LLM). By treating the LLM not as a container of state but as a purely functional transition kernel, we demonstrate a pathway to effectively “infinite” context windows with constant memory complexity O(k) for Small Language Models (SLMs)."
@@ -105,13 +70,6 @@
     "text": "4. Neuro-Symbolic Retrieval\nWhen the system receives input I_t, it constructs a Localized Context (C_{local}) rather than loading the full history. This is a retrieval operation defined as:\n\nC_{local} = R(I_t, G) = \\text{Top}_k(Sim(I_t, V)) \\cup N(\\text{Top}_k)\n\nWhere: * Sim is a cosine similarity function in vector space. * N represents the topological neighbors (parent/child nodes) in the DAG, preserving causal continuity."
   },
   {
-    "objectID": "work/research/reasoning/context-state-decoupling/index.html#abstract",
-    "href": "work/research/reasoning/context-state-decoupling/index.html#abstract",
-    "title": "Context State Decoupling: A Neuro-Symbolic Approach to Infinite Context",
-    "section": "",
-    "text": "The scaling laws of Transformer architectures are currently bound by the quadratic cost of the attention mechanism, limiting the effective reasoning horizon of Large Language Models (LLMs). This paper proposes Context State Decoupling (CSD), a neuro-symbolic architecture that dissociates the logical state of a conversation (persisted as a Directed Acyclic Graph) from the ephemeral inference compute (the LLM). By treating the LLM not as a container of state but as a purely functional transition kernel, we demonstrate a pathway to effectively “infinite” context windows with constant memory complexity O(k) for Small Language Models (SLMs)."
-  },
-  {
     "objectID": "work/research/reasoning/context-state-decoupling/index.html#the-cognitive-loop",
     "href": "work/research/reasoning/context-state-decoupling/index.html#the-cognitive-loop",
     "title": "Context State Decoupling: A Neuro-Symbolic Approach to Infinite Context",
@@ -126,13 +84,6 @@
     "text": "5. Discussion\nBy offloading “remembering” to a structured database, we reduce the cognitive load on the model. This implies that massive parameter counts (70B+) are not required for long-context coherence. A finely-tuned SLM (e.g., 3B-7B parameters), when equipped with CSD, can outperform larger models in tasks requiring high-fidelity recall over long horizons, as demonstrated in similar approaches like MemGPT [2] and GraphRAG [3]."
   },
   {
-    "objectID": "work/research/reasoning/context-state-decoupling/index.html#references",
-    "href": "work/research/reasoning/context-state-decoupling/index.html#references",
-    "title": "Context State Decoupling: A Neuro-Symbolic Approach to Infinite Context",
-    "section": "References",
-    "text": "References\n\nLiu, N. F., et al. (2024). Lost in the Middle: How Language Models Use Long Contexts. arXiv preprint.\nPacker, C., et al. (2023). MemGPT: Towards LLMs as Operating Systems. arXiv:2310.08560.\nEdge, D., et al. (2024). From Local to Global: A Graph RAG Approach to Query-Focused Summarization. Microsoft Research."
-  },
-  {
     "objectID": "work/research/reasoning/context-state-decoupling/index.html#reference-implementation",
     "href": "work/research/reasoning/context-state-decoupling/index.html#reference-implementation",
     "title": "Context State Decoupling: A Neuro-Symbolic Approach to Infinite Context",
@@ -140,10 +91,66 @@
     "text": "Reference Implementation\nThe Cascade Context Protocol (CCP) serves as a live application of the Context State Decoupling theory. It implements the “State Offloading” and “Localized Processing” mechanisms described above to achieve infinite context reasoning.\n\nView Repository"
   },
   {
-    "objectID": "work/projects/index.html#active-development",
-    "href": "work/projects/index.html#active-development",
-    "title": "Projects",
+    "objectID": "work/research/reasoning/context-state-decoupling/index.html#references",
+    "href": "work/research/reasoning/context-state-decoupling/index.html#references",
+    "title": "Context State Decoupling: A Neuro-Symbolic Approach to Infinite Context",
+    "section": "References",
+    "text": "References\n\nLiu, N. F., et al. (2024). Lost in the Middle: How Language Models Use Long Contexts. arXiv preprint.\nPacker, C., et al. (2023). MemGPT: Towards LLMs as Operating Systems. arXiv:2310.08560.\nEdge, D., et al. (2024). From Local to Global: A Graph RAG Approach to Query-Focused Summarization. Microsoft Research."
+  },
+  {
+    "objectID": "work/projects/cascade-context-protocol/index.html",
+    "href": "work/projects/cascade-context-protocol/index.html",
+    "title": "Cascade Context Protocol",
     "section": "",
-    "text": "The following projects represent core architectural research and deployed protocols."
+    "text": "In the current landscape of Large Language Models, “intelligence” is strictly bound by the context window. To reason about a sequence, the model must hold every token in active memory. This creates the “Linear Bottleneck”: as history grows, cost and latency explode, effectively lobotomizing long-running agents.\nThe Cascade Context Protocol (CCP) proposes a radical shift: treating conversation not as a stream, but as a Graph."
+  },
+  {
+    "objectID": "work/projects/cascade-context-protocol/index.html#the-infinite-context-problem",
+    "href": "work/projects/cascade-context-protocol/index.html#the-infinite-context-problem",
+    "title": "Cascade Context Protocol",
+    "section": "",
+    "text": "In the current landscape of Large Language Models, “intelligence” is strictly bound by the context window. To reason about a sequence, the model must hold every token in active memory. This creates the “Linear Bottleneck”: as history grows, cost and latency explode, effectively lobotomizing long-running agents.\nThe Cascade Context Protocol (CCP) proposes a radical shift: treating conversation not as a stream, but as a Graph."
+  },
+  {
+    "objectID": "work/projects/cascade-context-protocol/index.html#architecture-the-glass-box-engine",
+    "href": "work/projects/cascade-context-protocol/index.html#architecture-the-glass-box-engine",
+    "title": "Cascade Context Protocol",
+    "section": "Architecture: The “Glass Box” Engine",
+    "text": "Architecture: The “Glass Box” Engine\nCCP functions as a neuro-symbolic middleware that sits between the user and the LLM. It intercepts inputs and processes them through a transparent cognitive loop.\n\n1. Semantic Segmentation\nUnlike naive chunkers that split text every 500 tokens, CCP uses a Semantic Segmenter. It analyzes syntactic boundaries to break streams into atomic units of intent called ContextBlocks. This ensures that “memory” is stored as complete thoughts, not fragmented text.\n\n\n2. The Execution Graph (Hippocampus)\nThese blocks are not just stored in a list; they become nodes in a persistent Directed Acyclic Graph (DAG). * Logical State: The DAG represents the “Long-Term Memory”. * localized Processing: When a new query arrives, the system traverses the graph, retrieving only the connected nodes relevant to the current thought.\n\n\n3. Neuro-Symbolic Loop (Prefrontal Cortex)\nThe reasoning engine is fully decoupled from the storage. * Retrieval: A hybrid vector + regex search finds tools. * Synthesis: The LLM acts as a temporary processor, generating arguments for tool execution. * Update: Tool results are fed back into the Graph as new nodes."
+  },
+  {
+    "objectID": "work/projects/cascade-context-protocol/index.html#why-this-matters",
+    "href": "work/projects/cascade-context-protocol/index.html#why-this-matters",
+    "title": "Cascade Context Protocol",
+    "section": "Why This Matters",
+    "text": "Why This Matters\nBy offloading the “state” to a graph structure, the LLM allows for Infinite Context with constant-time (O(k)) retrieval costs. The agent can remember a detail from 1 million tokens ago just as easily as the previous sentence, without clogging its context window.\nThis is the foundation of Sovereign AI: systems that can run on consumer hardware yet maintain the cognitive continuity of massive cloud clusters."
+  },
+  {
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Welcome to my AI Lab",
+    "section": "",
+    "text": "This is a proof-of-concept post demonstrating scientific publishing capabilities with Quarto."
+  },
+  {
+    "objectID": "posts/welcome/index.html#mathematical-formulation",
+    "href": "posts/welcome/index.html#mathematical-formulation",
+    "title": "Welcome to my AI Lab",
+    "section": "Mathematical Formulation",
+    "text": "Mathematical Formulation\nWe can render complex equations using LaTeX. For example, the Cross-Entropy Loss function:\n\nL_{CE} = - \\sum_{i=1}^{C} t_i \\log(p_i)\n\nWhere: - t_i is the truth label. - p_i is the Softmax probability for the i^{th} class."
+  },
+  {
+    "objectID": "posts/welcome/index.html#architecture-diagram",
+    "href": "posts/welcome/index.html#architecture-diagram",
+    "title": "Welcome to my AI Lab",
+    "section": "Architecture Diagram",
+    "text": "Architecture Diagram\nHere is a simple Neural Network visualizations using Mermaid.js:\n\n\n\n\n\ngraph LR\n    A[Input Layer] --&gt; B(Hidden Layer)\n    B --&gt; C{Activation}\n    C --&gt; D[Output Layer]\n    style A fill:#f9f,stroke:#333,stroke-width:2px\n    style D fill:#ccf,stroke:#333,stroke-width:2px"
+  },
+  {
+    "objectID": "posts/welcome/index.html#implementation",
+    "href": "posts/welcome/index.html#implementation",
+    "title": "Welcome to my AI Lab",
+    "section": "Implementation",
+    "text": "Implementation\nBelow is a PyTorch tensor initialization:\nimport torch\n\n# Define a simple tensor\nx = torch.tensor([[1, 2], [3, 4]])\nprint(f\"Tensor shape: {x.shape}\")"
   }
 ]

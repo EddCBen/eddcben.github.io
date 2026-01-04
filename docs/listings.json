@@ -1,20 +1,14 @@
 [
   {
-    "listing": "/index.html",
+    "listing": "/work/projects/index.html",
     "items": [
-      "/posts/welcome/index.html"
+      "/work/projects/cascade-context-protocol/index.html"
     ]
   },
   {
     "listing": "/work/research/index.html",
     "items": [
       "/work/research/reasoning/context-state-decoupling/index.html"
-    ]
-  },
-  {
-    "listing": "/work/projects/index.html",
-    "items": [
-      "/work/projects/cascade-context-protocol/index.html"
     ]
   }
 ]
