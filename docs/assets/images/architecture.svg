@@ -19,10 +19,6 @@
     .rf-text { font-family: 'Helvetica', 'Arial', sans-serif; font-size: 13px; fill: #333333; text-anchor: middle; font-weight: 500; }
     .rf-text-gray { font-family: 'Helvetica', 'Arial', sans-serif; font-size: 13px; fill: #777777; text-anchor: middle; font-weight: 400; }
 
-    /* Labels */
-    .label-title { font-size: 20px; font-weight: bold; fill: #000000; }
-    .label-subtitle { font-size: 20px; fill: #555555; }
-
     /* Animations */
     .pulse-neural { fill: #000000; }
     .pulse-token { fill: #333333; stroke: white; stroke-width: 1; }
@@ -76,13 +72,11 @@
     <text x="0" y="45" class="latex-text">Concat</text>
   </g>
 
-  <!-- Inputs -> Aggregator -->
-  <path d="M 110 20 L 148 142" class="latex-edge" marker-end="url(#arrow)" />
-  <path d="M 110 90 L 145 155" class="latex-edge" marker-end="url(#arrow)" />
-  <path d="M 110 160 L 148 165" class="latex-edge" marker-end="url(#arrow)" />
-  <!-- A stray input arrow like in the diagram -->
-  <path d="M 80 -60 L 145 135" class="latex-edge" marker-end="url(#arrow)" />
-  <circle cx="80" cy="-60" r="3" fill="black" />
+  <!-- Inputs -> Aggregator (Curved) -->
+  <path d="M 110 20 C 130 20, 130 135, 148 142" class="latex-edge" marker-end="url(#arrow)" />
+  <path d="M 110 90 C 125 90, 125 150, 145 155" class="latex-edge" marker-end="url(#arrow)" />
+  <path d="M 110 160 C 125 160, 125 165, 148 165" class="latex-edge" marker-end="url(#arrow)" />
+  <path d="M 110 230 C 130 230, 130 180, 150 175" class="latex-edge" marker-end="url(#arrow)" />
 
   <!-- LLM Stack -->
   <g transform="translate(290, 100)">
@@ -101,17 +95,19 @@
     <text x="60" y="110" class="latex-text">L_1</text>
   </g>
 
-  <!-- Aggregator -> LLM -->
-  <path d="M 195 155 L 290 155" class="latex-edge" />
+  <!-- Aggregator -> LLM (Curved) -->
+  <path d="M 195 155 C 220 155, 260 155, 290 155" class="latex-edge" id="edge_agg_llm" />
   <circle r="3" class="pulse-neural">
-    <animateMotion dur="2s" repeatCount="indefinite" path="M 195 155 L 290 155" />
+    <animateMotion dur="2s" repeatCount="indefinite">
+      <mpath href="#edge_agg_llm"/>
+    </animateMotion>
   </circle>
 
 
   <!-- ================= RIGHT: EXECUTION GRAPH (ReactFlow) ================= -->
   
-  <!-- Dashed Connection LLM -> Orchestrator -->
-  <path d="M 410 155 L 480 155" class="latex-edge-dashed" />
+  <!-- Dashed Connection LLM -> Orchestrator (Curved) -->
+  <path d="M 410 155 C 430 155, 460 155, 480 155" class="latex-edge-dashed" />
 
   <!-- Orchestrator Node -->
   <g transform="translate(490, 115)">
@@ -201,9 +197,5 @@
       <mpath href="#edge_out"/>
     </animateMotion>
   </circle>
-
-  <!-- Bottom Labels -->
-  <text x="250" y="420" class="label-title font-latex">Neural Controller (Latex)</text>
-  <text x="800" y="420" class="label-subtitle font-rf">Execution Graph (ReactFlow)</text>
 
 </svg>
