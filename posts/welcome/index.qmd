@@ -1,8 +1,46 @@
 ---
-title: "Welcome To My Blog"
-author: "Tristan O'Malley"
+title: "Welcome to my AI Lab"
+author: "EddCBen"
 date: "2025-01-04"
-categories: [news]
+categories: [code, analysis, ai]
+image: image.jpg
 ---
 
-This is the first post in a Quarto blog. Welcome!
+This is a proof-of-concept post demonstrating scientific publishing capabilities with Quarto.
+
+## Mathematical Formulation
+
+We can render complex equations using LaTeX. For example, the **Cross-Entropy Loss** function:
+
+$$
+L_{CE} = - \sum_{i=1}^{C} t_i \log(p_i)
+$$
+
+Where:
+- $t_i$ is the truth label.
+- $p_i$ is the Softmax probability for the $i^{th}$ class.
+
+## Architecture Diagram
+
+Here is a simple Neural Network visualizations using **Mermaid.js**:
+
+```{mermaid}
+graph LR
+    A[Input Layer] --> B(Hidden Layer)
+    B --> C{Activation}
+    C --> D[Output Layer]
+    style A fill:#f9f,stroke:#333,stroke-width:2px
+    style D fill:#ccf,stroke:#333,stroke-width:2px
+```
+
+## Implementation
+
+Below is a PyTorch tensor initialization:
+
+```python
+import torch
+
+# Define a simple tensor
+x = torch.tensor([[1, 2], [3, 4]])
+print(f"Tensor shape: {x.shape}")
+```
