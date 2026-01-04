@@ -10,25 +10,32 @@ listing:
   categories: false
   sort-ui: false
   filter-ui: false
-  fields: [date, title, reading-time, description]
+  fields: [date, title, description]
 title-block-banner: false
 ---
 
-:::{.hero-section}
-<div class="content-container">
-# Welcome to the Lab
+<div class="academic-container">
 
-:::{.hero-content}
-Interests: **cross-modal neural networks**, **execution graphs**, **context-orchestration** and **small language model intersections**
-:::
-
-![](assets/images/combined-architecture.png){.hero-image}
+<div class="paper-header">
+# Deep Intersections: Cross-Modal Neural Networks & Execution Contexts
+<div class="author-block">Charaf Eddine</div>
+<div class="institution-block">Arkiom Research Lab</div>
 </div>
-:::
 
-<div class="content-container">
-## Latest Research
+<div class="abstract-section">
+**Abstract.** This research log documents the exploration of intersections between small language models, context-orchestration, and execution graphs. We propose a novel framework for cross-modality reasoning.
+<br><br>
+**Keywords:** *Cross-Modality, Execution Graphs, Context-Orchestration, SLMs*
+</div>
+
+<figure class="architecture-figure">
+  <img src="assets/images/academic-architecture.png" alt="System Architecture">
+  <figcaption><strong>Figure 1:</strong> Unified architecture demonstrating the coupling of cross-modal neural networks with discrete execution graph logic.</figcaption>
+</figure>
+
+## Research Log
 
 ::: {#listing}
 :::
+
 </div>

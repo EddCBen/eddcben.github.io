@@ -1,67 +1,83 @@
-/* Placeholder for scientific blue accent */
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Code+Pro&display=swap');
+
 :root {
-  --bs-primary: #003366;
-  /* Deep scientific blue */
-  --bs-primary-rgb: 0, 51, 102;
+  --bs-body-font-family: 'Libre Baskerville', 'Times New Roman', serif;
+  --bs-heading-font-family: 'Libre Baskerville', 'Times New Roman', serif;
+  --bs-primary: #000000;
+  --bs-body-color: #333333;
 }
 
-a {
-  color: var(--bs-primary);
-}
-
-.navbar {
-  background-color: var(--bs-primary) !important;
-}
-
-/* Hero Section */
-.hero-section {
-  text-align: center;
-  padding: 4rem 2rem;
-  background: white;
-  /* Or subtle gradient */
-  margin-bottom: 3rem;
-  border-bottom: 1px solid #dee2e6;
-}
-
-.hero-section h1 {
-  font-size: 3.5rem;
-  font-weight: 800;
-  color: var(--bs-primary);
-  margin-bottom: 1.5rem;
-  letter-spacing: -0.05rem;
-}
-
-.hero-content {
-  font-size: 1.5rem;
-  color: #555;
-  max-width: 800px;
-  margin: 0 auto 3rem auto;
+body {
+  background-color: #ffffff;
+  color: #333;
   line-height: 1.6;
 }
 
-.hero-image {
-  max-width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  max-height: 500px;
-  object-fit: cover;
-}
-@media (max-width: 768px) {
-  .hero-images {
-    grid-template-columns: 1fr !important;
-  }
-}
-
-.content-container {
-  max-width: 1000px;
-  margin: 0 auto;
+.academic-container {
+  max-width: 800px;
+  /* Standard paper width */
+  margin: 4rem auto;
   padding: 0 2rem;
 }
 
-.hero-image {
+/* Paper Title */
+.paper-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.paper-header h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.author-block {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.institution-block {
+  font-size: 1rem;
+  font-style: italic;
+  color: #555;
+}
+
+/* Abstract */
+.abstract-section {
+  font-size: 0.95rem;
+  margin: 0 auto 3rem auto;
+  width: 85%;
+  text-align: justify;
+}
+
+/* Figure */
+.architecture-figure {
   width: 100%;
-  max-height: 500px;
-  object-fit: cover;
-  border-radius: 12px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+  margin: 2rem 0 4rem 0;
+  text-align: center;
+}
+
+.architecture-figure img {
+  max-width: 100%;
+  border: 1px solid #ccc;
+  /* Formal border often seen in papers */
+  padding: 5px;
+}
+
+.architecture-figure figcaption {
+  margin-top: 0.8rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Navigation - Minimalist */
+.navbar {
+  border-bottom: 1px solid #eee;
+  background-color: white !important;
+}
+
+a {
+  color: #000;
+  text-decoration-color: #999;
 }
