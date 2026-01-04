@@ -2,9 +2,23 @@
   {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "About",
+    "title": "Charaf Eddine BENARAB",
     "section": "",
-    "text": "About this blog"
+    "text": "I am an Independent Researcher exploring the frontiers of Local Intelligence. My work focuses on Context State Decoupling (CSD) and Neuro-Symbolic Architectures, aiming to bridge the gap between deterministic software protocols and probabilistic reasoning kernels. By treating context as a structured graph rather than a linear stream, I build systems that achieve “Infinite Context” on sovereign hardware."
+  },
+  {
+    "objectID": "about.html#bio",
+    "href": "about.html#bio",
+    "title": "Charaf Eddine BENARAB",
+    "section": "",
+    "text": "I am an Independent Researcher exploring the frontiers of Local Intelligence. My work focuses on Context State Decoupling (CSD) and Neuro-Symbolic Architectures, aiming to bridge the gap between deterministic software protocols and probabilistic reasoning kernels. By treating context as a structured graph rather than a linear stream, I build systems that achieve “Infinite Context” on sovereign hardware."
+  },
+  {
+    "objectID": "about.html#education",
+    "href": "about.html#education",
+    "title": "Charaf Eddine BENARAB",
+    "section": "Education",
+    "text": "Education\nUniversity of Electronic Science and Technology of China (UESTC) | Chengdu, China M.Sc. in Computer Science (Computational Intelligence) | 2019 – 2022\n\nAdvisor: Professor Gui Shenglin\nResearch: Conducted computational intelligence research focusing on Transformers, NLP, and Deep Learning.\n\nIGEE (formerly INELEC) | Boumerdes, Algeria B.Eng. in Electrical Engineering | 2014 – 2018"
   },
   {
     "objectID": "work/research/index.html",
