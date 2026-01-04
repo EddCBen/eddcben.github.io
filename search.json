@@ -4,14 +4,7 @@
     "href": "about.html",
     "title": "Charaf Eddine BENARAB",
     "section": "",
-    "text": "I am an Independent Researcher exploring the frontiers of Local Intelligence. My work focuses on Context State Decoupling (CSD) and Neuro-Symbolic Architectures, aiming to bridge the gap between deterministic software protocols and probabilistic reasoning kernels. By treating context as a structured graph rather than a linear stream, I build systems that achieve “Infinite Context” on sovereign hardware."
-  },
-  {
-    "objectID": "about.html#bio",
-    "href": "about.html#bio",
-    "title": "Charaf Eddine BENARAB",
-    "section": "",
-    "text": "I am an Independent Researcher exploring the frontiers of Local Intelligence. My work focuses on Context State Decoupling (CSD) and Neuro-Symbolic Architectures, aiming to bridge the gap between deterministic software protocols and probabilistic reasoning kernels. By treating context as a structured graph rather than a linear stream, I build systems that achieve “Infinite Context” on sovereign hardware."
+    "text": "I am a researcher specializing in Artificial Intelligence and Computer Science. My work currently focuses on Neuro-Symbolic architectures and the efficiency of Small Language Models (SLMs)."
   },
   {
     "objectID": "about.html#education",
