@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" style="font-family: 'Computer Modern', serif;">
+    <defs>
+        <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="2" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#94a3b8" />
+        </marker>
+        <linearGradient id="db_grad" x1="0%" y1="0%" x2="100%" y2="0%">
+             <stop offset="0%" stop-color="#f472b6" stop-opacity="0.2"/>
+             <stop offset="100%" stop-color="#f472b6" stop-opacity="0.1"/>
+        </linearGradient>
+    </defs>
+    
+    <!-- Separator -->
+    <line x1="250" y1="50" x2="250" y2="450" stroke="#1e3a8a" stroke-dasharray="4 4" opacity="0.5" />
+    
+    <text x="110" y="40" fill="#e0e6ed" text-anchor="middle" font-weight="bold" font-family="monospace">Standard LLM</text>
+    <text x="600" y="40" fill="#e0e6ed" text-anchor="middle" font-weight="bold" font-family="monospace">CSD Architecture</text>
+
+    <line x1="110.0" y1="210" x2="110.0" y2="250" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrowhead)" opacity="0.8" />
+<line x1="110.0" y1="310" x2="110.0" y2="350" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrowhead)" opacity="0.8" />
+<line x1="470" y1="130.0" x2="550" y2="130.0" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrowhead)" opacity="0.8" />
+<line x1="610.0" y1="80" x2="610.0" y2="100" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrowhead)" opacity="0.8" />
+<line x1="670" y1="130.0" x2="750" y2="130.0" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrowhead)" opacity="0.8" />
+<line x1="810.0" y1="160" x2="810.0" y2="250" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrowhead)" opacity="0.8" />
+<line x1="750" y1="280.0" x2="670" y2="280.0" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrowhead)" opacity="0.8" />
+<path d="M 610.0 250 C 610.0 165.0, 610.0 165.0, 610.0 80" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#arrowhead)" opacity="0.8" stroke-dasharray="5 5" />
+<g transform="translate(50, 150)"><rect x="0" y="0" width="120" height="60" rx="6" fill="#111827" stroke="#64748b" stroke-width="1" filter="url(#glow)" opacity="0.3" /><rect x="0" y="0" width="120" height="60" rx="6" fill="#111827" stroke="#1e3a8a" stroke-width="1" /><path d="M 0 6 Q 0 0 6 0 L 114 0 Q 120 0 120 6 L 120 20 L 0 20 Z" fill="#1e293b" /><circle cx="15" cy="10" r="3" fill="#64748b" /><text x="28" y="14" fill="#e0e6ed" font-size="11" font-weight="bold" font-family="monospace">Tokens</text><text x="60.0" y="45" fill="#e0e6ed" font-size="11" text-anchor="middle" font-style="italic" opacity="0.8">0...N</text></g>
+<g transform="translate(50, 250)"><rect x="0" y="0" width="120" height="60" rx="6" fill="#111827" stroke="#64748b" stroke-width="1" filter="url(#glow)" opacity="0.3" /><rect x="0" y="0" width="120" height="60" rx="6" fill="#111827" stroke="#1e3a8a" stroke-width="1" /><path d="M 0 6 Q 0 0 6 0 L 114 0 Q 120 0 120 6 L 120 20 L 0 20 Z" fill="#1e293b" /><circle cx="15" cy="10" r="3" fill="#64748b" /><text x="28" y="14" fill="#e0e6ed" font-size="11" font-weight="bold" font-family="monospace">Context</text><text x="60.0" y="45" fill="#e0e6ed" font-size="11" text-anchor="middle" font-style="italic" opacity="0.8">Window</text></g>
+<g transform="translate(50, 350)"><rect x="0" y="0" width="120" height="60" rx="6" fill="#111827" stroke="#64748b" stroke-width="1" filter="url(#glow)" opacity="0.3" /><rect x="0" y="0" width="120" height="60" rx="6" fill="#111827" stroke="#1e3a8a" stroke-width="1" /><path d="M 0 6 Q 0 0 6 0 L 114 0 Q 120 0 120 6 L 120 20 L 0 20 Z" fill="#1e293b" /><circle cx="15" cy="10" r="3" fill="#64748b" /><text x="28" y="14" fill="#e0e6ed" font-size="11" font-weight="bold" font-family="monospace">Inference</text><text x="60.0" y="45" fill="#e0e6ed" font-size="11" text-anchor="middle" font-style="italic" opacity="0.8">Compute</text></g>
+<g transform="translate(350, 100)"><rect x="0" y="0" width="120" height="60" rx="6" fill="#111827" stroke="#3b82f6" stroke-width="1" filter="url(#glow)" opacity="0.3" /><rect x="0" y="0" width="120" height="60" rx="6" fill="#111827" stroke="#1e3a8a" stroke-width="1" /><path d="M 0 6 Q 0 0 6 0 L 114 0 Q 120 0 120 6 L 120 20 L 0 20 Z" fill="#1e293b" /><circle cx="15" cy="10" r="3" fill="#3b82f6" /><text x="28" y="14" fill="#e0e6ed" font-size="11" font-weight="bold" font-family="monospace">Input</text><text x="60.0" y="45" fill="#e0e6ed" font-size="11" text-anchor="middle" font-style="italic" opacity="0.8">Intent</text></g>
+<g transform="translate(550, 100)"><rect x="0" y="0" width="120" height="60" rx="6" fill="#111827" stroke="#3b82f6" stroke-width="1" filter="url(#glow)" opacity="0.3" /><rect x="0" y="0" width="120" height="60" rx="6" fill="#111827" stroke="#1e3a8a" stroke-width="1" /><path d="M 0 6 Q 0 0 6 0 L 114 0 Q 120 0 120 6 L 120 20 L 0 20 Z" fill="#1e293b" /><circle cx="15" cy="10" r="3" fill="#3b82f6" /><text x="28" y="14" fill="#e0e6ed" font-size="11" font-weight="bold" font-family="monospace">Retriever</text><text x="60.0" y="45" fill="#e0e6ed" font-size="11" text-anchor="middle" font-style="italic" opacity="0.8">Search</text></g>
+<g transform="translate(550, 20)"><rect x="0" y="0" width="120" height="60" rx="6" fill="#111827" stroke="#f472b6" stroke-width="1" filter="url(#glow)" opacity="0.3" /><rect x="0" y="0" width="120" height="60" rx="6" fill="url(#db_grad)" stroke="#f472b6" stroke-width="1" /><rect x="0" y="0" width="120" height="10" rx="2" fill="#f472b6" opacity="0.5" /><text x="28" y="14" fill="#e0e6ed" font-size="11" font-weight="bold" font-family="monospace">Vector DAG</text><text x="60.0" y="45" fill="#e0e6ed" font-size="11" text-anchor="middle" font-style="italic" opacity="0.8">Logical State</text></g>
+<g transform="translate(750, 100)"><rect x="0" y="0" width="120" height="60" rx="6" fill="#111827" stroke="#3b82f6" stroke-width="1" filter="url(#glow)" opacity="0.3" /><rect x="0" y="0" width="120" height="60" rx="6" fill="#111827" stroke="#1e3a8a" stroke-width="1" /><path d="M 0 6 Q 0 0 6 0 L 114 0 Q 120 0 120 6 L 120 20 L 0 20 Z" fill="#1e293b" /><circle cx="15" cy="10" r="3" fill="#3b82f6" /><text x="28" y="14" fill="#e0e6ed" font-size="11" font-weight="bold" font-family="monospace">Local Cay</text><text x="60.0" y="45" fill="#e0e6ed" font-size="11" text-anchor="middle" font-style="italic" opacity="0.8">Context</text></g>
+<g transform="translate(750, 250)"><rect x="0" y="0" width="120" height="60" rx="6" fill="#111827" stroke="#a78bfa" stroke-width="1" filter="url(#glow)" opacity="0.3" /><rect x="0" y="0" width="120" height="60" rx="6" fill="#111827" stroke="#1e3a8a" stroke-width="1" /><path d="M 0 6 Q 0 0 6 0 L 114 0 Q 120 0 120 6 L 120 20 L 0 20 Z" fill="#1e293b" /><circle cx="15" cy="10" r="3" fill="#a78bfa" /><text x="28" y="14" fill="#e0e6ed" font-size="11" font-weight="bold" font-family="monospace">SLM Kernel</text><text x="60.0" y="45" fill="#e0e6ed" font-size="11" text-anchor="middle" font-style="italic" opacity="0.8">Synthesis</text></g>
+<g transform="translate(550, 250)"><rect x="0" y="0" width="120" height="60" rx="6" fill="#111827" stroke="#3b82f6" stroke-width="1" filter="url(#glow)" opacity="0.3" /><rect x="0" y="0" width="120" height="60" rx="6" fill="#111827" stroke="#1e3a8a" stroke-width="1" /><path d="M 0 6 Q 0 0 6 0 L 114 0 Q 120 0 120 6 L 120 20 L 0 20 Z" fill="#1e293b" /><circle cx="15" cy="10" r="3" fill="#3b82f6" /><text x="28" y="14" fill="#e0e6ed" font-size="11" font-weight="bold" font-family="monospace">New Node</text><text x="60.0" y="45" fill="#e0e6ed" font-size="11" text-anchor="middle" font-style="italic" opacity="0.8">Update</text></g>
+</svg>

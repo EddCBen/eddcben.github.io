@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="EddCBen">
-<meta name="dcterms.date" content="2025-01-04">
+<meta name="dcterms.date" content="2026-01-04">
 
-<title>Welcome to my AI Lab – Charaf’s Blog</title>
+<title>Context State Decoupling: A Neuro-Symbolic Approach to Infinite Context – Charaf’s Blog</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,62 +22,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-0b37c64f34216b628666a8dac638b53b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../../">
+<script src="../../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../../site_libs/bootstrap/bootstrap-0b37c64f34216b628666a8dac638b53b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -106,10 +71,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
-<meta name="mermaid-theme" content="default">
-<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
-<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
-<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
   <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
@@ -155,7 +116,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../../../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -165,7 +126,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../../../../index.html">
     <span class="navbar-title">Charaf’s Blog</span>
     </a>
   </div>
@@ -176,19 +137,19 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
+    <a class="nav-link" href="../../../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html"> 
+    <a class="nav-link" href="../../../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../work/research/index.html"> 
+    <a class="nav-link" href="../../../../work/research/index.html"> 
 <span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../work/projects/index.html"> 
+    <a class="nav-link" href="../../../../work/projects/index.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
 </ul>
@@ -214,9 +175,14 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#mathematical-formulation" id="toc-mathematical-formulation" class="nav-link active" data-scroll-target="#mathematical-formulation">Mathematical Formulation</a></li>
-  <li><a href="#architecture-diagram" id="toc-architecture-diagram" class="nav-link" data-scroll-target="#architecture-diagram">Architecture Diagram</a></li>
-  <li><a href="#implementation" id="toc-implementation" class="nav-link" data-scroll-target="#implementation">Implementation</a></li>
+  <li><a href="#abstract" id="toc-abstract" class="nav-link active" data-scroll-target="#abstract">Abstract</a></li>
+  <li><a href="#the-linear-paradox" id="toc-the-linear-paradox" class="nav-link" data-scroll-target="#the-linear-paradox">1. The Linear Paradox</a></li>
+  <li><a href="#the-decoupling-thesis" id="toc-the-decoupling-thesis" class="nav-link" data-scroll-target="#the-decoupling-thesis">2. The Decoupling Thesis</a></li>
+  <li><a href="#graph-topology-as-memory" id="toc-graph-topology-as-memory" class="nav-link" data-scroll-target="#graph-topology-as-memory">3. Graph Topology as Memory</a></li>
+  <li><a href="#neuro-symbolic-retrieval" id="toc-neuro-symbolic-retrieval" class="nav-link" data-scroll-target="#neuro-symbolic-retrieval">4. Neuro-Symbolic Retrieval</a></li>
+  <li><a href="#the-cognitive-loop" id="toc-the-cognitive-loop" class="nav-link" data-scroll-target="#the-cognitive-loop">4.1 The Cognitive Loop</a></li>
+  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion">5. Discussion</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
     </div>
@@ -225,11 +191,13 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Welcome to my AI Lab</h1>
+<h1 class="title">Context State Decoupling: A Neuro-Symbolic Approach to Infinite Context</h1>
+<p class="subtitle lead">Dissociating Logical State from Ephemeral Inference in Small Language Models</p>
   <div class="quarto-categories">
-    <div class="quarto-category">code</div>
-    <div class="quarto-category">analysis</div>
-    <div class="quarto-category">ai</div>
+    <div class="quarto-category">Research</div>
+    <div class="quarto-category">Architecture</div>
+    <div class="quarto-category">Neuro-Symbolic AI</div>
+    <div class="quarto-category">SLM</div>
   </div>
   </div>
 
@@ -247,7 +215,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 4, 2025</p>
+      <p class="date">January 4, 2026</p>
     </div>
   </div>
   
@@ -259,44 +227,75 @@ window.Quarto = {
 </header>
 
 
-<p>This is a proof-of-concept post demonstrating scientific publishing capabilities with Quarto.</p>
-<section id="mathematical-formulation" class="level2">
-<h2 class="anchored" data-anchor-id="mathematical-formulation">Mathematical Formulation</h2>
-<p>We can render complex equations using LaTeX. For example, the <strong>Cross-Entropy Loss</strong> function:</p>
+<section id="abstract" class="level2">
+<h2 class="anchored" data-anchor-id="abstract">Abstract</h2>
+<p>The scaling laws of Transformer architectures are currently bound by the quadratic cost of the attention mechanism, limiting the effective reasoning horizon of Large Language Models (LLMs). This paper proposes <strong>Context State Decoupling (CSD)</strong>, a neuro-symbolic architecture that dissociates the logical state of a conversation (persisted as a Directed Acyclic Graph) from the ephemeral inference compute (the LLM). By treating the LLM not as a container of state but as a purely functional transition kernel, we demonstrate a pathway to effectively “infinite” context windows with constant memory complexity <span class="math inline">O(k)</span> for Small Language Models (SLMs).</p>
+</section>
+<section id="the-linear-paradox" class="level2">
+<h2 class="anchored" data-anchor-id="the-linear-paradox">1. The Linear Paradox</h2>
+<p>In the standard Transformer paradigm, “intelligence” is strictly bound by the context window <span class="math inline">W</span>. To reason about a sequence of length <span class="math inline">N</span>, the model must maintain a Key-Value (KV) cache for all previous tokens.</p>
+<p>The computational cost of the attention mechanism for a sequence of length <span class="math inline">N</span> is traditionally:</p>
 <p><span class="math display">
-L_{CE} = - \sum_{i=1}^{C} t_i \log(p_i)
+\text{Cost}_{attn} \propto O(N^2)
 </span></p>
-<p>Where: - <span class="math inline">t_i</span> is the truth label. - <span class="math inline">p_i</span> is the Softmax probability for the <span class="math inline">i^{th}</span> class.</p>
+<p>While optimizations like FlashAttention and linear attention variants reduce this burden, they do not solve the semantic noise problem. As <span class="math inline">N \to \infty</span>, the probability of attention heads attending to irrelevant historical tokens increases, degrading reasoning performance—a phenomenon known as “Lost in the Middle” [1].</p>
+<p>Currently, systems address this via a <strong>Sliding Window</strong> approach, truncating history <span class="math inline">H_{t-k}</span>. This results in catastrophic forgetting, where the “self” of the agent is destroyed every time the window shifts.</p>
 </section>
-<section id="architecture-diagram" class="level2">
-<h2 class="anchored" data-anchor-id="architecture-diagram">Architecture Diagram</h2>
-<p>Here is a simple Neural Network visualizations using <strong>Mermaid.js</strong>:</p>
-<div class="cell" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">graph LR
-    A[Input Layer] --&gt; B(Hidden Layer)
-    B --&gt; C{Activation}
-    C --&gt; D[Output Layer]
-    style A fill:#f9f,stroke:#333,stroke-width:2px
-    style D fill:#ccf,stroke:#333,stroke-width:2px
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
+<section id="the-decoupling-thesis" class="level2">
+<h2 class="anchored" data-anchor-id="the-decoupling-thesis">2. The Decoupling Thesis</h2>
+<p>We propose that the conflation of <strong>State</strong> (Memory) and <strong>Compute</strong> (Inference) is a category error in current architectures. Drawing inspiration from the distinction between the <em>Hippocampus</em> (episodic memory) and the <em>Prefrontal Cortex</em> (working memory/reasoning), we propose <strong>Context State Decoupling (CSD)</strong>.</p>
+<p>The architecture separates the system into two distinct components:</p>
+<ol type="1">
+<li><strong>The Logical State (Symbolic Substrate):</strong> An evolving, persistent Directed Acyclic Graph (DAG) storing facts, events, and causal dependencies.</li>
+<li><strong>The Inference Engine (Neural Substrate):</strong> An SLM acting as a stateless function <span class="math inline">f(x)</span> that synthesizes state updates.</li>
+</ol>
 </section>
-<section id="implementation" class="level2">
-<h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
-<p>Below is a PyTorch tensor initialization:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a simple tensor</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.tensor([[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">3</span>, <span class="dv">4</span>]])</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Tensor shape: </span><span class="sc">{</span>x<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="graph-topology-as-memory" class="level2">
+<h2 class="anchored" data-anchor-id="graph-topology-as-memory">3. Graph Topology as Memory</h2>
+<p>Instead of a linear array of tokens <span class="math inline">T = [t_1, t_2, ..., t_N]</span>, the conversation state is stored as a graph <span class="math inline">G = (V, E)</span>.</p>
+<ul>
+<li><strong>Vertices (<span class="math inline">V</span>):</strong> Atomic “Context Blocks”—semantically segmented units of user intent or system insight.</li>
+<li><strong>Edges (<span class="math inline">E</span>):</strong> Causal or temporal relationships between blocks (e.g., <code>[User Request] -&gt; [Clarification]</code>).</li>
+</ul>
+<figure class="architecture-figure paper-figure-wide figure">
+<img src="../../../../assets/clog/csd_architecture.svg" alt="CSD Architecture vs Standard Linear Context" class="scientific-diagram figure-img">
+<figcaption>
+<strong>Figure 1:</strong> The CSD Architecture vs Standard Linear Context. Visualizing the shift from linear buffering to cyclic graph retrieval.
+</figcaption>
+</figure>
+</section>
+<section id="neuro-symbolic-retrieval" class="level2">
+<h2 class="anchored" data-anchor-id="neuro-symbolic-retrieval">4. Neuro-Symbolic Retrieval</h2>
+<p>When the system receives input <span class="math inline">I_t</span>, it constructs a <strong>Localized Context</strong> (<span class="math inline">C_{local}</span>) rather than loading the full history. This is a retrieval operation defined as:</p>
+<p><span class="math display">
+C_{local} = R(I_t, G) = \text{Top}_k(Sim(I_t, V)) \cup N(\text{Top}_k)
+</span></p>
+<p>Where: * <span class="math inline">Sim</span> is a cosine similarity function in vector space. * <span class="math inline">N</span> represents the topological neighbors (parent/child nodes) in the DAG, preserving causal continuity.</p>
+</section>
+<section id="the-cognitive-loop" class="level2">
+<h2 class="anchored" data-anchor-id="the-cognitive-loop">4.1 The Cognitive Loop</h2>
+<p>The inference process becomes a recurring loop:</p>
+<ol type="1">
+<li><strong>Segmentation:</strong> Input is parsed into an atomic intent <span class="math inline">v_{new}</span>.</li>
+<li><strong>Retrieval:</strong> <span class="math inline">C_{local}</span> is fetched from <span class="math inline">G</span>.</li>
+<li><strong>Synthesis:</strong> The SLM generates the response <span class="math inline">r</span> and a state update <span class="math inline">u</span>. <span class="math display">
+(r, u) = \text{SLM}(v_{new}, C_{local})
+</span></li>
+<li><strong>Update:</strong> <span class="math inline">u</span> is committed to <span class="math inline">G</span>, creating edges based on the retrieval path.</li>
+</ol>
+</section>
+<section id="discussion" class="level2">
+<h2 class="anchored" data-anchor-id="discussion">5. Discussion</h2>
+<p>By offloading “remembering” to a structured database, we reduce the cognitive load on the model. This implies that massive parameter counts (70B+) are not required for long-context coherence. A finely-tuned SLM (e.g., 3B-7B parameters), when equipped with CSD, can outperform larger models in tasks requiring high-fidelity recall over long horizons, as demonstrated in similar approaches like MemGPT [2] and GraphRAG [3].</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ol type="1">
+<li>Liu, N. F., et al.&nbsp;(2024). <em>Lost in the Middle: How Language Models Use Long Contexts</em>. arXiv preprint.</li>
+<li>Packer, C., et al.&nbsp;(2023). <em>MemGPT: Towards LLMs as Operating Systems</em>. arXiv:2310.08560.</li>
+<li>Edge, D., et al.&nbsp;(2024). <em>From Local to Global: A Graph RAG Approach to Query-Focused Summarization</em>. Microsoft Research.</li>
+</ol>
+
 
 
 </section>
@@ -707,5 +706,5 @@ L_{CE} = - \sum_{i=1}^{C} t_i \log(p_i)
 
 
 
-<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../../../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
