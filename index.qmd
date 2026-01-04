@@ -3,14 +3,7 @@ title: ""
 page-layout: custom
 toc: false
 section-divs: false
-listing:
-  contents: posts
-  sort: "date desc"
-  type: default
-  categories: false
-  sort-ui: false
-  filter-ui: false
-  fields: [date, title, description]
+
 title-block-banner: false
 ---
 
@@ -23,7 +16,9 @@ title-block-banner: false
 </div>
 
 <div class="abstract-section">
-**Abstract.** This research log documents the exploration of intersections between small language models, context-orchestration, and execution graphs. We propose a novel framework for cross-modality reasoning.
+**Abstract.** The prevailing paradigm in Artificial Intelligence is inextricably linked to the "Scaling Laws"—the axiom that emergent capabilities are strictly a function of massive compute and dataset size. This centralized approach, while powerful, relegates "intelligence" to the status of a rented utility. This paper explores an opposing vector: **Local Intelligence** achieved not through raw scale, but through **Context Engineering** and **Neuro-Symbolic Architecture**.
+
+We propose a modern mental model for the "SLM Era," where Small Language Models are treated not as inferior approximations of larger models, but as specialized probabilistic kernels within deterministic software protocols. By prioritizing design-based engineering over brute-force scaling, we demonstrate that high-fidelity reasoning can be synthesized in resource-constrained, sovereign environments. This work maps the deep intersections between systems engineering and cognitive architecture, arguing that the next frontier of AI efficiency lies in the **structure of execution**, not just the size of the weights.
 <br><br>
 **Keywords:** *SLM, Neuro-Symbolic, Protocol Design, Context Engineering*
 </div>
@@ -33,9 +28,7 @@ title-block-banner: false
   <figcaption><strong>Figure 1:</strong> Template for Software Protocol SLM Enhancement. A standardized architecture for integrating Small Language Models (SLMs) into deterministic software protocols. The Central Reasoning Unit (CRU) acts as the probabilistic kernel, bridging multi-modal inputs with a structured, verifiable Execution Graph.</figcaption>
 </figure>
 
-## Research Log
 
-::: {#listing}
-:::
+
 
 </div>

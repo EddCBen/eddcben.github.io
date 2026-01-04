@@ -30,8 +30,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -68,80 +66,8 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <style>html{ scroll-behavior: smooth; }</style>
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
-  <script>document.addEventListener("DOMContentLoaded", function () {
- var mathElements = document.getElementsByClassName("math");
- var macros = [];
- for (var i = 0; i < mathElements.length; i++) {
-  var texText = mathElements[i].firstChild;
-  if (mathElements[i].tagName == "SPAN") {
-   katex.render(texText.data, mathElements[i], {
-    displayMode: mathElements[i].classList.contains('display'),
-    throwOnError: false,
-    macros: macros,
-    fleqn: false
-   });
-}}});
-  </script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -209,7 +135,8 @@ Independent Researcher
 </div>
 </section>
 <div class="abstract-section">
-<p><strong>Abstract.</strong> This research log documents the exploration of intersections between small language models, context-orchestration, and execution graphs. We propose a novel framework for cross-modality reasoning. <br><br> <strong>Keywords:</strong> <em>SLM, Neuro-Symbolic, Protocol Design, Context Engineering</em></p>
+<p><strong>Abstract.</strong> The prevailing paradigm in Artificial Intelligence is inextricably linked to the “Scaling Laws”—the axiom that emergent capabilities are strictly a function of massive compute and dataset size. This centralized approach, while powerful, relegates “intelligence” to the status of a rented utility. This paper explores an opposing vector: <strong>Local Intelligence</strong> achieved not through raw scale, but through <strong>Context Engineering</strong> and <strong>Neuro-Symbolic Architecture</strong>.</p>
+<p>We propose a modern mental model for the “SLM Era,” where Small Language Models are treated not as inferior approximations of larger models, but as specialized probabilistic kernels within deterministic software protocols. By prioritizing design-based engineering over brute-force scaling, we demonstrate that high-fidelity reasoning can be synthesized in resource-constrained, sovereign environments. This work maps the deep intersections between systems engineering and cognitive architecture, arguing that the next frontier of AI efficiency lies in the <strong>structure of execution</strong>, not just the size of the weights. <br><br> <strong>Keywords:</strong> <em>SLM, Neuro-Symbolic, Protocol Design, Context Engineering</em></p>
 </div>
 <figure class="architecture-figure paper-figure-wide figure">
 <img src="assets/images/architecture.svg?v=11" alt="Animated System Architecture" class="animated-svg figure-img">
@@ -217,36 +144,7 @@ Independent Researcher
 <strong>Figure 1:</strong> Template for Software Protocol SLM Enhancement. A standardized architecture for integrating Small Language Models (SLMs) into deterministic software protocols. The Central Reasoning Unit (CRU) acts as the probabilistic kernel, bridging multi-modal inputs with a structured, verifiable Execution Graph.
 </figcaption>
 </figure>
-<h2 id="research-log">Research Log</h2>
-<div id="listing-listing" class="quarto-listing quarto-listing-container-default">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="code,analysis,ai" data-listing-date-sort="1735920000000" data-listing-file-modified-sort="1767532295394" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="104">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/welcome/index.html" class="no-external">Welcome to my AI Lab</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/welcome/index.html" class="no-external"></a>
 </div>
-<div class="listing-description">
-<a href="./posts/welcome/index.html" class="no-external">This is a proof-of-concept post demonstrating scientific publishing capabilities with Quarto.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/welcome/index.html" class="no-external">
-<div class="listing-date">
-Jan 4, 2025
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div>
-</div>
-
 
 
 
