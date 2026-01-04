@@ -91,3 +91,15 @@ a {
   margin: 4rem 0;
   text-align: center;
 }
+
+.academic-container {
+  max-width: 1200px !important;
+}
+.abstract-section {
+  max-width: 800px;
+}
+.architecture-figure img {
+  width: 100%;
+  max-width: 1100px;
+  mix-blend-mode: normal !important; /* SVG is transparent */
+}

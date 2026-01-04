@@ -1,0 +1,141 @@
+<svg width="1000" height="500" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg" style="background-color: transparent;">
+  <style>
+    .node { fill: #ffffff; stroke: #000000; stroke-width: 2; }
+    .text { font-family: 'Libre Baskerville', 'Times New Roman', serif; font-size: 14px; fill: #000000; text-anchor: middle; }
+    .label { font-family: 'Libre Baskerville', 'Times New Roman', serif; font-size: 12px; fill: #000000; text-anchor: middle; font-style: italic; }
+    .edge { stroke: #000000; stroke-width: 1.5; fill: none; }
+    .pulse { fill: #000000; }
+    
+    @keyframes flow1 {
+      0% { offset-distance: 0%; opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { offset-distance: 100%; opacity: 0; }
+    }
+    
+    .flow-anim {
+      offset-path: path('M 100 150 L 250 250');
+      animation: flow1 3s linear infinite;
+    }
+    .flow-anim-2 {
+      offset-path: path('M 100 350 L 250 250');
+      animation: flow1 3s linear infinite;
+      animation-delay: 1.5s;
+    }
+    .flow-anim-3 {
+      offset-path: path('M 400 250 L 500 250');
+      animation: flow1 2s linear infinite;
+    }
+    .flow-anim-4a {
+      offset-path: path('M 650 250 L 850 100');
+      animation: flow1 4s linear infinite;
+    }
+     .flow-anim-4b {
+      offset-path: path('M 650 250 L 850 200');
+      animation: flow1 4s linear infinite;
+      animation-delay: 0.5s;
+    }
+     .flow-anim-4c {
+      offset-path: path('M 650 250 L 850 300');
+      animation: flow1 4s linear infinite;
+      animation-delay: 1s;
+    }
+     .flow-anim-4d {
+      offset-path: path('M 650 250 L 850 400');
+      animation: flow1 4s linear infinite;
+      animation-delay: 1.5s;
+    }
+
+  </style>
+
+  <!-- Inputs -->
+  <rect x="20" y="110" width="80" height="80" class="node" />
+  <text x="60" y="155" class="text">Text</text>
+  
+  <rect x="20" y="310" width="80" height="80" class="node" />
+  <text x="60" y="355" class="text">Image</text>
+
+  <!-- Cross-Modal Transformer -->
+  <rect x="250" y="100" width="150" height="300" class="node" />
+  <text x="325" y="240" class="text">Cross-Modal</text>
+  <text x="325" y="260" class="text">Transformer</text>
+
+  <!-- Connections Inputs -> Transformer -->
+  <path d="M 100 150 L 250 250" class="edge" />
+  <path d="M 100 350 L 250 250" class="edge" />
+  
+  <!-- Anim Input -->
+  <circle r="3" class="pulse">
+    <animateMotion dur="3s" repeatCount="indefinite" path="M 100 150 L 250 250" />
+  </circle>
+  <circle r="3" class="pulse">
+     <animateMotion dur="3s" begin="1.5s" repeatCount="indefinite" path="M 100 350 L 250 250" />
+  </circle>
+
+
+  <!-- Context Orchestrator -->
+  <rect x="500" y="200" width="150" height="100" class="node" />
+  <text x="575" y="245" class="text">Context</text>
+  <text x="575" y="265" class="text">Orchestrator</text>
+
+  <!-- Connection Transformer -> Orchestrator -->
+  <path d="M 400 250 L 500 250" class="edge" />
+  <circle r="3" class="pulse">
+     <animateMotion dur="2s" repeatCount="indefinite" path="M 400 250 L 500 250" />
+  </circle>
+
+
+  <!-- Execution Graph Hub -->
+  <circle cx="650" cy="250" r="10" stroke="#000" fill="#000" />
+  
+  <!-- Connection Orchestrator -> Graph -->
+  <path d="M 650 250 L 500 250" class="edge" style="display:none" /> <!-- Just conceptual anchor -->
+  <path d="M 650 250 L 650 250" class="edge" /> 
+
+  <!-- Branches -->
+  <!-- Top Branch: Decision -> Data Store -->
+  <path d="M 650 250 L 850 100" class="edge" />
+  <rect x="850" y="60" width="100" height="80" rx="10" ry="10" class="node" />
+  <text x="900" y="95" class="text">Data</text>
+  <text x="900" y="115" class="text">Store 1</text>
+  <circle r="3" class="pulse">
+     <animateMotion dur="2s" repeatCount="indefinite" path="M 650 250 L 850 100" />
+  </circle>
+
+  <!-- Mid Branch 1: Decision -> Tool -->
+  <path d="M 650 250 L 850 200" class="edge" />
+  <rect x="850" y="170" width="100" height="60" class="node" />
+  <text x="900" y="205" class="text">Python Tool</text>
+   <circle r="3" class="pulse">
+     <animateMotion dur="2.5s" begin="0.2s" repeatCount="indefinite" path="M 650 250 L 850 200" />
+  </circle>
+
+
+  <!-- Mid Branch 2: Decision -> Data Store -->
+  <path d="M 650 250 L 850 300" class="edge" />
+  <polyline points="850,260 950,260 950,340 850,340" class="node" /> <!-- Cylinder rough approx -->
+  <ellipse cx="900" cy="260" rx="50" ry="10" class="node" />
+  <ellipse cx="900" cy="340" rx="50" ry="10" class="node" />
+  <path d="M 850 260 L 850 340" class="edge" /> <!-- Cylinder sides -->
+  <path d="M 950 260 L 950 340" class="edge" />
+  
+  <text x="900" y="310" class="text">Vector DB</text>
+  <circle r="3" class="pulse">
+     <animateMotion dur="3s" begin="0.5s" repeatCount="indefinite" path="M 650 250 L 850 300" />
+  </circle>
+
+  <!-- Bottom Branch: Decision -> Tool -->
+  <path d="M 650 250 L 850 400" class="edge" />
+  <rect x="850" y="370" width="100" height="60" class="node" />
+  <text x="900" y="405" class="text">Search API</text>
+   <circle r="3" class="pulse">
+     <animateMotion dur="3.5s" begin="0.8s" repeatCount="indefinite" path="M 650 250 L 850 400" />
+  </circle>
+  
+  <!-- Labels -->
+  <text x="60" y="90" class="label">Inputs</text>
+  <text x="325" y="80" class="label">Encoding</text>
+  <text x="575" y="180" class="label">Logic</text>
+  <text x="900" y="40" class="label">Execution</text>
+
+</svg>

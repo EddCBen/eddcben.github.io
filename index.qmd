@@ -29,8 +29,8 @@ title-block-banner: false
 </div>
 
 <figure class="architecture-figure paper-figure-wide">
-  <img src="assets/images/classy-architecture.png" alt="Deep Intersections Architecture">
-  <figcaption><strong>Figure 1:</strong> High-level schematic of the Cross-Modal Context Orchestration framework. The <em>Language Model</em> (left) encodes multimodal inputs into a unified representation, which acts as the state space for the <em>Context Orchestrator</em> (center). This orchestrator dynamically navigates an <em>Execution Graph</em> (right), delegating sub-tasks to external <em>Data Stores</em> and <em>Function Primitives</em>.</figcaption>
+  <img src="assets/images/architecture.svg" alt="Animated System Architecture" class="animated-svg">
+  <figcaption><strong>Figure 1:</strong> Dynamic visualization of the Cross-Modal Context Orchestration framework. Data flows from multimodal inputs through the Transformer encoding layers, triggering the Context Orchestrator to traverse the Execution Graph.</figcaption>
 </figure>
 
 ## Research Log
