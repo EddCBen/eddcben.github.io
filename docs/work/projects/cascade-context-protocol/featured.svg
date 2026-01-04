@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" style="background-color:#0f172a; font-family: 'Courier New', monospace;">
+    <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,6 L9,3 z" fill="#64748b" />
+        </marker>
+        <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="2" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+    </defs>
+    <path d="M120.0,310.0 L320.0,310.0" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#arrow)" opacity="0.8" /><path d="M320.0,310.0 C370.0,310.0 510.0,185.0 560.0,185.0" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#arrow)" opacity="0.8" /><path d="M560.0,185.0 L560.0,435.0" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#arrow)" opacity="0.8" /><path d="M640,435.0 C690,435.0 650,135.0 700,135.0" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#arrow)" opacity="0.8" /><path d="M780.0,135.0 L780.0,310.0" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#arrow)" opacity="0.8" /><path d="M780.0,310.0 L780.0,485.0" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#arrow)" opacity="0.8" /><path d="M700,485.0 C650,485.0 690,435.0 640,435.0" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#arrow)" opacity="0.8" /><path d="M560.0,435.0 L560.0,580.0" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#arrow)" opacity="0.8" />
+        <g transform="translate(50, 275)">
+            <rect width="140" height="70" rx="8" fill="#4c1d95" stroke="#a78bfa" stroke-width="2" filter="url(#glow)" />
+            <text x="70.0" y="25" text-anchor="middle" fill="#f1f5f9" font-weight="bold" font-size="14">User Request</text>
+            <text x="70.0" y="50" text-anchor="middle" fill="#f1f5f9" font-size="11" opacity="0.8">Raw Input</text>
+        </g>
+        
+        <g transform="translate(230, 275)">
+            <rect width="180" height="70" rx="8" fill="#4c1d95" stroke="#a78bfa" stroke-width="2" filter="url(#glow)" />
+            <text x="90.0" y="25" text-anchor="middle" fill="#f1f5f9" font-weight="bold" font-size="14">Semantic Segmenter</text>
+            <text x="90.0" y="50" text-anchor="middle" fill="#f1f5f9" font-size="11" opacity="0.8">Intent Analysis</text>
+        </g>
+        
+        <g transform="translate(480, 150)">
+            <rect width="160" height="70" rx="8" fill="#0f766e" stroke="#2dd4bf" stroke-width="2" filter="url(#glow)" />
+            <text x="80.0" y="25" text-anchor="middle" fill="#f1f5f9" font-weight="bold" font-size="14">Orchestrator</text>
+            <text x="80.0" y="50" text-anchor="middle" fill="#f1f5f9" font-size="11" opacity="0.8">State Manager</text>
+        </g>
+        
+        <g transform="translate(480, 400)">
+            <rect width="160" height="70" rx="8" fill="#0f766e" stroke="#2dd4bf" stroke-width="2" filter="url(#glow)" />
+            <text x="80.0" y="25" text-anchor="middle" fill="#f1f5f9" font-weight="bold" font-size="14">Execution Graph</text>
+            <text x="80.0" y="50" text-anchor="middle" fill="#f1f5f9" font-size="11" opacity="0.8">Dynamic DAG</text>
+        </g>
+        
+        <g transform="translate(700, 100)">
+            <rect width="160" height="70" rx="8" fill="#b45309" stroke="#fbbf24" stroke-width="2" filter="url(#glow)" />
+            <text x="80.0" y="25" text-anchor="middle" fill="#f1f5f9" font-weight="bold" font-size="14">Hybrid Retrieval</text>
+            <text x="80.0" y="50" text-anchor="middle" fill="#f1f5f9" font-size="11" opacity="0.8">Vector + Regex</text>
+        </g>
+        
+        <g transform="translate(700, 275)">
+            <rect width="160" height="70" rx="8" fill="#b45309" stroke="#fbbf24" stroke-width="2" filter="url(#glow)" />
+            <text x="80.0" y="25" text-anchor="middle" fill="#f1f5f9" font-weight="bold" font-size="14">Argument Gen</text>
+            <text x="80.0" y="50" text-anchor="middle" fill="#f1f5f9" font-size="11" opacity="0.8">LLM Decoding</text>
+        </g>
+        
+        <g transform="translate(700, 450)">
+            <rect width="160" height="70" rx="8" fill="#b45309" stroke="#fbbf24" stroke-width="2" filter="url(#glow)" />
+            <text x="80.0" y="25" text-anchor="middle" fill="#f1f5f9" font-weight="bold" font-size="14">Tool Execution</text>
+            <text x="80.0" y="50" text-anchor="middle" fill="#f1f5f9" font-size="11" opacity="0.8">Sandbox</text>
+        </g>
+        
+        <g transform="translate(480, 550)">
+            <rect width="160" height="60" rx="8" fill="#14532d" stroke="#4ade80" stroke-width="2" filter="url(#glow)" />
+            <text x="80.0" y="25" text-anchor="middle" fill="#f1f5f9" font-weight="bold" font-size="14">Response Stream</text>
+            <text x="80.0" y="50" text-anchor="middle" fill="#f1f5f9" font-size="11" opacity="0.8">Context Block</text>
+        </g>
+        </svg>

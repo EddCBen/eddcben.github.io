@@ -3,7 +3,7 @@ title: "Cascade Context Protocol"
 subtitle: "A Neuro-Symbolic Architecture for Infinite Context"
 date: "2025-12-10"
 categories: [Architecture, Python, Neuro-Symbolic]
-image: "../../../assets/clog/ccp_architecture.svg"
+image: "featured.svg"
 about:
   template: solana
   links:
