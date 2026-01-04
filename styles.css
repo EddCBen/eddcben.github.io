@@ -81,3 +81,13 @@ a {
   color: #000;
   text-decoration-color: #999;
 }
+.architecture-figure img {
+  mix-blend-mode: multiply;
+  max-width: 90%;
+  margin: 0 auto;
+  display: block;
+}
+.paper-figure-wide {
+  margin: 4rem 0;
+  text-align: center;
+}

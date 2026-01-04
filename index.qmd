@@ -28,9 +28,9 @@ title-block-banner: false
 **Keywords:** *Cross-Modality, Execution Graphs, Context-Orchestration, SLMs*
 </div>
 
-<figure class="architecture-figure">
-  <img src="assets/images/academic-architecture.png" alt="System Architecture">
-  <figcaption><strong>Figure 1:</strong> Unified architecture demonstrating the coupling of cross-modal neural networks with discrete execution graph logic.</figcaption>
+<figure class="architecture-figure paper-figure-wide">
+  <img src="assets/images/classy-architecture.png" alt="Deep Intersections Architecture">
+  <figcaption><strong>Figure 1:</strong> High-level schematic of the Cross-Modal Context Orchestration framework. The <em>Language Model</em> (left) encodes multimodal inputs into a unified representation, which acts as the state space for the <em>Context Orchestrator</em> (center). This orchestrator dynamically navigates an <em>Execution Graph</em> (right), delegating sub-tasks to external <em>Data Stores</em> and <em>Function Primitives</em>.</figcaption>
 </figure>
 
 ## Research Log
