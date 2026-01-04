@@ -11,13 +11,34 @@
     "href": "index.html",
     "title": "eddcben.github.io",
     "section": "",
-    "text": "Welcome To My Blog\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nJan 4, 2025\n\n\nTristan O’Malley\n\n\n\n\n\nNo matching items"
+    "text": "Welcome to my AI Lab\n\n\n\ncode\n\nanalysis\n\nai\n\n\n\n\n\n\n\n\n\nJan 4, 2025\n\n\nEddCBen\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/welcome/index.html",
     "href": "posts/welcome/index.html",
-    "title": "Welcome To My Blog",
+    "title": "Welcome to my AI Lab",
     "section": "",
-    "text": "This is the first post in a Quarto blog. Welcome!"
+    "text": "This is a proof-of-concept post demonstrating scientific publishing capabilities with Quarto."
+  },
+  {
+    "objectID": "posts/welcome/index.html#mathematical-formulation",
+    "href": "posts/welcome/index.html#mathematical-formulation",
+    "title": "Welcome to my AI Lab",
+    "section": "Mathematical Formulation",
+    "text": "Mathematical Formulation\nWe can render complex equations using LaTeX. For example, the Cross-Entropy Loss function:\n\nL_{CE} = - \\sum_{i=1}^{C} t_i \\log(p_i)\n\nWhere: - t_i is the truth label. - p_i is the Softmax probability for the i^{th} class."
+  },
+  {
+    "objectID": "posts/welcome/index.html#architecture-diagram",
+    "href": "posts/welcome/index.html#architecture-diagram",
+    "title": "Welcome to my AI Lab",
+    "section": "Architecture Diagram",
+    "text": "Architecture Diagram\nHere is a simple Neural Network visualizations using Mermaid.js:\n\n\n\n\n\ngraph LR\n    A[Input Layer] --&gt; B(Hidden Layer)\n    B --&gt; C{Activation}\n    C --&gt; D[Output Layer]\n    style A fill:#f9f,stroke:#333,stroke-width:2px\n    style D fill:#ccf,stroke:#333,stroke-width:2px"
+  },
+  {
+    "objectID": "posts/welcome/index.html#implementation",
+    "href": "posts/welcome/index.html#implementation",
+    "title": "Welcome to my AI Lab",
+    "section": "Implementation",
+    "text": "Implementation\nBelow is a PyTorch tensor initialization:\nimport torch\n\n# Define a simple tensor\nx = torch.tensor([[1, 2], [3, 4]])\nprint(f\"Tensor shape: {x.shape}\")"
   }
 ]
