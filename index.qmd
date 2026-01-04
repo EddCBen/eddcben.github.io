@@ -1,12 +1,34 @@
 ---
-title: "eddcben.github.io"
+title: ""
+page-layout: custom
+toc: false
+section-divs: false
 listing:
   contents: posts
   sort: "date desc"
   type: default
-  categories: true
+  categories: false
   sort-ui: false
   filter-ui: false
-page-layout: full
-title-block-banner: true
+  fields: [date, title, reading-time, description]
+title-block-banner: false
 ---
+
+:::{.hero-section}
+<div class="content-container">
+# Welcome to the Lab
+
+:::{.hero-content}
+Interests: **cross-modal neural networks**, **execution graphs**, **context-orchestration** and **small language model intersections**
+:::
+
+![](assets/images/combined-architecture.png){.hero-image}
+</div>
+:::
+
+<div class="content-container">
+## Latest Research
+
+::: {#listing}
+:::
+</div>
