@@ -1,0 +1,13 @@
+/* Placeholder for scientific blue accent */
+:root {
+  --bs-primary: #003366; /* Deep scientific blue */
+  --bs-primary-rgb: 0, 51, 102;
+}
+
+a {
+  color: var(--bs-primary);
+}
+
+.navbar {
+  background-color: var(--bs-primary) !important;
+}
