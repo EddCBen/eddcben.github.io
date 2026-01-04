@@ -1,0 +1,24 @@
+---
+title: "Rendering Test"
+draft: true
+---
+
+## Softmax Function
+
+$$
+\sigma(z)_i = \frac{e^{z_i}}{\sum_{j=1}^K e^{z_j}}
+$$
+
+## System Diagram
+
+```{mermaid}
+graph LR
+    A[Input] --> B[Model]
+    B --> C[Output]
+```
+
+## Python Check
+
+```python
+print('Hello AI')
+```
