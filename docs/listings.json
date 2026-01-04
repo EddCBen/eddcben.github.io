@@ -4,5 +4,11 @@
     "items": [
       "/posts/welcome/index.html"
     ]
+  },
+  {
+    "listing": "/work/research/index.html",
+    "items": [
+      "/work/research/reasoning/context-state-decoupling/index.html"
+    ]
   }
 ]

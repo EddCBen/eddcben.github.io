@@ -54,5 +54,54 @@
     "title": "Welcome to the Lab",
     "section": "Latest Research",
     "text": "Latest Research"
+  },
+  {
+    "objectID": "work/projects/index.html",
+    "href": "work/projects/index.html",
+    "title": "AI Experiments",
+    "section": "",
+    "text": "Here is a list of my repositories:\n\nCDLL\nCNN-for-Text-Classification\nK-Nearest-Neighbor"
+  },
+  {
+    "objectID": "work/research/index.html",
+    "href": "work/research/index.html",
+    "title": "Research",
+    "section": "",
+    "text": "Context State Decoupling\n\n\nDissociating Logical State from Ephemeral Inference\n\n\n\nReasoning\n\n\nArchitecture\n\n\nSLM\n\n\n\n\n\n\n\n\n\nJan 4, 2026\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "work/research/reasoning/context-state-decoupling/index.html",
+    "href": "work/research/reasoning/context-state-decoupling/index.html",
+    "title": "Context State Decoupling",
+    "section": "",
+    "text": "In the current paradigm of Large Language Model (LLM) architecture, “intelligence” is strictly bound by the context window. To reason about a sequence of length N, the model must load all N tokens into its active attention mechanism.\nThis creates a fundamental scaling paradox: \n\\text{Cost} \\propto O(N^2)\n\nAs the history H grows, the cost to generate the next token t_{n+1} increases quadratically (or linearly with optimized attention, but still creating massive memory pressure). This forces a “Sliding Window” approach, where older context is lobotomized to make room for new data, destroying the continuity of the system’s “self”."
+  },
+  {
+    "objectID": "work/research/reasoning/context-state-decoupling/index.html#the-linear-paradox",
+    "href": "work/research/reasoning/context-state-decoupling/index.html#the-linear-paradox",
+    "title": "Context State Decoupling",
+    "section": "",
+    "text": "In the current paradigm of Large Language Model (LLM) architecture, “intelligence” is strictly bound by the context window. To reason about a sequence of length N, the model must load all N tokens into its active attention mechanism.\nThis creates a fundamental scaling paradox: \n\\text{Cost} \\propto O(N^2)\n\nAs the history H grows, the cost to generate the next token t_{n+1} increases quadratically (or linearly with optimized attention, but still creating massive memory pressure). This forces a “Sliding Window” approach, where older context is lobotomized to make room for new data, destroying the continuity of the system’s “self”."
+  },
+  {
+    "objectID": "work/research/reasoning/context-state-decoupling/index.html#the-decoupling-thesis",
+    "href": "work/research/reasoning/context-state-decoupling/index.html#the-decoupling-thesis",
+    "title": "Context State Decoupling",
+    "section": "2. The Decoupling Thesis",
+    "text": "2. The Decoupling Thesis\nWe propose a neuro-symbolic architecture that solves this by functionally identifying and separating two distinct cognitive processes:\n\nLogical State (Hippocampus): The persistent, evolving graph of facts, events, and their causal relationships.\nEphemeral Inference (Prefrontal Cortex): The active processing unit that synthesizes updates to the state.\n\nBy decoupling these components, we can achieve “Infinite Context” without infinite compute. The LLM no longer needs to hold the state; it only needs to navigate it."
+  },
+  {
+    "objectID": "work/research/reasoning/context-state-decoupling/index.html#graph-topology-as-memory",
+    "href": "work/research/reasoning/context-state-decoupling/index.html#graph-topology-as-memory",
+    "title": "Context State Decoupling",
+    "section": "3. Graph Topology as Memory",
+    "text": "3. Graph Topology as Memory\nInstead of a linear stream of tokens, the conversation state is stored as a Directed Acyclic Graph (DAG) in a persistent Vector Database.\ngraph TD\n    %% Node Definitions\n    Root((\"Root\\n(Genesis)\"))\n    Idea1(\"Context Block A\\n(User Segment)\")\n    Idea2(\"Context Block B\\n(User Segment)\")\n    \n    Reason1[\"Reasoning Node\\n(Analysis)\"]\n    Fact1[\"Fact Node\\n(Extracted Entity)\"]\n    \n    %% Connections\n    Root --&gt; Idea1\n    Root --&gt; Idea2\n    Idea1 --&gt; Reason1\n    Reason1 --&gt; Fact1\n    Idea2 --&gt; Fact1\n    \n    %% Styling\n    style Root fill:#339af0,stroke:#white,color:white\n    style Reason1 fill:#fab005,stroke:#white,color:white\n    style Fact1 fill:#40c057,stroke:#white,color:white\nEach node in this graph represents an atomic “Context Block”—a semantically segmented unit of intent—rather than a raw token chunk."
+  },
+  {
+    "objectID": "work/research/reasoning/context-state-decoupling/index.html#neuro-symbolic-retrieval",
+    "href": "work/research/reasoning/context-state-decoupling/index.html#neuro-symbolic-retrieval",
+    "title": "Context State Decoupling",
+    "section": "4. Neuro-Symbolic Retrieval",
+    "text": "4. Neuro-Symbolic Retrieval\nWhen the system receives a new input I_t, it does not blindly feed the previous N tokens into the context window. Instead, it performs a hybrid retrieval operation to construct a Localized Context:\n\nC_{local} = \\text{Top}_k(Sim(I_t, \\text{Graph})) \\cup \\text{Neighbors}(\\text{Top}_k)\n\nThis ensures that the LLM’s working memory usage remains constant (O(k)) regardless of the total conversation length (N).\n\n4.1 The Cognitive Loop\n\nSegmentation: Input is broken into atomic intents.\nRetrieval: Relevant historical nodes are fetched from the Graph.\nSynthesis: The SLM, acting as a kernel, generates the next reasoning step.\nUpdate: The new reasoning is appended to the Graph as a new Node, permanently updating the “Long-Term Memory”.\n\nThis architecture allows small, efficient models (SLMs) to exhibit coherent long-term reasoning by offloading the burden of “remembering” to a structured, symbolic substrate."
   }
 ]

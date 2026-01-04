@@ -10,7 +10,9 @@ website:
         text: Home
       - href: about.qmd
         text: About
-      - href: projects.qmd
+      - href: work/research/index.qmd
+        text: Research
+      - href: work/projects/index.qmd
         text: Projects
     right:
       - icon: github
