@@ -180,6 +180,7 @@ window.Quarto = {
   <li><a href="#neuro-symbolic-retrieval" id="toc-neuro-symbolic-retrieval" class="nav-link" data-scroll-target="#neuro-symbolic-retrieval">4. Neuro-Symbolic Retrieval</a></li>
   <li><a href="#the-cognitive-loop" id="toc-the-cognitive-loop" class="nav-link" data-scroll-target="#the-cognitive-loop">4.1 The Cognitive Loop</a></li>
   <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion">5. Discussion</a></li>
+  <li><a href="#reference-implementation" id="toc-reference-implementation" class="nav-link" data-scroll-target="#reference-implementation">Reference Implementation</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
@@ -285,6 +286,13 @@ C_{local} = R(I_t, G) = \text{Top}_k(Sim(I_t, V)) \cup N(\text{Top}_k)
 <section id="discussion" class="level2">
 <h2 class="anchored" data-anchor-id="discussion">5. Discussion</h2>
 <p>By offloading “remembering” to a structured database, we reduce the cognitive load on the model. This implies that massive parameter counts (70B+) are not required for long-context coherence. A finely-tuned SLM (e.g., 3B-7B parameters), when equipped with CSD, can outperform larger models in tasks requiring high-fidelity recall over long horizons, as demonstrated in similar approaches like MemGPT [2] and GraphRAG [3].</p>
+</section>
+<section id="reference-implementation" class="level2">
+<h2 class="anchored" data-anchor-id="reference-implementation">Reference Implementation</h2>
+<p>The <strong>Cascade Context Protocol (CCP)</strong> serves as a live application of the Context State Decoupling theory. It implements the “State Offloading” and “Localized Processing” mechanisms described above to achieve infinite context reasoning.</p>
+<div style="text-align: center; margin: 2rem 0;">
+<p><a href="https://github.com/EddCBen/cascade-context-protocol" class="btn btn-outline-primary" style="padding: 0.5rem 1.5rem; border: 1px solid #333; color: #333; text-decoration: none; border-radius: 4px; font-family: monospace;">View Repository</a></p>
+</div>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>

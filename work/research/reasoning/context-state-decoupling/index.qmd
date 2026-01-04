@@ -78,6 +78,14 @@ The inference process becomes a recurring loop:
 
 By offloading "remembering" to a structured database, we reduce the cognitive load on the model. This implies that massive parameter counts (70B+) are not required for long-context coherence. A finely-tuned SLM (e.g., 3B-7B parameters), when equipped with CSD, can outperform larger models in tasks requiring high-fidelity recall over long horizons, as demonstrated in similar approaches like MemGPT [2] and GraphRAG [3].
 
+## Reference Implementation
+
+The **Cascade Context Protocol (CCP)** serves as a live application of the Context State Decoupling theory. It implements the "State Offloading" and "Localized Processing" mechanisms described above to achieve infinite context reasoning.
+
+<div style="text-align: center; margin: 2rem 0;">
+  <a href="https://github.com/EddCBen/cascade-context-protocol" class="btn btn-outline-primary" style="padding: 0.5rem 1.5rem; border: 1px solid #333; color: #333; text-decoration: none; border-radius: 4px; font-family: monospace;">View Repository</a>
+</div>
+
 ## References
 
 1.  Liu, N. F., et al. (2024). *Lost in the Middle: How Language Models Use Long Contexts*. arXiv preprint.

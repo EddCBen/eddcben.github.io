@@ -131,5 +131,12 @@
     "title": "Context State Decoupling: A Neuro-Symbolic Approach to Infinite Context",
     "section": "References",
     "text": "References\n\nLiu, N. F., et al. (2024). Lost in the Middle: How Language Models Use Long Contexts. arXiv preprint.\nPacker, C., et al. (2023). MemGPT: Towards LLMs as Operating Systems. arXiv:2310.08560.\nEdge, D., et al. (2024). From Local to Global: A Graph RAG Approach to Query-Focused Summarization. Microsoft Research."
+  },
+  {
+    "objectID": "work/research/reasoning/context-state-decoupling/index.html#reference-implementation",
+    "href": "work/research/reasoning/context-state-decoupling/index.html#reference-implementation",
+    "title": "Context State Decoupling: A Neuro-Symbolic Approach to Infinite Context",
+    "section": "Reference Implementation",
+    "text": "Reference Implementation\nThe Cascade Context Protocol (CCP) serves as a live application of the Context State Decoupling theory. It implements the “State Offloading” and “Localized Processing” mechanisms described above to achieve infinite context reasoning.\n\nView Repository"
   }
 ]
