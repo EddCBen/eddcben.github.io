@@ -24,7 +24,7 @@ We propose a modern mental model for the "SLM Era," where Small Language Models 
 </div>
 
 <figure class="architecture-figure paper-figure-wide">
-  <img src="assets/images/architecture.svg?v=11" alt="Animated System Architecture" class="animated-svg">
+  <img src="assets/images/architecture.svg?v=12" alt="Animated System Architecture" class="animated-svg">
   <figcaption><strong>Figure 1:</strong> Template for Software Protocol SLM Enhancement. A standardized architecture for integrating Small Language Models (SLMs) into deterministic software protocols. The Central Reasoning Unit (CRU) acts as the probabilistic kernel, bridging multi-modal inputs with a structured, verifiable Execution Graph.</figcaption>
 </figure>
 
