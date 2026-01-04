@@ -95,7 +95,7 @@
     "href": "work/research/reasoning/context-state-decoupling/index.html#graph-topology-as-memory",
     "title": "Context State Decoupling",
     "section": "3. Graph Topology as Memory",
-    "text": "3. Graph Topology as Memory\nInstead of a linear stream of tokens, the conversation state is stored as a Directed Acyclic Graph (DAG) in a persistent Vector Database.\ngraph TD\n    %% Node Definitions\n    Root((\"Root\\n(Genesis)\"))\n    Idea1(\"Context Block A\\n(User Segment)\")\n    Idea2(\"Context Block B\\n(User Segment)\")\n    \n    Reason1[\"Reasoning Node\\n(Analysis)\"]\n    Fact1[\"Fact Node\\n(Extracted Entity)\"]\n    \n    %% Connections\n    Root --&gt; Idea1\n    Root --&gt; Idea2\n    Idea1 --&gt; Reason1\n    Reason1 --&gt; Fact1\n    Idea2 --&gt; Fact1\n    \n    %% Styling\n    style Root fill:#339af0,stroke:#white,color:white\n    style Reason1 fill:#fab005,stroke:#white,color:white\n    style Fact1 fill:#40c057,stroke:#white,color:white\nEach node in this graph represents an atomic “Context Block”—a semantically segmented unit of intent—rather than a raw token chunk."
+    "text": "3. Graph Topology as Memory\nInstead of a linear stream of tokens, the conversation state is stored as a Directed Acyclic Graph (DAG) in a persistent Vector Database.\n\n\n\nFigure 1: Context State DAG Topology. Visualizing the atomic segmentation of user intent into persistent graph nodes.\n\n\nEach node in this graph represents an atomic “Context Block”—a semantically segmented unit of intent—rather than a raw token chunk."
   },
   {
     "objectID": "work/research/reasoning/context-state-decoupling/index.html#neuro-symbolic-retrieval",

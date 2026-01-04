@@ -33,28 +33,10 @@ By **decoupling** these components, we can achieve "Infinite Context" without in
 
 Instead of a linear stream of tokens, the conversation state is stored as a **Directed Acyclic Graph (DAG)** in a persistent Vector Database.
 
-```mermaid
-graph TD
-    %% Node Definitions
-    Root(("Root\n(Genesis)"))
-    Idea1("Context Block A\n(User Segment)")
-    Idea2("Context Block B\n(User Segment)")
-    
-    Reason1["Reasoning Node\n(Analysis)"]
-    Fact1["Fact Node\n(Extracted Entity)"]
-    
-    %% Connections
-    Root --> Idea1
-    Root --> Idea2
-    Idea1 --> Reason1
-    Reason1 --> Fact1
-    Idea2 --> Fact1
-    
-    %% Styling
-    style Root fill:#339af0,stroke:#white,color:white
-    style Reason1 fill:#fab005,stroke:#white,color:white
-    style Fact1 fill:#40c057,stroke:#white,color:white
-```
+<figure class="architecture-figure">
+  <img src="/assets/images/context_dag.svg" alt="Context State DAG" class="scientific-diagram">
+  <figcaption><strong>Figure 1:</strong> Context State DAG Topology. Visualizing the atomic segmentation of user intent into persistent graph nodes.</figcaption>
+</figure>
 
 Each node in this graph represents an atomic "Context Block"—a semantically segmented unit of intent—rather than a raw token chunk.
 

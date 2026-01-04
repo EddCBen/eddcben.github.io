@@ -236,26 +236,12 @@ window.Quarto = {
 <section id="graph-topology-as-memory" class="level2">
 <h2 class="anchored" data-anchor-id="graph-topology-as-memory">3. Graph Topology as Memory</h2>
 <p>Instead of a linear stream of tokens, the conversation state is stored as a <strong>Directed Acyclic Graph (DAG)</strong> in a persistent Vector Database.</p>
-<pre class="mermaid"><code>graph TD
-    %% Node Definitions
-    Root(("Root\n(Genesis)"))
-    Idea1("Context Block A\n(User Segment)")
-    Idea2("Context Block B\n(User Segment)")
-    
-    Reason1["Reasoning Node\n(Analysis)"]
-    Fact1["Fact Node\n(Extracted Entity)"]
-    
-    %% Connections
-    Root --&gt; Idea1
-    Root --&gt; Idea2
-    Idea1 --&gt; Reason1
-    Reason1 --&gt; Fact1
-    Idea2 --&gt; Fact1
-    
-    %% Styling
-    style Root fill:#339af0,stroke:#white,color:white
-    style Reason1 fill:#fab005,stroke:#white,color:white
-    style Fact1 fill:#40c057,stroke:#white,color:white</code></pre>
+<figure class="architecture-figure figure">
+<img src="../../../../assets/images/context_dag.svg" alt="Context State DAG" class="scientific-diagram figure-img">
+<figcaption>
+<strong>Figure 1:</strong> Context State DAG Topology. Visualizing the atomic segmentation of user intent into persistent graph nodes.
+</figcaption>
+</figure>
 <p>Each node in this graph represents an atomic “Context Block”—a semantically segmented unit of intent—rather than a raw token chunk.</p>
 </section>
 <section id="neuro-symbolic-retrieval" class="level2">
