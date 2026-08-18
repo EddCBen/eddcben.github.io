@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Charaf Eddine Benarab">
 <meta name="dcterms.date" content="2025-12-10">
 
 <title>Cascade Context Protocol – Charaf Eddine BENARAB</title>
@@ -41,11 +42,12 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-e3adbaa939bcd423dddc8c8a834270b4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-6cb3b5dde9199b0bae780a942c31b5f1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -176,6 +178,7 @@ window.Quarto = {
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
+   
   <ul>
   <li><a href="#the-infinite-context-problem" id="toc-the-infinite-context-problem" class="nav-link active" data-scroll-target="#the-infinite-context-problem">The Infinite Context Problem</a></li>
   <li><a href="#architecture-the-glass-box-engine" id="toc-architecture-the-glass-box-engine" class="nav-link" data-scroll-target="#architecture-the-glass-box-engine">Architecture: The “Glass Box” Engine</a>
@@ -189,10 +192,9 @@ window.Quarto = {
 </nav>
     </div>
 <!-- main -->
-<div class="quarto-about-solana column-body">
-  <div class="about-entity">
-    <div class="entity-contents">
-      <header id="title-block-header" class="quarto-title-block default">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Cascade Context Protocol</h1>
 <p class="subtitle lead">A Neuro-Symbolic Architecture for Infinite Context</p>
@@ -202,59 +204,73 @@ window.Quarto = {
     <div class="quarto-category">Neuro-Symbolic</div>
   </div>
   </div>
+
+
+
 <div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Charaf Eddine Benarab </p>
+          </div>
+  </div>
+    
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
       <p class="date">December 10, 2025</p>
     </div>
   </div>
+  
+    
   </div>
-</header> <div class="about-links">
-  <a href="https://github.com/EddCBen/cascade-context-protocol" class="about-link" rel="" target="">
-    <i class="bi bi-github"></i>
-     <span class="about-link-text">Github</span>
-  </a>
-</div>
-      <div class="about-contents"><main class="content" id="quarto-document-content">
+  
 
+
+</header>
+
+
+<p>Repo: <a href="https://github.com/EddCBen/cascade-context-protocol">github.com/EddCBen/cascade-context-protocol</a> · Full write-up: <a href="../../../work/research/papers/cascade-context-protocol/index.html">Research</a></p>
 <section id="the-infinite-context-problem" class="level2">
-<h2 data-anchor-id="the-infinite-context-problem">The Infinite Context Problem</h2>
+<h2 class="anchored" data-anchor-id="the-infinite-context-problem">The Infinite Context Problem</h2>
 <p>In the current landscape of Large Language Models, “intelligence” is strictly bound by the context window. To reason about a sequence, the model must hold every token in active memory. This creates the “Linear Bottleneck”: as history grows, cost and latency explode, effectively lobotomizing long-running agents.</p>
 <p>The <strong>Cascade Context Protocol (CCP)</strong> proposes a radical shift: treating conversation not as a stream, but as a <strong>Graph</strong>.</p>
 </section>
 <section id="architecture-the-glass-box-engine" class="level2">
-<h2 data-anchor-id="architecture-the-glass-box-engine">Architecture: The “Glass Box” Engine</h2>
+<h2 class="anchored" data-anchor-id="architecture-the-glass-box-engine">Architecture: The “Glass Box” Engine</h2>
 <p>CCP functions as a neuro-symbolic middleware that sits between the user and the LLM. It intercepts inputs and processes them through a transparent cognitive loop.</p>
 <section id="semantic-segmentation" class="level3">
-<h3 data-anchor-id="semantic-segmentation">1. Semantic Segmentation</h3>
+<h3 class="anchored" data-anchor-id="semantic-segmentation">1. Semantic Segmentation</h3>
 <p>Unlike naive chunkers that split text every 500 tokens, CCP uses a <strong>Semantic Segmenter</strong>. It analyzes syntactic boundaries to break streams into atomic units of intent called <code>ContextBlocks</code>. This ensures that “memory” is stored as complete thoughts, not fragmented text.</p>
 </section>
 <section id="the-execution-graph-hippocampus" class="level3">
-<h3 data-anchor-id="the-execution-graph-hippocampus">2. The Execution Graph (Hippocampus)</h3>
+<h3 class="anchored" data-anchor-id="the-execution-graph-hippocampus">2. The Execution Graph (Hippocampus)</h3>
 <p>These blocks are not just stored in a list; they become nodes in a persistent <strong>Directed Acyclic Graph (DAG)</strong>. * <strong>Logical State</strong>: The DAG represents the “Long-Term Memory”. * <strong>localized Processing</strong>: When a new query arrives, the system traverses the graph, retrieving only the connected nodes relevant to the current thought.</p>
 </section>
 <section id="neuro-symbolic-loop-prefrontal-cortex" class="level3">
-<h3 data-anchor-id="neuro-symbolic-loop-prefrontal-cortex">3. Neuro-Symbolic Loop (Prefrontal Cortex)</h3>
+<h3 class="anchored" data-anchor-id="neuro-symbolic-loop-prefrontal-cortex">3. Neuro-Symbolic Loop (Prefrontal Cortex)</h3>
 <p>The reasoning engine is fully decoupled from the storage. * <strong>Retrieval</strong>: A hybrid vector + regex search finds tools. * <strong>Synthesis</strong>: The LLM acts as a temporary processor, generating arguments for tool execution. * <strong>Update</strong>: Tool results are fed back into the Graph as new nodes.</p>
 </section>
 </section>
 <section id="why-this-matters" class="level2">
-<h2 data-anchor-id="why-this-matters">Why This Matters</h2>
+<h2 class="anchored" data-anchor-id="why-this-matters">Why This Matters</h2>
 <p>By offloading the “state” to a graph structure, the LLM allows for <strong>Infinite Context</strong> with constant-time (<span class="math inline">O(k)</span>) retrieval costs. The agent can remember a detail from 1 million tokens ago just as easily as the previous sentence, without clogging its context window.</p>
 <p>This is the foundation of <strong>Sovereign AI</strong>: systems that can run on consumer hardware yet maintain the cognitive continuity of massive cloud clusters.</p>
 
 
 </section>
-</main></div>
-    </div>
-    <img src="featured.svg" class="about-image
-  rounded " style="width: 15em;">
-  </div>
-</div>
- <!-- /main -->
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     

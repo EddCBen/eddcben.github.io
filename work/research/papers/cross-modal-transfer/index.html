@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Charaf Eddine Benarab">
 <meta name="dcterms.date" content="2021-06-01">
 
 <title>What happens if you feed a language model’s embeddings to a vision model? – Charaf Eddine BENARAB</title>
@@ -46,7 +47,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../../site_libs/bootstrap/bootstrap-e3adbaa939bcd423dddc8c8a834270b4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../../site_libs/bootstrap/bootstrap-6cb3b5dde9199b0bae780a942c31b5f1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -205,6 +206,12 @@ window.Quarto = {
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Charaf Eddine Benarab </p>
+          </div>
+  </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
@@ -224,7 +231,7 @@ window.Quarto = {
 <p><em>This post walks through a pre-print from my masters years at UESTC, <a href="https://arxiv.org/abs/2106.12479">“Classifying Textual Data with pretrained Vision Models through Transfer Learning and Data Transformations”</a>. Dated to match when the work was actually done, not when I finally wrote it up.</em></p>
 <section id="the-question" class="level2">
 <h2 class="anchored" data-anchor-id="the-question">The question</h2>
-<p>Vision and language get trained on completely separate diets. ImageNet teaches a network what edges, textures, and object parts look like. BERT teaches a network what words tend to follow other words. Nobody really asks what happens if you force one to eat the other’s food: can the early layers of a network pretrained purely on <strong>images</strong> extract anything useful from a representation of <strong>text</strong> — if you’re willing to be a little violent about turning text into an image first?</p>
+<p>Vision and language get trained on completely separate diets. ImageNet teaches a network what edges, textures, and object parts look like. BERT teaches a network what words tend to follow other words. Nobody really asks what happens if you force one to eat the other’s food.</p>
 <p>That’s the question this project poked at: can the early layers of a network pretrained purely on <strong>images</strong> extract anything useful from a representation of <strong>text</strong> — if you’re willing to be a little violent about turning text into an image first?</p>
 </section>
 <section id="turning-sentences-into-pictures" class="level2">
