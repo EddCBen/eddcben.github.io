@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "Charaf's Blog"
+  title: "Charaf Eddine BENARAB"
   navbar:
     left:
       - href: index.qmd
