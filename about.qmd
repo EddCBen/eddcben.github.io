@@ -11,15 +11,152 @@ about:
       href: mailto:charafeddineben@gmail.com
 ---
 
-I am a researcher specializing in Artificial Intelligence and Computer Science. My work currently focuses on Neuro-Symbolic architectures and the efficiency of Small Language Models (SLMs).
+I am an AI researcher, solutions architect, and consultant specializing in Deep Neural Network architecture design, gradient optimization, and AI product engineering — retrieval-augmented generation, multi-agent execution graphs, and context management for constrained inference environments. My current research centers on neuro-symbolic architectures and context/memory efficiency in Small Language Models (SLMs). I work across both industry engagements and academic research, and welcome collaboration inquiries, particularly around the Cascade Context Protocol.
 
-## Education
+## Timeline
 
-**University of Electronic Science and Technology of China (UESTC)** | Chengdu, China<br>
-*M.Sc. in Computer Science (Computational Intelligence)* | 2019 – 2022
+::: {.timeline}
 
-*   **Advisor**: Professor Gui Shenglin
-*   **Research**: Conducted computational intelligence research focusing on Transformers, NLP, and Deep Learning.
+::: {.timeline-item .milestone}
+::: {.timeline-date}
+2026
+:::
+::: {.timeline-marker}
+:::
+::: {.timeline-content}
+[**Cascade Context Protocol**]{.timeline-title}
 
-**IGEE (formerly INELEC)** | Boumerdes, Algeria<br>
-*B.Eng. in Electrical Engineering* | 2014 – 2018
+[*Independent Research*]{.timeline-org}
+
+- Neuro-symbolic architecture for infinite context via Directed Acyclic Graph state decoupling.
+- Semantic input segmentation, execution-graph topology, and a transparent "glass box" tool-calling loop.
+:::
+:::
+
+::: {.timeline-item .milestone}
+::: {.timeline-date}
+Dec 2024 – Sep 2025
+:::
+::: {.timeline-marker}
+:::
+::: {.timeline-content}
+[**Chief AI Officer (CAIO) & Lead AI Architect**]{.timeline-title}
+
+[*InfinitGraph, USA (Remote Executive Leadership) — Algiers, Algeria*]{.timeline-org}
+
+- Directed the R&D pipeline, driving product design blueprints and engineering benchmarks across multi-agent deployment cycles.
+- Designed and optimized custom algorithms for semantic search, multi-step autonomous reasoning, and high-performance context management.
+- Supervised on-premise open-source LLM deployments with strict runtime parameters for localized model execution.
+- Achieved production-grade benchmark targets using compact open-source models (including 14B-parameter architectures) via standalone software layers for context engineering, dynamic function-calling, and recursive query expansion.
+- Formulated technical validation roadmaps guiding engineering squads through parallelized node execution and API scaling.
+:::
+:::
+
+::: {.timeline-item .milestone}
+::: {.timeline-date}
+Jan 2024 – Nov 2024
+:::
+::: {.timeline-marker}
+:::
+::: {.timeline-content}
+[**AI Advisor & Lead AI Consultant**]{.timeline-title}
+
+[*Qantra.AI & InfinitGraph — Algiers, Algeria*]{.timeline-org}
+
+- Primary strategic liaison between executive leadership and engineering teams, translating AI capabilities into digital transformation roadmaps.
+- Formulated self-hosted architectures for early production RAG platforms and vector search engines.
+- Designed end-to-end data pipelines: raw ingestion, custom document parsing, non-linear chunking, multi-tenant index layouts in Qdrant.
+- Advised client organizations on technical stack selection, hardware footprints, and orchestration layers.
+:::
+:::
+
+::: {.timeline-item .milestone}
+::: {.timeline-date}
+Mar 2023 – Sep 2023
+:::
+::: {.timeline-marker}
+:::
+::: {.timeline-content}
+[**Data Scientist (Theoretical Systems Architect)**]{.timeline-title}
+
+[*BigMama Technologies — Algiers, Algeria*]{.timeline-org}
+
+- Theoretical engineering backbone for flagship products; designed and prototyped foundational execution algorithms.
+- Engineered early text-based reasoning loops and multi-turn state machines on early Llama and optimized GPT-2 topologies.
+- Authored internal technical frameworks defining exploratory testing bounds and core algorithmic assumptions.
+:::
+:::
+
+::: {.timeline-item .milestone}
+::: {.timeline-date}
+Sep 2019 – Jun 2022
+:::
+::: {.timeline-marker}
+:::
+::: {.timeline-content}
+[**AI Researcher (Graduate Fellow)**]{.timeline-title}
+
+[*University of Electronic Science and Technology of China (UESTC) — Chengdu, China*]{.timeline-org}
+
+- Structured academic research within the computational intelligence department under Prof. Gui Shenglin, focused on high-precision Sentiment Analysis and Text Classification.
+- Formulated and trained custom Transformer-based neural topologies minimizing structural information loss.
+- Delivered peer-reviewed publications detailing experimental results and comparative architectural evaluations.
+:::
+:::
+
+::: {.timeline-item .milestone}
+::: {.timeline-date}
+Dec 2019 – Mar 2020
+:::
+::: {.timeline-marker}
+:::
+::: {.timeline-content}
+[**Computer Vision Research Team Lead**]{.timeline-title}
+
+[*Hubei University of Technology — Wuhan, China*]{.timeline-org}
+
+- Technical team lead for an applied computer vision initiative on high-performance Optical Character Recognition (OCR).
+- Directed architecture, training, and deployment of deep learning sub-routines for isolation, segmentation, and structural mapping of handwritten Chinese characters.
+- Supervised a research team through dataset curation and tensor optimization, securing 94% recognition accuracy on complex handwritten character benchmarks.
+:::
+:::
+
+::: {.timeline-item .milestone}
+::: {.timeline-date}
+2019 – 2022
+:::
+::: {.timeline-marker}
+:::
+::: {.timeline-content}
+[**M.Sc. in Computer Science (Computational Intelligence)**]{.timeline-title}
+
+[*University of Electronic Science and Technology of China (UESTC) — GPA 3.84/4.00*]{.timeline-org}
+
+- Advisor: Professor Gui Shenglin.
+- Specialization: Deep Learning, Advanced Machine Learning, Natural Language Processing, Computer Vision.
+:::
+:::
+
+::: {.timeline-item .milestone}
+::: {.timeline-date}
+2014 – 2018
+:::
+::: {.timeline-marker}
+:::
+::: {.timeline-content}
+[**B.Eng. in Electrical Engineering**]{.timeline-title}
+
+[*Institute of Electrical and Electronic Engineering (IGEE / INELEC) — Boumerdes, Algeria*]{.timeline-org}
+:::
+:::
+
+:::
+
+## Selected publications
+
+- [CNN-Enhanced Transformer Encoder Built on Static BERT Representations](https://arxiv.org/abs/2209.06344) — arXiv:2209.06344
+- [Cross-Modal Transfer Learning for Text Classification using Vision Models](https://arxiv.org/abs/2106.12479) — arXiv:2106.12479
+
+## Languages
+
+Arabic (native) · English (full professional proficiency) · French (professional working proficiency)

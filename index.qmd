@@ -8,43 +8,47 @@ title-block-banner: false
 
 # Charaf Eddine Benarab
 
-I build the software layer that sits between a language model and the thing it's supposed to be useful for. Context engineering, retrieval, agent execution graphs, and the deployment plumbing (Docker, FastAPI, Postgres, Neo4j) that turns a checkpoint into something a company can run air-gapped and trust. Based in Algiers, sometimes Kuala Lumpur.
+### AI Researcher · Solutions Architect · Consultant
 
-I got here backwards from most people doing this now: five years in a computational intelligence lab in Chengdu on early Transformers and sentiment analysis, before "prompt engineering" was a phrase anyone used. Small models, frozen backbones, squeezing signal out of representations instead of scaling past them — that habit never really left.
+Artificial Intelligence Consultant and Solutions Architect specializing in low-level Deep Neural Network (DNN) architecture design, gradient optimization, and high-level AI product engineering — retrieval-augmented generation, multi-agent execution graphs, and context management systems for constrained inference environments. Based in Algiers, sometimes Kuala Lumpur.
+
+My work spans two registers that are usually kept apart: **industry engagements** — architecting production RAG systems, agentic execution graphs, and on-premise LLM deployments under real compliance and hardware constraints — and **research and academic work** — Transformer architecture design, cross-modal representation learning, and neuro-symbolic approaches to context and memory, several of which have resulted in peer-reviewed publications. Each register disciplines the other: production constraints keep the research grounded, and the research keeps the production work from calcifying around whatever the current tooling happens to make easy.
 
 [GitHub](https://github.com/eddcben) · [charafeddineben@gmail.com](mailto:charafeddineben@gmail.com)
 
 ---
 
-## Now
+## Current focus
 
-Independent AI consultant. Recently wrapped up as Chief AI Officer at **InfinitGraph**, where I ran the R&D pipeline for an agentic discovery platform and got a 14B open-source model to hit production benchmarks that people usually assume need something much bigger — mostly by not asking the model to do things a deterministic pipeline should be doing instead.
+Independent AI consultant, engaged as Chief AI Officer and Lead AI Architect. Most recently at **InfinitGraph**, where I directed the R&D pipeline for an agentic discovery platform and brought a 14B-parameter open-source model to production-grade benchmark targets typically assumed to require substantially larger models — achieved by displacing capability from the model onto a deterministic software layer around it, rather than by scaling the model itself.
 
-## What I actually work on
+## Technical program
 
-**Context engineering over brute-force scale.** Most of what I build treats the LLM as a stateless reasoning kernel, not a container of memory. Token-budget enforcement, KV-cache tricks, prefix-caching, sliding-window attention — the goal is always the same: get a small model to punch above its parameter count by giving the surrounding software more of the burden.
+**Context engineering as an alternative to scale.** The prevailing assumption in the field is that capability is a direct function of parameter count and compute. My work proceeds from the opposite premise: a language model is a probabilistic kernel embedded in a deterministic protocol, and a substantial share of what looks like "model capability" is properly a property of the surrounding system — token-budget enforcement, dynamic KV-cache management, prefix-caching, sliding-window attention, and structured context compression. Correctly engineered, this lets compact models operate at a fidelity typically reserved for far larger ones.
 
-**Agentic execution graphs.** Stateful multi-agent systems as deterministic DAGs (LangGraph, mostly), with explicit routing and error handling instead of hoping the model self-corrects. If a system's behavior can't be traced node by node, I don't trust it in production.
+**Agentic execution graphs.** Stateful multi-agent systems designed as deterministic Directed Acyclic Graphs (LangGraph and comparable frameworks), with explicit conditional routing, node-level error handling, and parallel traversal. A system whose behavior cannot be audited node by node is not a system I consider production-ready.
 
-**Hybrid retrieval.** RAG that pairs vector search (Qdrant) with symbolic structure (Neo4j knowledge graphs), because pure nearest-neighbor retrieval quietly degrades the moment your corpus has real structure — patents, citations, compliance literature.
+**Hybrid retrieval architectures.** Retrieval-augmented generation combining dense vector search (Qdrant and comparable engines) with symbolic knowledge structures (Neo4j graph databases), on the premise that nearest-neighbor retrieval alone degrades once a corpus has real relational structure — citation graphs, patent families, regulatory hierarchies.
 
-**Air-gapped and on-prem deployment.** A lot of my client work happens under hardware or compliance constraints that rule out hitting a hosted API. That forces good engineering: everything has to run local, cheap, and observable.
+**Sovereign and air-gapped deployment.** A significant share of my engagements operate under infrastructure constraints that preclude hosted inference — regulatory, security, or hardware-driven. This constraint set is generative rather than limiting: it forces architectures that are local, auditable, and cheap to run, which tend to be better-engineered systems regardless of the constraint.
 
-## Career, compressed
+## Career
 
-- **Chief AI Officer, InfinitGraph** (2024–2025) — architecture, benchmarks, and on-prem LLM deployment for a multi-agent research platform.
-- **AI Advisor, Qantra.AI / InfinitGraph** (2024) — self-hosted RAG and vector search architecture for early production clients.
-- **Data Scientist, BigMama Technologies** (2023) — early reasoning loops and multi-turn state machines on Llama and GPT-2-era models.
-- **AI Researcher, UESTC** (2019–2022) — M.Sc., Transformers for sentiment analysis and text classification, under Prof. Gui Shenglin.
-- **CV Research Lead, Hubei University of Technology** (2019–2020) — handwritten Chinese character OCR, 94% recognition accuracy.
+- **Chief AI Officer & Lead AI Architect, InfinitGraph** (2024–2025) — R&D leadership, custom semantic search and reasoning algorithms, on-premise LLM deployment.
+- **AI Advisor & Lead AI Consultant, Qantra.AI / InfinitGraph** (2024) — self-hosted RAG architectures, vector database design, technical stack advisory for enterprise clients.
+- **Data Scientist (Theoretical Systems Architect), BigMama Technologies** (2023) — reasoning loops and multi-turn state machines on early Llama and GPT-2-era architectures.
+- **AI Researcher (Graduate Fellow), UESTC** (2019–2022) — Transformer architectures for sentiment analysis and text classification, under Prof. Gui Shenglin.
+- **Computer Vision Research Team Lead, Hubei University of Technology** (2019–2020) — deep learning pipelines for handwritten Chinese character OCR, 94% recognition accuracy.
 
-Full history on the [about page](about.qmd).
-
-## Writing
-
-I write up the research that doesn't fit in client work — mostly pre-prints from the UESTC years and newer architecture notes on context and memory in small models. See [Research](work/research/index.qmd) and [Projects](work/projects/index.qmd).
+A detailed education and career timeline is available on the [about page](about.qmd).
 
 ## Publications
 
 - [CNN-Enhanced Transformer Encoder Built on Static BERT Representations](https://arxiv.org/abs/2209.06344) — arXiv:2209.06344
 - [Cross-Modal Transfer Learning for Text Classification using Vision Models](https://arxiv.org/abs/2106.12479) — arXiv:2106.12479
+
+Further technical write-ups, including architecture notes on context and memory in small language models, are collected under [Research](work/research/index.qmd) and [Projects](work/projects/index.qmd).
+
+## Collaboration
+
+I welcome inquiries from organizations that require sustained AI leadership — whether as an embedded architect, technical advisor, or fractional Chief AI Officer — as well as research collaborations, particularly around the **Cascade Context Protocol** and related work on context state decoupling in small models. [Get in touch](mailto:charafeddineben@gmail.com).
