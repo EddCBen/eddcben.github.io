@@ -1,0 +1,59 @@
+---
+layout: post
+title: "BERT throws away 11 layers of information at inference time — what if you didn't?"
+date: 2022-09-01
+categories: [research, nlp, transformers]
+tags: [bert, transformer, cnn, text-classification]
+paper: "https://arxiv.org/abs/2209.06344"
+---
+
+*Second pre-print from the UESTC years,
+["CNN-Enhanced Transformer Encoder Built on Static BERT Representations"](https://arxiv.org/abs/2209.06344).
+Follows directly from the cross-modal transfer work — same underlying
+question about what BERT's intermediate layers actually carry, taken in a
+more useful direction.*
+
+Almost every downstream classifier built on top of BERT takes the last
+layer's `[CLS]` token, throws a linear head on it, fine-tunes the whole
+stack. It works, but eleven of BERT's twelve layers get treated as
+scaffolding discarded the moment the last one is reached — and probing
+work on what different BERT layers encode suggests that's a real waste.
+
+### The idea: stop throwing layers away, and stop fine-tuning
+
+CNN-Trans-Enc keeps BERT completely frozen — no fine-tuning, which matters
+when you don't have the compute budget to fine-tune a 110M-parameter model
+on every downstream task — and pulls the `[CLS]` representation from
+**every layer**, not just the last.
+
+A standard Transformer encoder builds its Query/Key/Value tensors with
+linear projections. Here, those linear projections are replaced with
+**convolutional** ones, applied across the stacked per-layer `[CLS]`
+representations. Instead of one static snapshot of "what BERT thinks," the
+model gets a small convolutional receptive field sliding across BERT's own
+depth, and QKV maps get built from *local patterns across layers*, not
+from a single layer in isolation.
+
+### Results
+
+Tested across IMDB, SST-5, YELP-5, Amazon-Polarity, AG News, and
+DBPedia-14, evaluated with k-fold cross-validation on million-sample
+subsets. Headline numbers: **98.9%** of then-state-of-the-art on IMDB and
+**94.8%** on SST-5 without any BERT fine-tuning at all, a new top result
+on YELP-5, and near-SOTA on AG News and DBPedia-14.
+
+The YELP-5 result is the one worth sitting with — ahead of prior
+*fine-tuned* baselines on that dataset, with a frozen backbone. A fairly
+direct argument that a meaningful chunk of what fine-tuning buys you was
+already sitting in BERT's intermediate layers, just inaccessible to a
+classifier that only ever looks at the last one.
+
+### Why this mattered for what came after
+
+Direct precursor to how I think about context and inference budgets now:
+frozen backbones, no retraining, extracting more signal from
+representations you already have rather than paying for more compute.
+Same instinct, later pointed at agentic systems and air-gapped deployments
+instead of sentiment classifiers.
+
+Code and reproduction steps: [github.com/EddCBen](https://github.com/EddCBen).

@@ -1,0 +1,64 @@
+---
+layout: post
+title: "What happens if you feed a language model's embeddings to a vision model?"
+date: 2021-06-01
+categories: [research, nlp, computer-vision]
+tags: [transfer-learning, bert, cnn, imagenet, t-sne]
+paper: "https://arxiv.org/abs/2106.12479"
+---
+
+*This post walks through a pre-print from my masters years at UESTC,
+["Classifying Textual Data with pretrained Vision Models through Transfer
+Learning and Data Transformations"](https://arxiv.org/abs/2106.12479).
+Dated to match when the work was actually done, not when I finally wrote it up.*
+
+Vision and language get trained on completely separate diets. ImageNet
+teaches a network what edges, textures, and object parts look like. BERT
+teaches a network what words tend to follow other words. Nobody really
+asks what happens if you force one to eat the other's food.
+
+That's the question this project poked at: can the early layers of a
+network pretrained purely on **images** extract anything useful from a
+representation of **text** — if you're willing to be a little violent about
+turning text into an image first?
+
+### Turning sentences into pictures
+
+The pipeline starts with BERT. For every sentence in IMDB, I pulled the
+`[CLS]` token embedding from the last six layers and stacked them into a
+single `[6 x 768]` vector — six different "opinions" the model has about
+the same sentence, one per layer, rather than just the usual last-layer
+representation everyone defaults to.
+
+Then the vector stops being a sequence and becomes a spatial layout: run a
+t-SNE projection (the same idea behind DeepInsight, adapted here for text)
+over the transposed feature matrix so that *features*, not samples, get
+placed on a 2D plane by similarity. Wrap a convex hull around the point
+cloud, rotate it flat, and you have coordinates. Map each feature's value
+onto its coordinate, average collisions, and out comes a 50×50 grayscale
+image — one per sentence, 50,000 of them for the full IMDB set.
+
+### Then hand it to ImageNet's early layers
+
+Five pretrained vision backbones — AlexNet, ResNet, ResNeXt, ShuffleNetV2,
+VGG16 — each got sliced down to just their first couple of convolutional
+blocks and frozen. Those frozen slices fed into a small convolutional
+autoencoder and a three-layer classifier, identical across all five runs so
+the only variable was which pretrained features were doing the looking.
+
+Z-normalizing the images sharpened edges enough that the frozen filters
+picked up *something*: blobs, gradients, boundary-like structures in the
+activation maps, even though nothing in those filters had ever seen
+anything resembling text.
+
+### What actually happened
+
+All five models converged to nearly identical validation accuracy
+(0.85–0.87) despite wildly different numbers of output feature maps and
+learning rates. That convergence is the interesting result — it suggests
+the *general* features early conv layers extract are general enough to
+transfer even across a domain gap this severe, echoing what Yosinski et al.
+found about early-layer transferability, just pushed into a much stranger
+corner of representation space than anyone had tried.
+
+Code and reproduction steps: [github.com/EddCBen](https://github.com/EddCBen).
