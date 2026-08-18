@@ -1,6 +1,7 @@
 ---
 title: "BERT throws away 11 layers of information at inference time — what if you didn't?"
 subtitle: "A CNN-enhanced Transformer encoder built entirely on frozen, per-layer BERT representations"
+author: "Charaf Eddine Benarab"
 date: "2022-09-01"
 categories: [Research, NLP, Transformers]
 format:

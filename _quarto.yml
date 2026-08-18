@@ -28,5 +28,10 @@ format:
     code-fold: true
     smooth-scroll: true
     html-math-method: katex
+    grid:
+      body-width: 1150px
+      sidebar-width: 220px
+      margin-width: 220px
+      gutter-width: 2em
     mermaid:
       theme: default

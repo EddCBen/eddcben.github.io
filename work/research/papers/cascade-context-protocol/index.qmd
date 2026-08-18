@@ -1,6 +1,9 @@
 ---
 title: "Cascade Context Protocol"
 subtitle: "A Neuro-Symbolic Architecture for Infinite Context"
+author:
+  - name: "Charaf Eddine Benarab"
+    affiliation: "Arkiom Research"
 date: "2026-08-18"
 categories: [Research, Architecture, Agentic Systems, Air-Gapped]
 format:
@@ -10,9 +13,6 @@ format:
     mermaid:
       theme: default
 ---
-
-**C Eddine Benarab**
-*Arkiom Research*
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)

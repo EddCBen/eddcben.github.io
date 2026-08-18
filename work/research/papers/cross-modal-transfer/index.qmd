@@ -1,6 +1,7 @@
 ---
 title: "What happens if you feed a language model's embeddings to a vision model?"
 subtitle: "Cross-modal transfer learning between frozen ImageNet backbones and BERT text representations"
+author: "Charaf Eddine Benarab"
 date: "2021-06-01"
 categories: [Research, NLP, Computer Vision]
 format:
@@ -19,10 +20,7 @@ Dated to match when the work was actually done, not when I finally wrote it up.*
 Vision and language get trained on completely separate diets. ImageNet
 teaches a network what edges, textures, and object parts look like. BERT
 teaches a network what words tend to follow other words. Nobody really
-asks what happens if you force one to eat the other's food: can the early
-layers of a network pretrained purely on **images** extract anything
-useful from a representation of **text** — if you're willing to be a
-little violent about turning text into an image first?
+asks what happens if you force one to eat the other's food.
 
 That's the question this project poked at: can the early layers of a
 network pretrained purely on **images** extract anything useful from a

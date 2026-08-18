@@ -1,17 +1,13 @@
 ---
 title: "Charaf Eddine BENARAB"
-about:
-  template: trestles
-  links:
-    - icon: github
-      text: Github
-      href: https://github.com/eddcben
-    - icon: envelope
-      text: charafeddineben@gmail.com
-      href: mailto:charafeddineben@gmail.com
+subtitle: "AI Researcher · Solutions Architect · Consultant"
+author: "Charaf Eddine Benarab"
+toc: true
 ---
 
 I am an AI researcher, solutions architect, and consultant specializing in Deep Neural Network architecture design, gradient optimization, and AI product engineering — retrieval-augmented generation, multi-agent execution graphs, and context management for constrained inference environments. My current research centers on neuro-symbolic architectures and context/memory efficiency in Small Language Models (SLMs). I work across both industry engagements and academic research, and welcome collaboration inquiries, particularly around the Cascade Context Protocol.
+
+[GitHub](https://github.com/eddcben) · [charafeddineben@gmail.com](mailto:charafeddineben@gmail.com)
 
 ## Timeline
 

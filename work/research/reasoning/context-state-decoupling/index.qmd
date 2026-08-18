@@ -1,6 +1,7 @@
 ---
 title: "Context State Decoupling: A Neuro-Symbolic Approach to Infinite Context"
 subtitle: "Dissociating Logical State from Ephemeral Inference in Small Language Models"
+author: "Charaf Eddine Benarab"
 date: "2026-01-04"
 categories: [Research, Architecture, Neuro-Symbolic AI, SLM]
 format:
