@@ -2,8 +2,8 @@
 layout: post
 title: "Cascade Context Protocol"
 date: 2026-08-18
-categories: [research, agentic-systems, air-gapped]
-tags: [context-engineering, multi-agent, air-gapped, execution-graphs]
+categories: [Research]
+tags: [Research, Architecture, Agentic Systems, Air-Gapped]
 repo: "https://github.com/EddCBen/cascade-context-protocol"
 ---
 

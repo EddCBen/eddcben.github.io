@@ -1,9 +1,10 @@
 ---
 layout: post
 title: "What happens if you feed a language model's embeddings to a vision model?"
+subtitle: "Cross-modal transfer learning between frozen ImageNet backbones and BERT text representations"
 date: 2021-06-01
-categories: [research, nlp, computer-vision]
-tags: [transfer-learning, bert, cnn, imagenet, t-sne]
+categories: [Research]
+tags: [Research, NLP, Computer Vision]
 paper: "https://arxiv.org/abs/2106.12479"
 ---
 
