@@ -8,7 +8,9 @@
   {
     "listing": "/work/research/index.html",
     "items": [
-      "/work/research/reasoning/context-state-decoupling/index.html"
+      "/work/research/reasoning/context-state-decoupling/index.html",
+      "/work/research/reasoning/cnn-enhanced-transformer-encoder-bert/index.html",
+      "/work/research/reasoning/cross-modal-transfer-vision-text/index.html"
     ]
   }
 ]

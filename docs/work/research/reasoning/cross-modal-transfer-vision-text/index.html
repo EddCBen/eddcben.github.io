@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2021-06-01">
 
-<title>Charaf’s Blog - Projects</title>
+<title>Charaf’s Blog - What Happens If You Feed a Language Model’s Embeddings to a Vision Model?</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +24,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-listing/list.min.js"></script>
-<script src="../../site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../../">
+<script src="../../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,35 +67,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-subtitle','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-subtitle","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <style>html{ scroll-behavior: smooth; }</style>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
@@ -143,17 +113,17 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../../../../styles.css">
 </head>
 
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../../../../index.html">
     <span class="navbar-title">Charaf’s Blog</span>
     </a>
   </div>
@@ -164,19 +134,19 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
+    <a class="nav-link" href="../../../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html"> 
+    <a class="nav-link" href="../../../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../work/research/index.html"> 
+    <a class="nav-link" href="../../../../work/research/index.html"> 
 <span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../../work/projects/index.html" aria-current="page"> 
+    <a class="nav-link" href="../../../../work/projects/index.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
 </ul>
@@ -194,82 +164,84 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Projects</h1>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta column-page-left">
-
-      
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Architecture">Architecture <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Neuro-Symbolic">Neuro-Symbolic <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Python">Python <span class="quarto-category-count">(1)</span></div></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#the-question" id="toc-the-question" class="nav-link active" data-scroll-target="#the-question">The question</a></li>
+  <li><a href="#turning-sentences-into-pictures" id="toc-turning-sentences-into-pictures" class="nav-link" data-scroll-target="#turning-sentences-into-pictures">Turning sentences into pictures</a></li>
+  <li><a href="#then-hand-it-to-imagenets-early-layers" id="toc-then-hand-it-to-imagenets-early-layers" class="nav-link" data-scroll-target="#then-hand-it-to-imagenets-early-layers">Then hand it to ImageNet’s early layers</a></li>
+  <li><a href="#what-actually-happened" id="toc-what-actually-happened" class="nav-link" data-scroll-target="#what-actually-happened">What actually happened</a></li>
+  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference">Reference</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">What Happens If You Feed a Language Model’s Embeddings to a Vision Model?</h1>
+<p class="subtitle lead">Cross-modal transfer learning between frozen ImageNet backbones and BERT text representations</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Research</div>
+    <div class="quarto-category">NLP</div>
+    <div class="quarto-category">Computer Vision</div>
+  </div>
+  </div>
 
 
 
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 1, 2021</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><em>This post walks through a pre-print from my masters years at UESTC, <a href="https://arxiv.org/abs/2106.12479">“Classifying Textual Data with pretrained Vision Models through Transfer Learning and Data Transformations”</a>. Dated to match when the work was actually done, not when I finally wrote it up.</em></p>
+<section id="the-question" class="level2">
+<h2 class="anchored" data-anchor-id="the-question">The question</h2>
+<p>Vision and language get trained on completely separate diets. ImageNet teaches a network what edges, textures, and object parts look like. BERT teaches a network what words tend to follow other words. Nobody really asks what happens if you force one to eat the other’s food: can the early layers of a network pretrained purely on <strong>images</strong> extract anything useful from a representation of <strong>text</strong> — if you’re willing to be a little violent about turning text into an image first?</p>
+</section>
+<section id="turning-sentences-into-pictures" class="level2">
+<h2 class="anchored" data-anchor-id="turning-sentences-into-pictures">Turning sentences into pictures</h2>
+<p>The pipeline starts with BERT. For every sentence in IMDB, I pulled the <code>[CLS]</code> token embedding from the last six layers and stacked them into a single <span class="math inline">6 \times 768</span> vector — six different “opinions” the model has about the same sentence, one per layer, rather than just the usual last-layer representation everyone defaults to.</p>
+<p>Then the vector stops being a sequence and becomes a spatial layout: run a t-SNE projection (the same idea behind DeepInsight, adapted here for text) over the transposed feature matrix so that <em>features</em>, not samples, get placed on a 2D plane by similarity. Wrap a convex hull around the point cloud, rotate it flat, and you have coordinates. Map each feature’s value onto its coordinate, average collisions, and out comes a 50×50 grayscale image — one per sentence, 50,000 of them for the full IMDB set.</p>
+</section>
+<section id="then-hand-it-to-imagenets-early-layers" class="level2">
+<h2 class="anchored" data-anchor-id="then-hand-it-to-imagenets-early-layers">Then hand it to ImageNet’s early layers</h2>
+<p>Five pretrained vision backbones — AlexNet, ResNet, ResNeXt, ShuffleNetV2, VGG16 — each got sliced down to just their first couple of convolutional blocks and frozen. Those frozen slices fed into a small convolutional autoencoder and a three-layer classifier, identical across all five runs so the only variable was which pretrained features were doing the looking.</p>
+<p>Z-normalizing the images sharpened edges enough that the frozen filters picked up <em>something</em>: blobs, gradients, boundary-like structures in the activation maps, even though nothing in those filters had ever seen anything resembling text.</p>
+</section>
+<section id="what-actually-happened" class="level2">
+<h2 class="anchored" data-anchor-id="what-actually-happened">What actually happened</h2>
+<p>All five models converged to nearly identical validation accuracy (0.85–0.87) despite wildly different numbers of output feature maps and learning rates. That convergence is the interesting result — it suggests the <em>general</em> features early conv layers extract are general enough to transfer even across a domain gap this severe, echoing what Yosinski et al.&nbsp;found about early-layer transferability, just pushed into a much stranger corner of representation space than anyone had tried.</p>
+</section>
+<section id="reference" class="level2">
+<h2 class="anchored" data-anchor-id="reference">Reference</h2>
+<p>Code and reproduction steps: <a href="https://github.com/EddCBen">github.com/EddCBen</a>. Full pre-print: <a href="https://arxiv.org/abs/2106.12479">arXiv:2106.12479</a>.</p>
 
 
 
+</section>
 
-
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="Architecture,Python,Neuro-Symbolic" data-listing-date-sort="1765321200000" data-listing-file-modified-sort="1787063329317" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="311">
-<div class="thumbnail">
-<p><a href="../../work/projects/cascade-context-protocol/index.html" class="no-external"></a></p><a href="../../work/projects/cascade-context-protocol/index.html" class="no-external">
-<p><img src="../../work/projects/cascade-context-protocol/featured.svg" class="thumbnail-image"></p>
-</a><p><a href="../../work/projects/cascade-context-protocol/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../../work/projects/cascade-context-protocol/index.html" class="no-external">Cascade Context Protocol</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../../work/projects/cascade-context-protocol/index.html" class="no-external">A Neuro-Symbolic Architecture for Infinite Context</a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Architecture'); return false;">
-Architecture
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Python'); return false;">
-Python
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Neuro-Symbolic'); return false;">
-Neuro-Symbolic
-</div>
-</div>
-<div class="listing-description">
-<a href="../../work/projects/cascade-context-protocol/index.html" class="no-external">In the current landscape of Large Language Models, “intelligence” is strictly bound by the context window. To reason about a sequence, the model must hold every token in…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="../../work/projects/cascade-context-protocol/index.html" class="no-external">
-<div class="listing-date">
-Dec 10, 2025
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -662,5 +634,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../../../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

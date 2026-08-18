@@ -21,11 +21,53 @@
     "text": "Cascade Context Protocol\n\n\nA Neuro-Symbolic Architecture for Infinite Context\n\n\n\nArchitecture\n\n\nPython\n\n\nNeuro-Symbolic\n\n\n\n\n\n\n\n\n\nDec 10, 2025\n\n\n\n\n\n\nNo matching items"
   },
   {
+    "objectID": "work/research/reasoning/cross-modal-transfer-vision-text/index.html",
+    "href": "work/research/reasoning/cross-modal-transfer-vision-text/index.html",
+    "title": "What Happens If You Feed a Language Model’s Embeddings to a Vision Model?",
+    "section": "",
+    "text": "This post walks through a pre-print from my masters years at UESTC, “Classifying Textual Data with pretrained Vision Models through Transfer Learning and Data Transformations”. Dated to match when the work was actually done, not when I finally wrote it up."
+  },
+  {
+    "objectID": "work/research/reasoning/cross-modal-transfer-vision-text/index.html#the-question",
+    "href": "work/research/reasoning/cross-modal-transfer-vision-text/index.html#the-question",
+    "title": "What Happens If You Feed a Language Model’s Embeddings to a Vision Model?",
+    "section": "The question",
+    "text": "The question\nVision and language get trained on completely separate diets. ImageNet teaches a network what edges, textures, and object parts look like. BERT teaches a network what words tend to follow other words. Nobody really asks what happens if you force one to eat the other’s food: can the early layers of a network pretrained purely on images extract anything useful from a representation of text — if you’re willing to be a little violent about turning text into an image first?"
+  },
+  {
+    "objectID": "work/research/reasoning/cross-modal-transfer-vision-text/index.html#turning-sentences-into-pictures",
+    "href": "work/research/reasoning/cross-modal-transfer-vision-text/index.html#turning-sentences-into-pictures",
+    "title": "What Happens If You Feed a Language Model’s Embeddings to a Vision Model?",
+    "section": "Turning sentences into pictures",
+    "text": "Turning sentences into pictures\nThe pipeline starts with BERT. For every sentence in IMDB, I pulled the [CLS] token embedding from the last six layers and stacked them into a single 6 \\times 768 vector — six different “opinions” the model has about the same sentence, one per layer, rather than just the usual last-layer representation everyone defaults to.\nThen the vector stops being a sequence and becomes a spatial layout: run a t-SNE projection (the same idea behind DeepInsight, adapted here for text) over the transposed feature matrix so that features, not samples, get placed on a 2D plane by similarity. Wrap a convex hull around the point cloud, rotate it flat, and you have coordinates. Map each feature’s value onto its coordinate, average collisions, and out comes a 50×50 grayscale image — one per sentence, 50,000 of them for the full IMDB set."
+  },
+  {
+    "objectID": "work/research/reasoning/cross-modal-transfer-vision-text/index.html#then-hand-it-to-imagenets-early-layers",
+    "href": "work/research/reasoning/cross-modal-transfer-vision-text/index.html#then-hand-it-to-imagenets-early-layers",
+    "title": "What Happens If You Feed a Language Model’s Embeddings to a Vision Model?",
+    "section": "Then hand it to ImageNet’s early layers",
+    "text": "Then hand it to ImageNet’s early layers\nFive pretrained vision backbones — AlexNet, ResNet, ResNeXt, ShuffleNetV2, VGG16 — each got sliced down to just their first couple of convolutional blocks and frozen. Those frozen slices fed into a small convolutional autoencoder and a three-layer classifier, identical across all five runs so the only variable was which pretrained features were doing the looking.\nZ-normalizing the images sharpened edges enough that the frozen filters picked up something: blobs, gradients, boundary-like structures in the activation maps, even though nothing in those filters had ever seen anything resembling text."
+  },
+  {
+    "objectID": "work/research/reasoning/cross-modal-transfer-vision-text/index.html#what-actually-happened",
+    "href": "work/research/reasoning/cross-modal-transfer-vision-text/index.html#what-actually-happened",
+    "title": "What Happens If You Feed a Language Model’s Embeddings to a Vision Model?",
+    "section": "What actually happened",
+    "text": "What actually happened\nAll five models converged to nearly identical validation accuracy (0.85–0.87) despite wildly different numbers of output feature maps and learning rates. That convergence is the interesting result — it suggests the general features early conv layers extract are general enough to transfer even across a domain gap this severe, echoing what Yosinski et al. found about early-layer transferability, just pushed into a much stranger corner of representation space than anyone had tried."
+  },
+  {
+    "objectID": "work/research/reasoning/cross-modal-transfer-vision-text/index.html#reference",
+    "href": "work/research/reasoning/cross-modal-transfer-vision-text/index.html#reference",
+    "title": "What Happens If You Feed a Language Model’s Embeddings to a Vision Model?",
+    "section": "Reference",
+    "text": "Reference\nCode and reproduction steps: github.com/EddCBen. Full pre-print: arXiv:2106.12479."
+  },
+  {
     "objectID": "work/research/index.html",
     "href": "work/research/index.html",
     "title": "Research",
     "section": "",
-    "text": "Context State Decoupling: A Neuro-Symbolic Approach to Infinite Context\n\n\nDissociating Logical State from Ephemeral Inference in Small Language Models\n\n\n\nResearch\n\n\nArchitecture\n\n\nNeuro-Symbolic AI\n\n\nSLM\n\n\n\n\n\n\n\n\n\nJan 4, 2026\n\n\n\n\n\n\nNo matching items"
+    "text": "Context State Decoupling: A Neuro-Symbolic Approach to Infinite Context\n\n\nDissociating Logical State from Ephemeral Inference in Small Language Models\n\n\n\nResearch\n\n\nArchitecture\n\n\nNeuro-Symbolic AI\n\n\nSLM\n\n\n\n\n\n\n\n\n\nJan 4, 2026\n\n\n\n\n\n\n\nBERT Throws Away 11 Layers of Information at Inference Time — What If You Didn’t?\n\n\nA CNN-enhanced Transformer encoder built entirely on frozen, per-layer BERT representations\n\n\n\nResearch\n\n\nNLP\n\n\nTransformers\n\n\n\n\n\n\n\n\n\nSep 1, 2022\n\n\n\n\n\n\n\nWhat Happens If You Feed a Language Model’s Embeddings to a Vision Model?\n\n\nCross-modal transfer learning between frozen ImageNet backbones and BERT text representations\n\n\n\nResearch\n\n\nNLP\n\n\nComputer Vision\n\n\n\n\n\n\n\n\n\nJun 1, 2021\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "work/research/reasoning/context-state-decoupling/index.html",
@@ -96,6 +138,48 @@
     "title": "Context State Decoupling: A Neuro-Symbolic Approach to Infinite Context",
     "section": "References",
     "text": "References\n\nLiu, N. F., et al. (2024). Lost in the Middle: How Language Models Use Long Contexts. arXiv preprint.\nPacker, C., et al. (2023). MemGPT: Towards LLMs as Operating Systems. arXiv:2310.08560.\nEdge, D., et al. (2024). From Local to Global: A Graph RAG Approach to Query-Focused Summarization. Microsoft Research."
+  },
+  {
+    "objectID": "work/research/reasoning/cnn-enhanced-transformer-encoder-bert/index.html",
+    "href": "work/research/reasoning/cnn-enhanced-transformer-encoder-bert/index.html",
+    "title": "BERT Throws Away 11 Layers of Information at Inference Time — What If You Didn’t?",
+    "section": "",
+    "text": "Second pre-print from the UESTC years, “CNN-Enhanced Transformer Encoder Built on Static BERT Representations”. Follows directly from the cross-modal transfer work — same underlying question about what BERT’s intermediate layers actually carry, taken in a more useful direction."
+  },
+  {
+    "objectID": "work/research/reasoning/cnn-enhanced-transformer-encoder-bert/index.html#the-waste-in-the-standard-pipeline",
+    "href": "work/research/reasoning/cnn-enhanced-transformer-encoder-bert/index.html#the-waste-in-the-standard-pipeline",
+    "title": "BERT Throws Away 11 Layers of Information at Inference Time — What If You Didn’t?",
+    "section": "The waste in the standard pipeline",
+    "text": "The waste in the standard pipeline\nAlmost every downstream classifier built on top of BERT takes the last layer’s [CLS] token, throws a linear head on it, fine-tunes the whole stack. It works, but eleven of BERT’s twelve layers get treated as scaffolding discarded the moment the last one is reached — and probing work on what different BERT layers encode suggests that’s a real waste."
+  },
+  {
+    "objectID": "work/research/reasoning/cnn-enhanced-transformer-encoder-bert/index.html#the-idea-stop-throwing-layers-away-and-stop-fine-tuning",
+    "href": "work/research/reasoning/cnn-enhanced-transformer-encoder-bert/index.html#the-idea-stop-throwing-layers-away-and-stop-fine-tuning",
+    "title": "BERT Throws Away 11 Layers of Information at Inference Time — What If You Didn’t?",
+    "section": "The idea: stop throwing layers away, and stop fine-tuning",
+    "text": "The idea: stop throwing layers away, and stop fine-tuning\nCNN-Trans-Enc keeps BERT completely frozen — no fine-tuning, which matters when you don’t have the compute budget to fine-tune a 110M-parameter model on every downstream task — and pulls the [CLS] representation from every layer, not just the last.\nA standard Transformer encoder builds its Query/Key/Value tensors with linear projections. Here, those linear projections are replaced with convolutional ones, applied across the stacked per-layer [CLS] representations. Instead of one static snapshot of “what BERT thinks,” the model gets a small convolutional receptive field sliding across BERT’s own depth, and QKV maps get built from local patterns across layers, not from a single layer in isolation."
+  },
+  {
+    "objectID": "work/research/reasoning/cnn-enhanced-transformer-encoder-bert/index.html#results",
+    "href": "work/research/reasoning/cnn-enhanced-transformer-encoder-bert/index.html#results",
+    "title": "BERT Throws Away 11 Layers of Information at Inference Time — What If You Didn’t?",
+    "section": "Results",
+    "text": "Results\nTested across IMDB, SST-5, YELP-5, Amazon-Polarity, AG News, and DBPedia-14, evaluated with k-fold cross-validation on million-sample subsets. Headline numbers: 98.9% of then-state-of-the-art on IMDB and 94.8% on SST-5 without any BERT fine-tuning at all, a new top result on YELP-5, and near-SOTA on AG News and DBPedia-14.\nThe YELP-5 result is the one worth sitting with — ahead of prior fine-tuned baselines on that dataset, with a frozen backbone. A fairly direct argument that a meaningful chunk of what fine-tuning buys you was already sitting in BERT’s intermediate layers, just inaccessible to a classifier that only ever looks at the last one."
+  },
+  {
+    "objectID": "work/research/reasoning/cnn-enhanced-transformer-encoder-bert/index.html#why-this-mattered-for-what-came-after",
+    "href": "work/research/reasoning/cnn-enhanced-transformer-encoder-bert/index.html#why-this-mattered-for-what-came-after",
+    "title": "BERT Throws Away 11 Layers of Information at Inference Time — What If You Didn’t?",
+    "section": "Why this mattered for what came after",
+    "text": "Why this mattered for what came after\nDirect precursor to how I think about context and inference budgets now: frozen backbones, no retraining, extracting more signal from representations you already have rather than paying for more compute. Same instinct, later pointed at agentic systems and air-gapped deployments instead of sentiment classifiers."
+  },
+  {
+    "objectID": "work/research/reasoning/cnn-enhanced-transformer-encoder-bert/index.html#reference",
+    "href": "work/research/reasoning/cnn-enhanced-transformer-encoder-bert/index.html#reference",
+    "title": "BERT Throws Away 11 Layers of Information at Inference Time — What If You Didn’t?",
+    "section": "Reference",
+    "text": "Reference\nCode and reproduction steps: github.com/EddCBen. Full pre-print: arXiv:2209.06344."
   },
   {
     "objectID": "work/projects/cascade-context-protocol/index.html",

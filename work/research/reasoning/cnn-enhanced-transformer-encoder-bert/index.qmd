@@ -1,11 +1,13 @@
 ---
-layout: post
-title: "BERT throws away 11 layers of information at inference time — what if you didn't?"
+title: "BERT Throws Away 11 Layers of Information at Inference Time — What If You Didn't?"
 subtitle: "A CNN-enhanced Transformer encoder built entirely on frozen, per-layer BERT representations"
-date: 2022-09-01
-categories: [Research]
-tags: [Research, NLP, Transformers]
-paper: "https://arxiv.org/abs/2209.06344"
+date: "2022-09-01"
+categories: [Research, NLP, Transformers]
+format:
+  html:
+    toc: true
+    code-fold: true
+    math: true
 ---
 
 *Second pre-print from the UESTC years,
@@ -14,13 +16,15 @@ Follows directly from the cross-modal transfer work — same underlying
 question about what BERT's intermediate layers actually carry, taken in a
 more useful direction.*
 
+## The waste in the standard pipeline
+
 Almost every downstream classifier built on top of BERT takes the last
 layer's `[CLS]` token, throws a linear head on it, fine-tunes the whole
 stack. It works, but eleven of BERT's twelve layers get treated as
 scaffolding discarded the moment the last one is reached — and probing
 work on what different BERT layers encode suggests that's a real waste.
 
-### The idea: stop throwing layers away, and stop fine-tuning
+## The idea: stop throwing layers away, and stop fine-tuning
 
 CNN-Trans-Enc keeps BERT completely frozen — no fine-tuning, which matters
 when you don't have the compute budget to fine-tune a 110M-parameter model
@@ -35,7 +39,7 @@ model gets a small convolutional receptive field sliding across BERT's own
 depth, and QKV maps get built from *local patterns across layers*, not
 from a single layer in isolation.
 
-### Results
+## Results
 
 Tested across IMDB, SST-5, YELP-5, Amazon-Polarity, AG News, and
 DBPedia-14, evaluated with k-fold cross-validation on million-sample
@@ -49,7 +53,7 @@ direct argument that a meaningful chunk of what fine-tuning buys you was
 already sitting in BERT's intermediate layers, just inaccessible to a
 classifier that only ever looks at the last one.
 
-### Why this mattered for what came after
+## Why this mattered for what came after
 
 Direct precursor to how I think about context and inference budgets now:
 frozen backbones, no retraining, extracting more signal from
@@ -57,4 +61,7 @@ representations you already have rather than paying for more compute.
 Same instinct, later pointed at agentic systems and air-gapped deployments
 instead of sentiment classifiers.
 
+## Reference
+
 Code and reproduction steps: [github.com/EddCBen](https://github.com/EddCBen).
+Full pre-print: [arXiv:2209.06344](https://arxiv.org/abs/2209.06344).
