@@ -103,3 +103,82 @@ a {
   max-width: 1100px;
   mix-blend-mode: normal !important; /* SVG is transparent */
 }
+
+/* Timeline component (About page) */
+.timeline {
+  position: relative;
+  max-width: 900px;
+  margin: 2rem 0 3rem 0;
+  padding-left: 0;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 0.4rem;
+  bottom: 0.4rem;
+  left: 148px;
+  width: 2px;
+  background: #d8d8d8;
+}
+.timeline-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 130px 36px 1fr;
+  column-gap: 0;
+  margin-bottom: 2.1rem;
+}
+.timeline-date {
+  text-align: right;
+  padding-right: 1.1rem;
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+  color: #555;
+  line-height: 1.4;
+  padding-top: 0.15rem;
+}
+.timeline-marker {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.timeline-marker::before {
+  content: "";
+  position: absolute;
+  top: 0.3rem;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #444;
+  z-index: 1;
+}
+.timeline-item.milestone .timeline-marker::before {
+  background: #444;
+}
+.timeline-content {
+  padding-left: 0.9rem;
+  padding-bottom: 0.2rem;
+}
+.timeline-content .timeline-title {
+  font-weight: 600;
+  margin-bottom: 0.15rem;
+}
+.timeline-content .timeline-org {
+  font-style: italic;
+  color: #444;
+  margin-bottom: 0.35rem;
+}
+.timeline-content ul {
+  margin-top: 0.3rem;
+  margin-bottom: 0;
+  padding-left: 1.1rem;
+}
+.timeline-content ul li {
+  font-size: 0.95rem;
+  margin-bottom: 0.2rem;
+}
+@media (max-width: 640px) {
+  .timeline::before { left: 60px; }
+  .timeline-item { grid-template-columns: 50px 30px 1fr; }
+  .timeline-date { font-size: 0.75rem; padding-right: 0.5rem; }
+}
