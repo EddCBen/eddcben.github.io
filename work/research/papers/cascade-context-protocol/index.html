@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2026-08-18">
+
+<title>Cascade Context Protocol – Charaf’s Blog</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../../">
+<script src="../../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../../site_libs/bootstrap/bootstrap-e3adbaa939bcd423dddc8c8a834270b4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<meta name="mermaid-theme" content="default">
+<script src="../../../../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../../../../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../../../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../../../index.html">
+    <span class="navbar-title">Charaf’s Blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../work/research/index.html"> 
+<span class="menu-text">Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../work/projects/index.html"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/eddcben"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#abstract" id="toc-abstract" class="nav-link active" data-scroll-target="#abstract">1. Abstract</a></li>
+  <li><a href="#introduction-the-linear-bottleneck" id="toc-introduction-the-linear-bottleneck" class="nav-link" data-scroll-target="#introduction-the-linear-bottleneck">2. Introduction: The Linear Bottleneck</a></li>
+  <li><a href="#methodology" id="toc-methodology" class="nav-link" data-scroll-target="#methodology">3. Methodology</a>
+  <ul class="collapse">
+  <li><a href="#semantic-input-segmentation" id="toc-semantic-input-segmentation" class="nav-link" data-scroll-target="#semantic-input-segmentation">3.1 Semantic Input Segmentation</a></li>
+  <li><a href="#the-execution-graph-topology" id="toc-the-execution-graph-topology" class="nav-link" data-scroll-target="#the-execution-graph-topology">3.2 The Execution Graph (Topology)</a></li>
+  <li><a href="#neuro-symbolic-function-calling" id="toc-neuro-symbolic-function-calling" class="nav-link" data-scroll-target="#neuro-symbolic-function-calling">3.3 Neuro-Symbolic Function Calling</a></li>
+  <li><a href="#block-transformation-input-to-output" id="toc-block-transformation-input-to-output" class="nav-link" data-scroll-target="#block-transformation-input-to-output">3.4 Block Transformation (Input to Output)</a></li>
+  </ul></li>
+  <li><a href="#theoretical-framework-infinite-context-via-dynamic-graphing" id="toc-theoretical-framework-infinite-context-via-dynamic-graphing" class="nav-link" data-scroll-target="#theoretical-framework-infinite-context-via-dynamic-graphing">4. Theoretical Framework: Infinite Context via Dynamic Graphing</a>
+  <ul class="collapse">
+  <li><a href="#the-sliding-window-paradox" id="toc-the-sliding-window-paradox" class="nav-link" data-scroll-target="#the-sliding-window-paradox">The Sliding Window Paradox</a></li>
+  <li><a href="#the-graph-solution-state-decoupling" id="toc-the-graph-solution-state-decoupling" class="nav-link" data-scroll-target="#the-graph-solution-state-decoupling">The Graph Solution: State Decoupling</a></li>
+  <li><a href="#future-work-infinite-throughput-via-parallelism" id="toc-future-work-infinite-throughput-via-parallelism" class="nav-link" data-scroll-target="#future-work-infinite-throughput-via-parallelism">4.1 Future Work: Infinite Throughput via Parallelism</a></li>
+  </ul></li>
+  <li><a href="#architecture-data-flow" id="toc-architecture-data-flow" class="nav-link" data-scroll-target="#architecture-data-flow">5. Architecture &amp; Data Flow</a></li>
+  <li><a href="#launch-instructions" id="toc-launch-instructions" class="nav-link" data-scroll-target="#launch-instructions">6. Launch Instructions</a>
+  <ul class="collapse">
+  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites">Prerequisites</a></li>
+  <li><a href="#quick-start" id="toc-quick-start" class="nav-link" data-scroll-target="#quick-start">Quick Start</a></li>
+  <li><a href="#scientific-verification-the-dashboard" id="toc-scientific-verification-the-dashboard" class="nav-link" data-scroll-target="#scientific-verification-the-dashboard">Scientific Verification (The Dashboard)</a></li>
+  </ul></li>
+  <li><a href="#citation" id="toc-citation" class="nav-link" data-scroll-target="#citation">7. Citation</a></li>
+  <li><a href="#license-commercial-usage" id="toc-license-commercial-usage" class="nav-link" data-scroll-target="#license-commercial-usage">8. License &amp; Commercial Usage</a>
+  <ul class="collapse">
+  <li><a href="#research-non-commercial-use" id="toc-research-non-commercial-use" class="nav-link" data-scroll-target="#research-non-commercial-use">Research &amp; Non-Commercial Use</a></li>
+  <li><a href="#commercial-usage" id="toc-commercial-usage" class="nav-link" data-scroll-target="#commercial-usage">Commercial Usage</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Cascade Context Protocol</h1>
+<p class="subtitle lead">A Neuro-Symbolic Architecture for Infinite Context</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Research</div>
+    <div class="quarto-category">Architecture</div>
+    <div class="quarto-category">Agentic Systems</div>
+    <div class="quarto-category">Air-Gapped</div>
+  </div>
+  </div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">August 18, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><strong>C Eddine Benarab</strong> <em>Arkiom Research</em></p>
+<p><a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" class="img-fluid" alt="License: MIT"></a> <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/python-3.10+-blue.svg" class="img-fluid" alt="Python 3.10+"></a> <a href=""><img src="https://img.shields.io/badge/Architecture-Neuro--Symbolic-purple.svg" class="img-fluid" alt="Architecture"></a></p>
+<p>Repo: <a href="https://github.com/EddCBen/cascade-context-protocol">github.com/EddCBen/cascade-context-protocol</a></p>
+<hr>
+<section id="abstract" class="level2">
+<h2 class="anchored" data-anchor-id="abstract">1. Abstract</h2>
+<p>The <strong>Cascade Context Protocol (CCP)</strong> proposes a novel architecture for extending the cognitive horizon of Large Language Models (LLMs) beyond the constraints of fixed-length context windows. By treating conversation not as a linear stream of tokens but as a <strong>Directed Acyclic Graph (DAG)</strong> of semantic intent, CCP enables “Infinite Context” through dynamic segmentation and recursive neuro-symbolic retrieval. This paper details the system’s core mechanisms: <strong>Semantic Input Segmentation</strong>, the <strong>Execution Graph Topology</strong>, and the <strong>ReAct Cognitive Loop</strong>, demonstrating how they converge to create a transparent, agentic reasoning engine.</p>
+<hr>
+</section>
+<section id="introduction-the-linear-bottleneck" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-the-linear-bottleneck">2. Introduction: The Linear Bottleneck</h2>
+<p>Contemporary Transformer architectures are bound by the quadratic complexity of their attention mechanisms, effectively limiting their context window. While “Long Context” models exist, they suffer from the “Lost-in-the-Middle” phenomenon. CCP addresses this by acting as a <strong>middleware</strong>, intercepting user input and decomposing it into atomic units of meaning before they ever reach the LLM. This allows the system to process massive datasets sequentially while maintaining a coherent, evolving global state.</p>
+<hr>
+</section>
+<section id="methodology" class="level2">
+<h2 class="anchored" data-anchor-id="methodology">3. Methodology</h2>
+<section id="semantic-input-segmentation" class="level3">
+<h3 class="anchored" data-anchor-id="semantic-input-segmentation">3.1 Semantic Input Segmentation</h3>
+<p>The first stage of the CCP pipeline is the transformation of unstructured text into structured <strong>ContextBlocks</strong>. Unlike fixed-size chunking strategies that arbitrarily split text every <span class="math inline">N</span> tokens, CCP employs a <strong>Semantic Segmenter</strong> (<code>SemanticChunker</code>) that respects the syntactic and logical boundaries of language.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+    %% Data Flow for Segmentation
+    Stream["User Input Stream"] --&gt; Scanner{"Semantic Scanner"}
+
+    Scanner --&gt;|"Regex: Step, Therefore"| Break["Semantic Break"]
+    Scanner --&gt;|"Syntax: newline-newline"| Break
+    Scanner --&gt;|"Token Limit &gt; Max"| Break
+    Scanner --&gt;|Else| Buffer["Accumulate Token"]
+
+    Buffer -.-&gt; Scanner
+    Break --&gt; Block["ContextBlock (Atomic Intent Unit)"]
+    Block --&gt; Queue[("Processing Queue")]
+
+    classDef proc fill:#e1bee7,stroke:#8e24aa,color:black,stroke-width:2px;
+    class Scanner,Break,Buffer proc;
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>The segmentation process follows a hierarchical heuristic:</p>
+<ol type="1">
+<li><strong>Semantic Markers</strong>: The scanner looks for rhetorical indicators of thought transitions.</li>
+<li><strong>Token Density</strong>: Blocks are constrained by <span class="math inline">\theta_{min}</span> and <span class="math inline">\theta_{max}</span> limits.</li>
+</ol>
+<p><span class="math display">
+Block_i = f_{seg}(Stream_{input}) \text{ where } \text{Topic}(Block_i) \neq \text{Topic}(Block_{i+1})
+</span></p>
+</section>
+<section id="the-execution-graph-topology" class="level3">
+<h3 class="anchored" data-anchor-id="the-execution-graph-topology">3.2 The Execution Graph (Topology)</h3>
+<p>Once segmented, each <code>ContextBlock</code> is transmuted into an <strong>ExecutionNode</strong>. The Graph allows for non-linear reasoning, where a single input can spawn parallel tool executions.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TD
+    I1("Input Node 1: Analyze Market") --&gt; T1["Tool Node: ccp_search(stocks)"]
+    I1 --&gt; T2["Tool Node: web_search(news)"]
+
+    T1 --&gt; R1("Reasoning Node: Synthesis")
+    T2 --&gt; R1
+
+    R1 --&gt; O1(("Output Node: Final Answer"))
+
+    style I1 fill:#9c27b0,stroke:#ffffff,color:white
+    style T1 fill:#ff9800,stroke:#ffffff,color:white
+    style T2 fill:#ff9800,stroke:#ffffff,color:white
+    style R1 fill:#2196f3,stroke:#ffffff,color:white
+    style O1 fill:#4caf50,stroke:#ffffff,color:white
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="neuro-symbolic-function-calling" class="level3">
+<h3 class="anchored" data-anchor-id="neuro-symbolic-function-calling">3.3 Neuro-Symbolic Function Calling</h3>
+<p>CCP exposes a “Glass Box” tool use mechanism. Instead of opaque function calling, the process is fully explicit.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">sequenceDiagram
+    participant Orch as Orchestrator
+    participant DB as Vector DB
+    participant LLM as LLM Agent
+    participant Tool as Tool Sandbox
+
+    Orch-&gt;&gt;DB: Query(Input Context)
+    DB--&gt;&gt;Orch: Return [Tool Candidates] (Signatures + Docs)
+
+    Orch-&gt;&gt;LLM: Prompt: "Select Tool &amp; Generate Args"
+    LLM--&gt;&gt;Orch: JSON { "tool": "search", "args": {...} }
+
+    Orch-&gt;&gt;Tool: Execute(args)
+    Tool--&gt;&gt;Orch: Return Result
+    Orch-&gt;&gt;Orch: Append Result to Graph
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="block-transformation-input-to-output" class="level3">
+<h3 class="anchored" data-anchor-id="block-transformation-input-to-output">3.4 Block Transformation (Input to Output)</h3>
+<p>The core loop transforms an Input ContextBlock into an Output ContextBlock through retrieval and synthesis.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+    Input["Input Block"] --&gt; Retrieve{"Context Retrieval"}
+    Retrieve --&gt;|Relevant History| Context["Augmented Context"]
+    Context --&gt; LLM["LLM Synthesis"]
+    LLM --&gt; Output["Output Block"]
+
+    Output -.-&gt;|Feedback| Retrieve
+
+    style Input fill:#9c27b0,color:white
+    style Output fill:#4caf50,color:white
+    style LLM fill:#2196f3,color:white
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="theoretical-framework-infinite-context-via-dynamic-graphing" class="level2">
+<h2 class="anchored" data-anchor-id="theoretical-framework-infinite-context-via-dynamic-graphing">4. Theoretical Framework: Infinite Context via Dynamic Graphing</h2>
+<p>The defining characteristic of CCP is its ability to handle <strong>Infinite Context</strong> without a linear increase in computational cost (<span class="math inline">O(1)</span> vs <span class="math inline">O(N^2)</span>).</p>
+<section id="the-sliding-window-paradox" class="level3">
+<h3 class="anchored" data-anchor-id="the-sliding-window-paradox">The Sliding Window Paradox</h3>
+<p>Traditional LLMs require the <em>entire</em> conversation history to be present in the context window to maintain coherence. Euclidean geometry dictates that as history <span class="math inline">H \to \infty</span>, Cost <span class="math inline">C \to \infty</span>.</p>
+</section>
+<section id="the-graph-solution-state-decoupling" class="level3">
+<h3 class="anchored" data-anchor-id="the-graph-solution-state-decoupling">The Graph Solution: State Decoupling</h3>
+<p>CCP solves this by fundamentally <strong>decoupling Logical Context from Immediate Context</strong>.</p>
+<ol type="1">
+<li><strong>State Offloading</strong>: Instead of forcing the LLM to hold the entire conversation state in its ephemeral VRAM (Context Window), CCP offloads the state to a persistent <strong>Directed Acyclic Graph (DAG)</strong> stored in a Vector Database. The Graph becomes the “Long-Term Memory” (Hippocampus), while the LLM’s context window acts solely as “Working Memory” (Prefrontal Cortex).</li>
+<li><strong>Localized Processing</strong>: When processing Block <span class="math inline">B_t</span>, the system only retrieves the <em>top-k</em> most relevant nodes from the Graph. This ensures that the LLM’s context usage is constant <span class="math inline">O(k)</span> regardless of the total conversation length <span class="math inline">N</span>.</li>
+<li><strong>Why It Matters</strong>: This allows the system to maintain a coherent persona and factual consistency over millions of tokens without suffering from “Lost-in-the-Middle” degradation or quadratic cost explosion.</li>
+</ol>
+<p><span class="math display">
+Context(LLM_t) = B_t + \sum_{k=0}^{K} Sim(B_t, Graph_{history})
+</span></p>
+</section>
+<section id="future-work-infinite-throughput-via-parallelism" class="level3">
+<h3 class="anchored" data-anchor-id="future-work-infinite-throughput-via-parallelism">4.1 Future Work: Infinite Throughput via Parallelism</h3>
+<p>While the current implementation processes <code>ContextBlocks</code> sequentially for stability, the architecture is designed for <strong>Massive Parallelism</strong>.</p>
+<p>Because text is segmented into atomic, self-contained units of intent (<span class="math inline">B_1, B_2, ..., B_n</span>), they can theoretically be processed by <span class="math inline">N</span> separate LLM instances simultaneously.</p>
+<p><strong>Theoretical Latency Impact:</strong></p>
+<ul>
+<li><strong>Sequential (Current)</strong>: <span class="math inline">T_{total} = \sum_{i=1}^{N} T(B_i)</span></li>
+<li><strong>Parallel (Future)</strong>: <span class="math inline">T_{total} = \max(T(B_i)) + T_{merge}</span></li>
+</ul>
+<p>This shift would reduce the latency of processing a 100-page document from minutes to seconds, effectively providing <strong>Infinite Throughput</strong> alongside Infinite Context.</p>
+<hr>
+</section>
+</section>
+<section id="architecture-data-flow" class="level2">
+<h2 class="anchored" data-anchor-id="architecture-data-flow">5. Architecture &amp; Data Flow</h2>
+<p>The following diagram illustrates the transformation of a User Request into an internal Graph State and back to the Client.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TB
+    User(["User Request"])
+    Chunker["Semantic Segmenter: Input Stream Analysis"]
+
+    subgraph CognitiveCore["Cognitive Core"]
+        direction TB
+        Orch{"Orchestrator"}
+        Graph["Execution Graph (Dynamic DAG)"]
+    end
+
+    subgraph NeuralSymbolicLoop["Neural-Symbolic Loop"]
+        Retrieve["Hybrid Retrieval: Vector + Regex"]
+        ArgGen["Argument Generator: LLM Decoding"]
+        ToolExec["Tool Execution: Sandbox"]
+    end
+
+    Output(["ContextBlock Stream"])
+
+    User --&gt;|Raw Text| Chunker
+    Chunker --&gt;|Intent Segments| Orch
+    Orch --&gt;|Spawn Node| Graph
+
+    Graph --&gt;|Context Query| Retrieve
+    Retrieve --&gt;|Tool Selected| ArgGen
+    ArgGen --&gt;|JSON Args| ToolExec
+    ToolExec --&gt;|Result Edge| Graph
+
+    Graph --&gt;|Synthesized Response| Output
+
+    classDef input fill:#9c27b0,stroke:#6a1b9a,color:white;
+    classDef logic fill:#607d8b,stroke:#455a64,color:white;
+    classDef loop fill:#ff9800,stroke:#ef6c00,color:white;
+    classDef out fill:#4caf50,stroke:#2e7d32,color:white;
+
+    class User,Chunker input;
+    class Orch,Graph logic;
+    class Retrieve,ArgGen,ToolExec loop;
+    class Output out;
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="launch-instructions" class="level2">
+<h2 class="anchored" data-anchor-id="launch-instructions">6. Launch Instructions</h2>
+<section id="prerequisites" class="level3">
+<h3 class="anchored" data-anchor-id="prerequisites">Prerequisites</h3>
+<ul>
+<li><strong>Docker</strong> &amp; <strong>Docker Compose</strong></li>
+</ul>
+</section>
+<section id="quick-start" class="level3">
+<h3 class="anchored" data-anchor-id="quick-start">Quick Start</h3>
+<p>Initialize the entire neuro-symbolic stack (Backend, Vector DB, Dashboard):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker-compose</span> up <span class="at">--build</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Access Points:</strong></p>
+<ul>
+<li><strong>Live fMRI Dashboard</strong>: <a href="http://localhost:8000/dashboard">http://localhost:8000/dashboard</a></li>
+<li><strong>API Endpoint</strong>: <a href="http://localhost:8000">http://localhost:8000</a></li>
+</ul>
+</section>
+<section id="scientific-verification-the-dashboard" class="level3">
+<h3 class="anchored" data-anchor-id="scientific-verification-the-dashboard">Scientific Verification (The Dashboard)</h3>
+<p>To verify the system’s agency, access the <strong>Live Dashboard</strong>. This interface is not a chat app; it is a visualization of the <code>ExecutionGraph</code>.</p>
+<ol type="1">
+<li><strong>Submit a complex query</strong>: <em>“Research the history of Transformers and summarize the key papers.”</em></li>
+<li><strong>Observe</strong>:
+<ul>
+<li><strong>Segmentation</strong>: The input splits into “Research history” and “Summarize papers”.</li>
+<li><strong>Branching</strong>: The system spawns multiple <code>ccp_search</code> nodes.</li>
+<li><strong>Convergence</strong>: The separate streams merge into a final <code>Output Node</code>.</li>
+<li><strong>Physics</strong>: The nodes repel and cluster organically, visualizing the “shape” of the thought process.</li>
+</ul></li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="citation" class="level2">
+<h2 class="anchored" data-anchor-id="citation">7. Citation</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bibtex code-with-copy"><code class="sourceCode bibtex"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">@software{ccp2025,</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">  title={Cascade Context Protocol (CCP): A Neuro-Symbolic Architecture for Infinite Context},</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">  author={Benarab, C Eddine},</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">  year={2025},</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">  url={https://github.com/EddCBen/cascade-context-protocol}</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="license-commercial-usage" class="level2">
+<h2 class="anchored" data-anchor-id="license-commercial-usage">8. License &amp; Commercial Usage</h2>
+<p><strong>Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</strong></p>
+<section id="research-non-commercial-use" class="level3">
+<h3 class="anchored" data-anchor-id="research-non-commercial-use">Research &amp; Non-Commercial Use</h3>
+<p>You are free to:</p>
+<ul>
+<li><strong>Share</strong> — copy and redistribute the material in any medium or format.</li>
+<li><strong>Adapt</strong> — remix, transform, and build upon the material.</li>
+</ul>
+<p><strong>Under the following terms:</strong></p>
+<ul>
+<li><strong>Attribution</strong> — You must give appropriate credit, provide a link to the license, and indicate if changes were made.</li>
+<li><strong>Non-Commercial</strong> — You may not use the material for commercial purposes (profit-generation, commercial product integration, etc.).</li>
+</ul>
+</section>
+<section id="commercial-usage" class="level3">
+<h3 class="anchored" data-anchor-id="commercial-usage">Commercial Usage</h3>
+<p>If you wish to use the <strong>Cascade Context Protocol</strong> for commercial purposes, including but not limited to:</p>
+<ul>
+<li>Integrating CCP into a paid software service (SaaS).</li>
+<li>Using CCP for proprietary enterprise tools.</li>
+<li>Selling products derived from this architecture.</li>
+</ul>
+<p><strong>You MUST obtain a Commercial License.</strong></p>
+<p>charafeddineben@gmail.com</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+<script src="../../../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

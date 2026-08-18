@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2021-06-01">
 
-<title>What Happens If You Feed a Language Model’s Embeddings to a Vision Model? – Charaf's Blog</title>
+<title>What happens if you feed a language model’s embeddings to a vision model? – Charaf's Blog</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -192,7 +192,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">What Happens If You Feed a Language Model’s Embeddings to a Vision Model?</h1>
+<h1 class="title">What happens if you feed a language model’s embeddings to a vision model?</h1>
 <p class="subtitle lead">Cross-modal transfer learning between frozen ImageNet backbones and BERT text representations</p>
   <div class="quarto-categories">
     <div class="quarto-category">Research</div>
@@ -225,6 +225,7 @@ window.Quarto = {
 <section id="the-question" class="level2">
 <h2 class="anchored" data-anchor-id="the-question">The question</h2>
 <p>Vision and language get trained on completely separate diets. ImageNet teaches a network what edges, textures, and object parts look like. BERT teaches a network what words tend to follow other words. Nobody really asks what happens if you force one to eat the other’s food: can the early layers of a network pretrained purely on <strong>images</strong> extract anything useful from a representation of <strong>text</strong> — if you’re willing to be a little violent about turning text into an image first?</p>
+<p>That’s the question this project poked at: can the early layers of a network pretrained purely on <strong>images</strong> extract anything useful from a representation of <strong>text</strong> — if you’re willing to be a little violent about turning text into an image first?</p>
 </section>
 <section id="turning-sentences-into-pictures" class="level2">
 <h2 class="anchored" data-anchor-id="turning-sentences-into-pictures">Turning sentences into pictures</h2>
@@ -243,7 +244,6 @@ window.Quarto = {
 <section id="reference" class="level2">
 <h2 class="anchored" data-anchor-id="reference">Reference</h2>
 <p>Code and reproduction steps: <a href="https://github.com/EddCBen">github.com/EddCBen</a>. Full pre-print: <a href="https://arxiv.org/abs/2106.12479">arXiv:2106.12479</a>.</p>
-
 
 
 </section>

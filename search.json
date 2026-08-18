@@ -1,5 +1,12 @@
 [
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Charaf Eddine Benarab",
+    "section": "",
+    "text": "Charaf Eddine Benarab\nI build the software layer that sits between a language model and the thing it’s supposed to be useful for. Context engineering, retrieval, agent execution graphs, and the deployment plumbing (Docker, FastAPI, Postgres, Neo4j) that turns a checkpoint into something a company can run air-gapped and trust. Based in Algiers, sometimes Kuala Lumpur.\nI got here backwards from most people doing this now: five years in a computational intelligence lab in Chengdu on early Transformers and sentiment analysis, before “prompt engineering” was a phrase anyone used. Small models, frozen backbones, squeezing signal out of representations instead of scaling past them — that habit never really left.\nGitHub · charafeddineben@gmail.com\n\nNow\nIndependent AI consultant. Recently wrapped up as Chief AI Officer at InfinitGraph, where I ran the R&D pipeline for an agentic discovery platform and got a 14B open-source model to hit production benchmarks that people usually assume need something much bigger — mostly by not asking the model to do things a deterministic pipeline should be doing instead.\nWhat I actually work on\nContext engineering over brute-force scale. Most of what I build treats the LLM as a stateless reasoning kernel, not a container of memory. Token-budget enforcement, KV-cache tricks, prefix-caching, sliding-window attention — the goal is always the same: get a small model to punch above its parameter count by giving the surrounding software more of the burden.\nAgentic execution graphs. Stateful multi-agent systems as deterministic DAGs (LangGraph, mostly), with explicit routing and error handling instead of hoping the model self-corrects. If a system’s behavior can’t be traced node by node, I don’t trust it in production.\nHybrid retrieval. RAG that pairs vector search (Qdrant) with symbolic structure (Neo4j knowledge graphs), because pure nearest-neighbor retrieval quietly degrades the moment your corpus has real structure — patents, citations, compliance literature.\nAir-gapped and on-prem deployment. A lot of my client work happens under hardware or compliance constraints that rule out hitting a hosted API. That forces good engineering: everything has to run local, cheap, and observable.\nCareer, compressed\n\nChief AI Officer, InfinitGraph (2024–2025) — architecture, benchmarks, and on-prem LLM deployment for a multi-agent research platform.\nAI Advisor, Qantra.AI / InfinitGraph (2024) — self-hosted RAG and vector search architecture for early production clients.\nData Scientist, BigMama Technologies (2023) — early reasoning loops and multi-turn state machines on Llama and GPT-2-era models.\nAI Researcher, UESTC (2019–2022) — M.Sc., Transformers for sentiment analysis and text classification, under Prof. Gui Shenglin.\nCV Research Lead, Hubei University of Technology (2019–2020) — handwritten Chinese character OCR, 94% recognition accuracy.\n\nFull history on the about page.\nWriting\nI write up the research that doesn’t fit in client work — mostly pre-prints from the UESTC years and newer architecture notes on context and memory in small models. See Research and Projects.\nPublications\n\nCNN-Enhanced Transformer Encoder Built on Static BERT Representations — arXiv:2209.06344\nCross-Modal Transfer Learning for Text Classification using Vision Models — arXiv:2106.12479"
+  },
+  {
     "objectID": "work/projects/index.html",
     "href": "work/projects/index.html",
     "title": "Projects",
@@ -11,117 +18,47 @@
     "href": "work/research/index.html",
     "title": "Research",
     "section": "",
-    "text": "Context State Decoupling: A Neuro-Symbolic Approach to Infinite Context\n\n\n\nResearch\n\nArchitecture\n\nNeuro-Symbolic AI\n\nSLM\n\n\n\n\n\n\n\n\n\nJan 4, 2026\n\n\n\n\n\n\n\nBERT Throws Away 11 Layers of Information at Inference Time — What If You Didn’t?\n\n\n\nResearch\n\nNLP\n\nTransformers\n\n\n\n\n\n\n\n\n\nSep 1, 2022\n\n\n\n\n\n\n\nWhat Happens If You Feed a Language Model’s Embeddings to a Vision Model?\n\n\n\nResearch\n\nNLP\n\nComputer Vision\n\n\n\n\n\n\n\n\n\nJun 1, 2021\n\n\n\n\n\nNo matching items"
+    "text": "Cascade Context Protocol\n\n\n\nResearch\n\nArchitecture\n\nAgentic Systems\n\nAir-Gapped\n\n\n\n\n\n\n\n\n\nAug 18, 2026\n\n\n\n\n\n\n\nContext State Decoupling: A Neuro-Symbolic Approach to Infinite Context\n\n\n\nResearch\n\nArchitecture\n\nNeuro-Symbolic AI\n\nSLM\n\n\n\n\n\n\n\n\n\nJan 4, 2026\n\n\n\n\n\n\n\nBERT throws away 11 layers of information at inference time — what if you didn’t?\n\n\n\nResearch\n\nNLP\n\nTransformers\n\n\n\n\n\n\n\n\n\nSep 1, 2022\n\n\n\n\n\n\n\nWhat happens if you feed a language model’s embeddings to a vision model?\n\n\n\nResearch\n\nNLP\n\nComputer Vision\n\n\n\n\n\n\n\n\n\nJun 1, 2021\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "work/research/reasoning/cnn-enhanced-transformer-encoder-bert/index.html",
-    "href": "work/research/reasoning/cnn-enhanced-transformer-encoder-bert/index.html",
-    "title": "BERT Throws Away 11 Layers of Information at Inference Time — What If You Didn’t?",
-    "section": "",
-    "text": "Second pre-print from the UESTC years, “CNN-Enhanced Transformer Encoder Built on Static BERT Representations”. Follows directly from the cross-modal transfer work — same underlying question about what BERT’s intermediate layers actually carry, taken in a more useful direction."
-  },
-  {
-    "objectID": "work/research/reasoning/cnn-enhanced-transformer-encoder-bert/index.html#the-waste-in-the-standard-pipeline",
-    "href": "work/research/reasoning/cnn-enhanced-transformer-encoder-bert/index.html#the-waste-in-the-standard-pipeline",
-    "title": "BERT Throws Away 11 Layers of Information at Inference Time — What If You Didn’t?",
-    "section": "The waste in the standard pipeline",
-    "text": "The waste in the standard pipeline\nAlmost every downstream classifier built on top of BERT takes the last layer’s [CLS] token, throws a linear head on it, fine-tunes the whole stack. It works, but eleven of BERT’s twelve layers get treated as scaffolding discarded the moment the last one is reached — and probing work on what different BERT layers encode suggests that’s a real waste."
-  },
-  {
-    "objectID": "work/research/reasoning/cnn-enhanced-transformer-encoder-bert/index.html#the-idea-stop-throwing-layers-away-and-stop-fine-tuning",
-    "href": "work/research/reasoning/cnn-enhanced-transformer-encoder-bert/index.html#the-idea-stop-throwing-layers-away-and-stop-fine-tuning",
-    "title": "BERT Throws Away 11 Layers of Information at Inference Time — What If You Didn’t?",
-    "section": "The idea: stop throwing layers away, and stop fine-tuning",
-    "text": "The idea: stop throwing layers away, and stop fine-tuning\nCNN-Trans-Enc keeps BERT completely frozen — no fine-tuning, which matters when you don’t have the compute budget to fine-tune a 110M-parameter model on every downstream task — and pulls the [CLS] representation from every layer, not just the last.\nA standard Transformer encoder builds its Query/Key/Value tensors with linear projections. Here, those linear projections are replaced with convolutional ones, applied across the stacked per-layer [CLS] representations. Instead of one static snapshot of “what BERT thinks,” the model gets a small convolutional receptive field sliding across BERT’s own depth, and QKV maps get built from local patterns across layers, not from a single layer in isolation."
-  },
-  {
-    "objectID": "work/research/reasoning/cnn-enhanced-transformer-encoder-bert/index.html#results",
-    "href": "work/research/reasoning/cnn-enhanced-transformer-encoder-bert/index.html#results",
-    "title": "BERT Throws Away 11 Layers of Information at Inference Time — What If You Didn’t?",
-    "section": "Results",
-    "text": "Results\nTested across IMDB, SST-5, YELP-5, Amazon-Polarity, AG News, and DBPedia-14, evaluated with k-fold cross-validation on million-sample subsets. Headline numbers: 98.9% of then-state-of-the-art on IMDB and 94.8% on SST-5 without any BERT fine-tuning at all, a new top result on YELP-5, and near-SOTA on AG News and DBPedia-14.\nThe YELP-5 result is the one worth sitting with — ahead of prior fine-tuned baselines on that dataset, with a frozen backbone. A fairly direct argument that a meaningful chunk of what fine-tuning buys you was already sitting in BERT’s intermediate layers, just inaccessible to a classifier that only ever looks at the last one."
-  },
-  {
-    "objectID": "work/research/reasoning/cnn-enhanced-transformer-encoder-bert/index.html#why-this-mattered-for-what-came-after",
-    "href": "work/research/reasoning/cnn-enhanced-transformer-encoder-bert/index.html#why-this-mattered-for-what-came-after",
-    "title": "BERT Throws Away 11 Layers of Information at Inference Time — What If You Didn’t?",
-    "section": "Why this mattered for what came after",
-    "text": "Why this mattered for what came after\nDirect precursor to how I think about context and inference budgets now: frozen backbones, no retraining, extracting more signal from representations you already have rather than paying for more compute. Same instinct, later pointed at agentic systems and air-gapped deployments instead of sentiment classifiers."
-  },
-  {
-    "objectID": "work/research/reasoning/cnn-enhanced-transformer-encoder-bert/index.html#reference",
-    "href": "work/research/reasoning/cnn-enhanced-transformer-encoder-bert/index.html#reference",
-    "title": "BERT Throws Away 11 Layers of Information at Inference Time — What If You Didn’t?",
-    "section": "Reference",
-    "text": "Reference\nCode and reproduction steps: github.com/EddCBen. Full pre-print: arXiv:2209.06344."
-  },
-  {
-    "objectID": "posts/welcome/index.html",
-    "href": "posts/welcome/index.html",
-    "title": "Welcome to my AI Lab",
-    "section": "",
-    "text": "This is a proof-of-concept post demonstrating scientific publishing capabilities with Quarto."
-  },
-  {
-    "objectID": "posts/welcome/index.html#mathematical-formulation",
-    "href": "posts/welcome/index.html#mathematical-formulation",
-    "title": "Welcome to my AI Lab",
-    "section": "Mathematical Formulation",
-    "text": "Mathematical Formulation\nWe can render complex equations using LaTeX. For example, the Cross-Entropy Loss function:\n\nL_{CE} = - \\sum_{i=1}^{C} t_i \\log(p_i)\n\nWhere: - t_i is the truth label. - p_i is the Softmax probability for the i^{th} class."
-  },
-  {
-    "objectID": "posts/welcome/index.html#architecture-diagram",
-    "href": "posts/welcome/index.html#architecture-diagram",
-    "title": "Welcome to my AI Lab",
-    "section": "Architecture Diagram",
-    "text": "Architecture Diagram\nHere is a simple Neural Network visualizations using Mermaid.js:\n\n\n\n\n\ngraph LR\n    A[Input Layer] --&gt; B(Hidden Layer)\n    B --&gt; C{Activation}\n    C --&gt; D[Output Layer]\n    style A fill:#f9f,stroke:#333,stroke-width:2px\n    style D fill:#ccf,stroke:#333,stroke-width:2px"
-  },
-  {
-    "objectID": "posts/welcome/index.html#implementation",
-    "href": "posts/welcome/index.html#implementation",
-    "title": "Welcome to my AI Lab",
-    "section": "Implementation",
-    "text": "Implementation\nBelow is a PyTorch tensor initialization:\nimport torch\n\n# Define a simple tensor\nx = torch.tensor([[1, 2], [3, 4]])\nprint(f\"Tensor shape: {x.shape}\")"
-  },
-  {
-    "objectID": "work/research/reasoning/cross-modal-transfer-vision-text/index.html",
-    "href": "work/research/reasoning/cross-modal-transfer-vision-text/index.html",
-    "title": "What Happens If You Feed a Language Model’s Embeddings to a Vision Model?",
+    "objectID": "work/research/papers/cross-modal-transfer/index.html",
+    "href": "work/research/papers/cross-modal-transfer/index.html",
+    "title": "What happens if you feed a language model’s embeddings to a vision model?",
     "section": "",
     "text": "This post walks through a pre-print from my masters years at UESTC, “Classifying Textual Data with pretrained Vision Models through Transfer Learning and Data Transformations”. Dated to match when the work was actually done, not when I finally wrote it up."
   },
   {
-    "objectID": "work/research/reasoning/cross-modal-transfer-vision-text/index.html#the-question",
-    "href": "work/research/reasoning/cross-modal-transfer-vision-text/index.html#the-question",
-    "title": "What Happens If You Feed a Language Model’s Embeddings to a Vision Model?",
+    "objectID": "work/research/papers/cross-modal-transfer/index.html#the-question",
+    "href": "work/research/papers/cross-modal-transfer/index.html#the-question",
+    "title": "What happens if you feed a language model’s embeddings to a vision model?",
     "section": "The question",
-    "text": "The question\nVision and language get trained on completely separate diets. ImageNet teaches a network what edges, textures, and object parts look like. BERT teaches a network what words tend to follow other words. Nobody really asks what happens if you force one to eat the other’s food: can the early layers of a network pretrained purely on images extract anything useful from a representation of text — if you’re willing to be a little violent about turning text into an image first?"
+    "text": "The question\nVision and language get trained on completely separate diets. ImageNet teaches a network what edges, textures, and object parts look like. BERT teaches a network what words tend to follow other words. Nobody really asks what happens if you force one to eat the other’s food: can the early layers of a network pretrained purely on images extract anything useful from a representation of text — if you’re willing to be a little violent about turning text into an image first?\nThat’s the question this project poked at: can the early layers of a network pretrained purely on images extract anything useful from a representation of text — if you’re willing to be a little violent about turning text into an image first?"
   },
   {
-    "objectID": "work/research/reasoning/cross-modal-transfer-vision-text/index.html#turning-sentences-into-pictures",
-    "href": "work/research/reasoning/cross-modal-transfer-vision-text/index.html#turning-sentences-into-pictures",
-    "title": "What Happens If You Feed a Language Model’s Embeddings to a Vision Model?",
+    "objectID": "work/research/papers/cross-modal-transfer/index.html#turning-sentences-into-pictures",
+    "href": "work/research/papers/cross-modal-transfer/index.html#turning-sentences-into-pictures",
+    "title": "What happens if you feed a language model’s embeddings to a vision model?",
     "section": "Turning sentences into pictures",
     "text": "Turning sentences into pictures\nThe pipeline starts with BERT. For every sentence in IMDB, I pulled the [CLS] token embedding from the last six layers and stacked them into a single 6 \\times 768 vector — six different “opinions” the model has about the same sentence, one per layer, rather than just the usual last-layer representation everyone defaults to.\nThen the vector stops being a sequence and becomes a spatial layout: run a t-SNE projection (the same idea behind DeepInsight, adapted here for text) over the transposed feature matrix so that features, not samples, get placed on a 2D plane by similarity. Wrap a convex hull around the point cloud, rotate it flat, and you have coordinates. Map each feature’s value onto its coordinate, average collisions, and out comes a 50×50 grayscale image — one per sentence, 50,000 of them for the full IMDB set."
   },
   {
-    "objectID": "work/research/reasoning/cross-modal-transfer-vision-text/index.html#then-hand-it-to-imagenets-early-layers",
-    "href": "work/research/reasoning/cross-modal-transfer-vision-text/index.html#then-hand-it-to-imagenets-early-layers",
-    "title": "What Happens If You Feed a Language Model’s Embeddings to a Vision Model?",
+    "objectID": "work/research/papers/cross-modal-transfer/index.html#then-hand-it-to-imagenets-early-layers",
+    "href": "work/research/papers/cross-modal-transfer/index.html#then-hand-it-to-imagenets-early-layers",
+    "title": "What happens if you feed a language model’s embeddings to a vision model?",
     "section": "Then hand it to ImageNet’s early layers",
     "text": "Then hand it to ImageNet’s early layers\nFive pretrained vision backbones — AlexNet, ResNet, ResNeXt, ShuffleNetV2, VGG16 — each got sliced down to just their first couple of convolutional blocks and frozen. Those frozen slices fed into a small convolutional autoencoder and a three-layer classifier, identical across all five runs so the only variable was which pretrained features were doing the looking.\nZ-normalizing the images sharpened edges enough that the frozen filters picked up something: blobs, gradients, boundary-like structures in the activation maps, even though nothing in those filters had ever seen anything resembling text."
   },
   {
-    "objectID": "work/research/reasoning/cross-modal-transfer-vision-text/index.html#what-actually-happened",
-    "href": "work/research/reasoning/cross-modal-transfer-vision-text/index.html#what-actually-happened",
-    "title": "What Happens If You Feed a Language Model’s Embeddings to a Vision Model?",
+    "objectID": "work/research/papers/cross-modal-transfer/index.html#what-actually-happened",
+    "href": "work/research/papers/cross-modal-transfer/index.html#what-actually-happened",
+    "title": "What happens if you feed a language model’s embeddings to a vision model?",
     "section": "What actually happened",
     "text": "What actually happened\nAll five models converged to nearly identical validation accuracy (0.85–0.87) despite wildly different numbers of output feature maps and learning rates. That convergence is the interesting result — it suggests the general features early conv layers extract are general enough to transfer even across a domain gap this severe, echoing what Yosinski et al. found about early-layer transferability, just pushed into a much stranger corner of representation space than anyone had tried."
   },
   {
-    "objectID": "work/research/reasoning/cross-modal-transfer-vision-text/index.html#reference",
-    "href": "work/research/reasoning/cross-modal-transfer-vision-text/index.html#reference",
-    "title": "What Happens If You Feed a Language Model’s Embeddings to a Vision Model?",
+    "objectID": "work/research/papers/cross-modal-transfer/index.html#reference",
+    "href": "work/research/papers/cross-modal-transfer/index.html#reference",
+    "title": "What happens if you feed a language model’s embeddings to a vision model?",
     "section": "Reference",
     "text": "Reference\nCode and reproduction steps: github.com/EddCBen. Full pre-print: arXiv:2106.12479."
   },
@@ -194,6 +131,139 @@
     "title": "Context State Decoupling: A Neuro-Symbolic Approach to Infinite Context",
     "section": "References",
     "text": "References\n\nLiu, N. F., et al. (2024). Lost in the Middle: How Language Models Use Long Contexts. arXiv preprint.\nPacker, C., et al. (2023). MemGPT: Towards LLMs as Operating Systems. arXiv:2310.08560.\nEdge, D., et al. (2024). From Local to Global: A Graph RAG Approach to Query-Focused Summarization. Microsoft Research."
+  },
+  {
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Welcome to my AI Lab",
+    "section": "",
+    "text": "This is a proof-of-concept post demonstrating scientific publishing capabilities with Quarto."
+  },
+  {
+    "objectID": "posts/welcome/index.html#mathematical-formulation",
+    "href": "posts/welcome/index.html#mathematical-formulation",
+    "title": "Welcome to my AI Lab",
+    "section": "Mathematical Formulation",
+    "text": "Mathematical Formulation\nWe can render complex equations using LaTeX. For example, the Cross-Entropy Loss function:\n\nL_{CE} = - \\sum_{i=1}^{C} t_i \\log(p_i)\n\nWhere: - t_i is the truth label. - p_i is the Softmax probability for the i^{th} class."
+  },
+  {
+    "objectID": "posts/welcome/index.html#architecture-diagram",
+    "href": "posts/welcome/index.html#architecture-diagram",
+    "title": "Welcome to my AI Lab",
+    "section": "Architecture Diagram",
+    "text": "Architecture Diagram\nHere is a simple Neural Network visualizations using Mermaid.js:\n\n\n\n\n\ngraph LR\n    A[Input Layer] --&gt; B(Hidden Layer)\n    B --&gt; C{Activation}\n    C --&gt; D[Output Layer]\n    style A fill:#f9f,stroke:#333,stroke-width:2px\n    style D fill:#ccf,stroke:#333,stroke-width:2px"
+  },
+  {
+    "objectID": "posts/welcome/index.html#implementation",
+    "href": "posts/welcome/index.html#implementation",
+    "title": "Welcome to my AI Lab",
+    "section": "Implementation",
+    "text": "Implementation\nBelow is a PyTorch tensor initialization:\nimport torch\n\n# Define a simple tensor\nx = torch.tensor([[1, 2], [3, 4]])\nprint(f\"Tensor shape: {x.shape}\")"
+  },
+  {
+    "objectID": "work/research/papers/cnn-enhanced-transformer/index.html",
+    "href": "work/research/papers/cnn-enhanced-transformer/index.html",
+    "title": "BERT throws away 11 layers of information at inference time — what if you didn’t?",
+    "section": "",
+    "text": "Second pre-print from the UESTC years, “CNN-Enhanced Transformer Encoder Built on Static BERT Representations”. Follows directly from the cross-modal transfer work — same underlying question about what BERT’s intermediate layers actually carry, taken in a more useful direction."
+  },
+  {
+    "objectID": "work/research/papers/cnn-enhanced-transformer/index.html#the-waste-in-the-standard-pipeline",
+    "href": "work/research/papers/cnn-enhanced-transformer/index.html#the-waste-in-the-standard-pipeline",
+    "title": "BERT throws away 11 layers of information at inference time — what if you didn’t?",
+    "section": "The waste in the standard pipeline",
+    "text": "The waste in the standard pipeline\nAlmost every downstream classifier built on top of BERT takes the last layer’s [CLS] token, throws a linear head on it, fine-tunes the whole stack. It works, but eleven of BERT’s twelve layers get treated as scaffolding discarded the moment the last one is reached — and probing work on what different BERT layers encode suggests that’s a real waste."
+  },
+  {
+    "objectID": "work/research/papers/cnn-enhanced-transformer/index.html#the-idea-stop-throwing-layers-away-and-stop-fine-tuning",
+    "href": "work/research/papers/cnn-enhanced-transformer/index.html#the-idea-stop-throwing-layers-away-and-stop-fine-tuning",
+    "title": "BERT throws away 11 layers of information at inference time — what if you didn’t?",
+    "section": "The idea: stop throwing layers away, and stop fine-tuning",
+    "text": "The idea: stop throwing layers away, and stop fine-tuning\nCNN-Trans-Enc keeps BERT completely frozen — no fine-tuning, which matters when you don’t have the compute budget to fine-tune a 110M-parameter model on every downstream task — and pulls the [CLS] representation from every layer, not just the last.\nA standard Transformer encoder builds its Query/Key/Value tensors with linear projections. Here, those linear projections are replaced with convolutional ones, applied across the stacked per-layer [CLS] representations. Instead of one static snapshot of “what BERT thinks,” the model gets a small convolutional receptive field sliding across BERT’s own depth, and QKV maps get built from local patterns across layers, not from a single layer in isolation."
+  },
+  {
+    "objectID": "work/research/papers/cnn-enhanced-transformer/index.html#results",
+    "href": "work/research/papers/cnn-enhanced-transformer/index.html#results",
+    "title": "BERT throws away 11 layers of information at inference time — what if you didn’t?",
+    "section": "Results",
+    "text": "Results\nTested across IMDB, SST-5, YELP-5, Amazon-Polarity, AG News, and DBPedia-14, evaluated with k-fold cross-validation on million-sample subsets. Headline numbers: 98.9% of then-state-of-the-art on IMDB and 94.8% on SST-5 without any BERT fine-tuning at all, a new top result on YELP-5, and near-SOTA on AG News and DBPedia-14.\nThe YELP-5 result is the one worth sitting with — ahead of prior fine-tuned baselines on that dataset, with a frozen backbone. A fairly direct argument that a meaningful chunk of what fine-tuning buys you was already sitting in BERT’s intermediate layers, just inaccessible to a classifier that only ever looks at the last one."
+  },
+  {
+    "objectID": "work/research/papers/cnn-enhanced-transformer/index.html#why-this-mattered-for-what-came-after",
+    "href": "work/research/papers/cnn-enhanced-transformer/index.html#why-this-mattered-for-what-came-after",
+    "title": "BERT throws away 11 layers of information at inference time — what if you didn’t?",
+    "section": "Why this mattered for what came after",
+    "text": "Why this mattered for what came after\nDirect precursor to how I think about context and inference budgets now: frozen backbones, no retraining, extracting more signal from representations you already have rather than paying for more compute. Same instinct, later pointed at agentic systems and air-gapped deployments instead of sentiment classifiers."
+  },
+  {
+    "objectID": "work/research/papers/cnn-enhanced-transformer/index.html#reference",
+    "href": "work/research/papers/cnn-enhanced-transformer/index.html#reference",
+    "title": "BERT throws away 11 layers of information at inference time — what if you didn’t?",
+    "section": "Reference",
+    "text": "Reference\nCode and reproduction steps: github.com/EddCBen. Full pre-print: arXiv:2209.06344."
+  },
+  {
+    "objectID": "work/research/papers/cascade-context-protocol/index.html",
+    "href": "work/research/papers/cascade-context-protocol/index.html",
+    "title": "Cascade Context Protocol",
+    "section": "",
+    "text": "C Eddine Benarab Arkiom Research\nRepo: github.com/EddCBen/cascade-context-protocol"
+  },
+  {
+    "objectID": "work/research/papers/cascade-context-protocol/index.html#abstract",
+    "href": "work/research/papers/cascade-context-protocol/index.html#abstract",
+    "title": "Cascade Context Protocol",
+    "section": "1. Abstract",
+    "text": "1. Abstract\nThe Cascade Context Protocol (CCP) proposes a novel architecture for extending the cognitive horizon of Large Language Models (LLMs) beyond the constraints of fixed-length context windows. By treating conversation not as a linear stream of tokens but as a Directed Acyclic Graph (DAG) of semantic intent, CCP enables “Infinite Context” through dynamic segmentation and recursive neuro-symbolic retrieval. This paper details the system’s core mechanisms: Semantic Input Segmentation, the Execution Graph Topology, and the ReAct Cognitive Loop, demonstrating how they converge to create a transparent, agentic reasoning engine."
+  },
+  {
+    "objectID": "work/research/papers/cascade-context-protocol/index.html#introduction-the-linear-bottleneck",
+    "href": "work/research/papers/cascade-context-protocol/index.html#introduction-the-linear-bottleneck",
+    "title": "Cascade Context Protocol",
+    "section": "2. Introduction: The Linear Bottleneck",
+    "text": "2. Introduction: The Linear Bottleneck\nContemporary Transformer architectures are bound by the quadratic complexity of their attention mechanisms, effectively limiting their context window. While “Long Context” models exist, they suffer from the “Lost-in-the-Middle” phenomenon. CCP addresses this by acting as a middleware, intercepting user input and decomposing it into atomic units of meaning before they ever reach the LLM. This allows the system to process massive datasets sequentially while maintaining a coherent, evolving global state."
+  },
+  {
+    "objectID": "work/research/papers/cascade-context-protocol/index.html#methodology",
+    "href": "work/research/papers/cascade-context-protocol/index.html#methodology",
+    "title": "Cascade Context Protocol",
+    "section": "3. Methodology",
+    "text": "3. Methodology\n\n3.1 Semantic Input Segmentation\nThe first stage of the CCP pipeline is the transformation of unstructured text into structured ContextBlocks. Unlike fixed-size chunking strategies that arbitrarily split text every N tokens, CCP employs a Semantic Segmenter (SemanticChunker) that respects the syntactic and logical boundaries of language.\n\n\n\n\n\nflowchart LR\n    %% Data Flow for Segmentation\n    Stream[\"User Input Stream\"] --&gt; Scanner{\"Semantic Scanner\"}\n\n    Scanner --&gt;|\"Regex: Step, Therefore\"| Break[\"Semantic Break\"]\n    Scanner --&gt;|\"Syntax: newline-newline\"| Break\n    Scanner --&gt;|\"Token Limit &gt; Max\"| Break\n    Scanner --&gt;|Else| Buffer[\"Accumulate Token\"]\n\n    Buffer -.-&gt; Scanner\n    Break --&gt; Block[\"ContextBlock (Atomic Intent Unit)\"]\n    Block --&gt; Queue[(\"Processing Queue\")]\n\n    classDef proc fill:#e1bee7,stroke:#8e24aa,color:black,stroke-width:2px;\n    class Scanner,Break,Buffer proc;\n\n\n\n\n\n\nThe segmentation process follows a hierarchical heuristic:\n\nSemantic Markers: The scanner looks for rhetorical indicators of thought transitions.\nToken Density: Blocks are constrained by \\theta_{min} and \\theta_{max} limits.\n\n\nBlock_i = f_{seg}(Stream_{input}) \\text{ where } \\text{Topic}(Block_i) \\neq \\text{Topic}(Block_{i+1})\n\n\n\n3.2 The Execution Graph (Topology)\nOnce segmented, each ContextBlock is transmuted into an ExecutionNode. The Graph allows for non-linear reasoning, where a single input can spawn parallel tool executions.\n\n\n\n\n\ngraph TD\n    I1(\"Input Node 1: Analyze Market\") --&gt; T1[\"Tool Node: ccp_search(stocks)\"]\n    I1 --&gt; T2[\"Tool Node: web_search(news)\"]\n\n    T1 --&gt; R1(\"Reasoning Node: Synthesis\")\n    T2 --&gt; R1\n\n    R1 --&gt; O1((\"Output Node: Final Answer\"))\n\n    style I1 fill:#9c27b0,stroke:#ffffff,color:white\n    style T1 fill:#ff9800,stroke:#ffffff,color:white\n    style T2 fill:#ff9800,stroke:#ffffff,color:white\n    style R1 fill:#2196f3,stroke:#ffffff,color:white\n    style O1 fill:#4caf50,stroke:#ffffff,color:white\n\n\n\n\n\n\n\n\n3.3 Neuro-Symbolic Function Calling\nCCP exposes a “Glass Box” tool use mechanism. Instead of opaque function calling, the process is fully explicit.\n\n\n\n\n\nsequenceDiagram\n    participant Orch as Orchestrator\n    participant DB as Vector DB\n    participant LLM as LLM Agent\n    participant Tool as Tool Sandbox\n\n    Orch-&gt;&gt;DB: Query(Input Context)\n    DB--&gt;&gt;Orch: Return [Tool Candidates] (Signatures + Docs)\n\n    Orch-&gt;&gt;LLM: Prompt: \"Select Tool & Generate Args\"\n    LLM--&gt;&gt;Orch: JSON { \"tool\": \"search\", \"args\": {...} }\n\n    Orch-&gt;&gt;Tool: Execute(args)\n    Tool--&gt;&gt;Orch: Return Result\n    Orch-&gt;&gt;Orch: Append Result to Graph\n\n\n\n\n\n\n\n\n3.4 Block Transformation (Input to Output)\nThe core loop transforms an Input ContextBlock into an Output ContextBlock through retrieval and synthesis.\n\n\n\n\n\nflowchart LR\n    Input[\"Input Block\"] --&gt; Retrieve{\"Context Retrieval\"}\n    Retrieve --&gt;|Relevant History| Context[\"Augmented Context\"]\n    Context --&gt; LLM[\"LLM Synthesis\"]\n    LLM --&gt; Output[\"Output Block\"]\n\n    Output -.-&gt;|Feedback| Retrieve\n\n    style Input fill:#9c27b0,color:white\n    style Output fill:#4caf50,color:white\n    style LLM fill:#2196f3,color:white"
+  },
+  {
+    "objectID": "work/research/papers/cascade-context-protocol/index.html#theoretical-framework-infinite-context-via-dynamic-graphing",
+    "href": "work/research/papers/cascade-context-protocol/index.html#theoretical-framework-infinite-context-via-dynamic-graphing",
+    "title": "Cascade Context Protocol",
+    "section": "4. Theoretical Framework: Infinite Context via Dynamic Graphing",
+    "text": "4. Theoretical Framework: Infinite Context via Dynamic Graphing\nThe defining characteristic of CCP is its ability to handle Infinite Context without a linear increase in computational cost (O(1) vs O(N^2)).\n\nThe Sliding Window Paradox\nTraditional LLMs require the entire conversation history to be present in the context window to maintain coherence. Euclidean geometry dictates that as history H \\to \\infty, Cost C \\to \\infty.\n\n\nThe Graph Solution: State Decoupling\nCCP solves this by fundamentally decoupling Logical Context from Immediate Context.\n\nState Offloading: Instead of forcing the LLM to hold the entire conversation state in its ephemeral VRAM (Context Window), CCP offloads the state to a persistent Directed Acyclic Graph (DAG) stored in a Vector Database. The Graph becomes the “Long-Term Memory” (Hippocampus), while the LLM’s context window acts solely as “Working Memory” (Prefrontal Cortex).\nLocalized Processing: When processing Block B_t, the system only retrieves the top-k most relevant nodes from the Graph. This ensures that the LLM’s context usage is constant O(k) regardless of the total conversation length N.\nWhy It Matters: This allows the system to maintain a coherent persona and factual consistency over millions of tokens without suffering from “Lost-in-the-Middle” degradation or quadratic cost explosion.\n\n\nContext(LLM_t) = B_t + \\sum_{k=0}^{K} Sim(B_t, Graph_{history})\n\n\n\n4.1 Future Work: Infinite Throughput via Parallelism\nWhile the current implementation processes ContextBlocks sequentially for stability, the architecture is designed for Massive Parallelism.\nBecause text is segmented into atomic, self-contained units of intent (B_1, B_2, ..., B_n), they can theoretically be processed by N separate LLM instances simultaneously.\nTheoretical Latency Impact:\n\nSequential (Current): T_{total} = \\sum_{i=1}^{N} T(B_i)\nParallel (Future): T_{total} = \\max(T(B_i)) + T_{merge}\n\nThis shift would reduce the latency of processing a 100-page document from minutes to seconds, effectively providing Infinite Throughput alongside Infinite Context."
+  },
+  {
+    "objectID": "work/research/papers/cascade-context-protocol/index.html#architecture-data-flow",
+    "href": "work/research/papers/cascade-context-protocol/index.html#architecture-data-flow",
+    "title": "Cascade Context Protocol",
+    "section": "5. Architecture & Data Flow",
+    "text": "5. Architecture & Data Flow\nThe following diagram illustrates the transformation of a User Request into an internal Graph State and back to the Client.\n\n\n\n\n\nflowchart TB\n    User([\"User Request\"])\n    Chunker[\"Semantic Segmenter: Input Stream Analysis\"]\n\n    subgraph CognitiveCore[\"Cognitive Core\"]\n        direction TB\n        Orch{\"Orchestrator\"}\n        Graph[\"Execution Graph (Dynamic DAG)\"]\n    end\n\n    subgraph NeuralSymbolicLoop[\"Neural-Symbolic Loop\"]\n        Retrieve[\"Hybrid Retrieval: Vector + Regex\"]\n        ArgGen[\"Argument Generator: LLM Decoding\"]\n        ToolExec[\"Tool Execution: Sandbox\"]\n    end\n\n    Output([\"ContextBlock Stream\"])\n\n    User --&gt;|Raw Text| Chunker\n    Chunker --&gt;|Intent Segments| Orch\n    Orch --&gt;|Spawn Node| Graph\n\n    Graph --&gt;|Context Query| Retrieve\n    Retrieve --&gt;|Tool Selected| ArgGen\n    ArgGen --&gt;|JSON Args| ToolExec\n    ToolExec --&gt;|Result Edge| Graph\n\n    Graph --&gt;|Synthesized Response| Output\n\n    classDef input fill:#9c27b0,stroke:#6a1b9a,color:white;\n    classDef logic fill:#607d8b,stroke:#455a64,color:white;\n    classDef loop fill:#ff9800,stroke:#ef6c00,color:white;\n    classDef out fill:#4caf50,stroke:#2e7d32,color:white;\n\n    class User,Chunker input;\n    class Orch,Graph logic;\n    class Retrieve,ArgGen,ToolExec loop;\n    class Output out;"
+  },
+  {
+    "objectID": "work/research/papers/cascade-context-protocol/index.html#launch-instructions",
+    "href": "work/research/papers/cascade-context-protocol/index.html#launch-instructions",
+    "title": "Cascade Context Protocol",
+    "section": "6. Launch Instructions",
+    "text": "6. Launch Instructions\n\nPrerequisites\n\nDocker & Docker Compose\n\n\n\nQuick Start\nInitialize the entire neuro-symbolic stack (Backend, Vector DB, Dashboard):\ndocker-compose up --build\nAccess Points:\n\nLive fMRI Dashboard: http://localhost:8000/dashboard\nAPI Endpoint: http://localhost:8000\n\n\n\nScientific Verification (The Dashboard)\nTo verify the system’s agency, access the Live Dashboard. This interface is not a chat app; it is a visualization of the ExecutionGraph.\n\nSubmit a complex query: “Research the history of Transformers and summarize the key papers.”\nObserve:\n\nSegmentation: The input splits into “Research history” and “Summarize papers”.\nBranching: The system spawns multiple ccp_search nodes.\nConvergence: The separate streams merge into a final Output Node.\nPhysics: The nodes repel and cluster organically, visualizing the “shape” of the thought process."
+  },
+  {
+    "objectID": "work/research/papers/cascade-context-protocol/index.html#citation",
+    "href": "work/research/papers/cascade-context-protocol/index.html#citation",
+    "title": "Cascade Context Protocol",
+    "section": "7. Citation",
+    "text": "7. Citation\n@software{ccp2025,\n  title={Cascade Context Protocol (CCP): A Neuro-Symbolic Architecture for Infinite Context},\n  author={Benarab, C Eddine},\n  year={2025},\n  url={https://github.com/EddCBen/cascade-context-protocol}\n}"
+  },
+  {
+    "objectID": "work/research/papers/cascade-context-protocol/index.html#license-commercial-usage",
+    "href": "work/research/papers/cascade-context-protocol/index.html#license-commercial-usage",
+    "title": "Cascade Context Protocol",
+    "section": "8. License & Commercial Usage",
+    "text": "8. License & Commercial Usage\nCreative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)\n\nResearch & Non-Commercial Use\nYou are free to:\n\nShare — copy and redistribute the material in any medium or format.\nAdapt — remix, transform, and build upon the material.\n\nUnder the following terms:\n\nAttribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made.\nNon-Commercial — You may not use the material for commercial purposes (profit-generation, commercial product integration, etc.).\n\n\n\nCommercial Usage\nIf you wish to use the Cascade Context Protocol for commercial purposes, including but not limited to:\n\nIntegrating CCP into a paid software service (SaaS).\nUsing CCP for proprietary enterprise tools.\nSelling products derived from this architecture.\n\nYou MUST obtain a Commercial License.\ncharafeddineben@gmail.com"
   },
   {
     "objectID": "work/projects/cascade-context-protocol/index.html",
