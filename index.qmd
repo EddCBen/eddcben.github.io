@@ -7,8 +7,6 @@ title-block-banner: false
 ---
 
 <div class="home-hero">
-<div class="kicker">Charaf Eddine Benarab</div>
-
 <h1>AI systems that hold up outside the demo.</h1>
 
 <div class="role-pills">

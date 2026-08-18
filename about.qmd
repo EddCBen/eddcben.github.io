@@ -1,7 +1,6 @@
 ---
 title: "Charaf Eddine BENARAB"
 subtitle: "AI Researcher · Solutions Architect · Consultant"
-author: "Charaf Eddine Benarab"
 toc: true
 ---
 
