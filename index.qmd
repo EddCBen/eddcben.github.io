@@ -6,49 +6,123 @@ section-divs: false
 title-block-banner: false
 ---
 
-# Charaf Eddine Benarab
+<div class="home-hero">
+<div class="kicker">Charaf Eddine Benarab</div>
 
-### AI Researcher · Solutions Architect · Consultant
+<h1>AI systems that hold up outside the demo.</h1>
 
-Artificial Intelligence Consultant and Solutions Architect specializing in low-level Deep Neural Network (DNN) architecture design, gradient optimization, and high-level AI product engineering — retrieval-augmented generation, multi-agent execution graphs, and context management systems for constrained inference environments. Based in Algiers, sometimes Kuala Lumpur.
+<div class="role-pills">
+<span class="role-pill">AI Researcher</span>
+<span class="role-pill">Solutions Architect</span>
+<span class="role-pill">AI Consultant</span>
+<span class="role-pill">Chief AI Officer</span>
+</div>
 
-My work spans two registers that are usually kept apart: **industry engagements** — architecting production RAG systems, agentic execution graphs, and on-premise LLM deployments under real compliance and hardware constraints — and **research and academic work** — Transformer architecture design, cross-modal representation learning, and neuro-symbolic approaches to context and memory, several of which have resulted in peer-reviewed publications. Each register disciplines the other: production constraints keep the research grounded, and the research keeps the production work from calcifying around whatever the current tooling happens to make easy.
+<p class="lede">I design and build the layer between a language model and the thing it's actually supposed to do — retrieval, agentic execution graphs, context management, and the deployment infrastructure that lets it run under real hardware, compliance, or air-gapped constraints.</p>
 
-[GitHub](https://github.com/eddcben) · [charafeddineben@gmail.com](mailto:charafeddineben@gmail.com)
+<p class="lede">The work spans two registers on purpose: production engineering for organizations that need a system to actually ship, and academic research into the architectures underneath it. Below is how the two connect.</p>
 
----
+<div class="hero-links">
+[GitHub](https://github.com/eddcben) · [About](about.qmd) · [charafeddineben@gmail.com](mailto:charafeddineben@gmail.com)
+</div>
 
-## Current focus
+<div class="soft-nudge"><span class="arrow">↓</span> here's how the pieces fit together</div>
+</div>
 
-Independent AI consultant, engaged as Chief AI Officer and Lead AI Architect. Most recently at **InfinitGraph**, where I directed the R&D pipeline for an agentic discovery platform and brought a 14B-parameter open-source model to production-grade benchmark targets typically assumed to require substantially larger models — achieved by displacing capability from the model onto a deterministic software layer around it, rather than by scaling the model itself.
+<div class="section-wrap">
 
-## Technical program
+## Core concepts, in practice
 
-**Context engineering as an alternative to scale.** The prevailing assumption in the field is that capability is a direct function of parameter count and compute. My work proceeds from the opposite premise: a language model is a probabilistic kernel embedded in a deterministic protocol, and a substantial share of what looks like "model capability" is properly a property of the surrounding system — token-budget enforcement, dynamic KV-cache management, prefix-caching, sliding-window attention, and structured context compression. Correctly engineered, this lets compact models operate at a fidelity typically reserved for far larger ones.
+<p class="section-sub">Four ideas run through most of the systems I build. Each one exists because a specific engagement demanded it — not the other way around.</p>
 
-**Agentic execution graphs.** Stateful multi-agent systems designed as deterministic Directed Acyclic Graphs (LangGraph and comparable frameworks), with explicit conditional routing, node-level error handling, and parallel traversal. A system whose behavior cannot be audited node by node is not a system I consider production-ready.
+<div class="concept-grid">
 
-**Hybrid retrieval architectures.** Retrieval-augmented generation combining dense vector search (Qdrant and comparable engines) with symbolic knowledge structures (Neo4j graph databases), on the premise that nearest-neighbor retrieval alone degrades once a corpus has real relational structure — citation graphs, patent families, regulatory hierarchies.
+<div class="concept-card">
+<div class="concept-index">01</div>
+<h3>Context engineering over brute-force scale</h3>
+<p>Treating the model as a stateless reasoning kernel and moving as much capability as possible into the deterministic software around it — token-budget enforcement, dynamic KV-caching, prefix-caching, sliding-window attention.</p>
+<div class="concept-proof"><strong>In practice:</strong> got a 14B-parameter open model to production-grade benchmarks at InfinitGraph by engineering the context layer instead of scaling the model.</div>
+</div>
 
-**Sovereign and air-gapped deployment.** A significant share of my engagements operate under infrastructure constraints that preclude hosted inference — regulatory, security, or hardware-driven. This constraint set is generative rather than limiting: it forces architectures that are local, auditable, and cheap to run, which tend to be better-engineered systems regardless of the constraint.
+<div class="concept-card">
+<div class="concept-index">02</div>
+<h3>Agentic execution graphs</h3>
+<p>Multi-agent systems as deterministic Directed Acyclic Graphs with explicit routing and node-level error handling, so behavior can be audited step by step rather than trusted on faith.</p>
+<div class="concept-proof"><strong>In practice:</strong> R&D pipeline and reasoning architecture for InfinitGraph's agentic discovery platform.</div>
+</div>
 
-## Career
+<div class="concept-card">
+<div class="concept-index">03</div>
+<h3>Hybrid retrieval</h3>
+<p>Dense vector search paired with symbolic knowledge structures, because nearest-neighbor retrieval alone quietly breaks down the moment a corpus has real relational structure — citations, patents, regulation.</p>
+<div class="concept-proof"><strong>In practice:</strong> self-hosted RAG and vector search architectures built at Qantra.AI for early production clients.</div>
+</div>
 
-- **Chief AI Officer & Lead AI Architect, InfinitGraph** (2024–2025) — R&D leadership, custom semantic search and reasoning algorithms, on-premise LLM deployment.
-- **AI Advisor & Lead AI Consultant, Qantra.AI / InfinitGraph** (2024) — self-hosted RAG architectures, vector database design, technical stack advisory for enterprise clients.
-- **Data Scientist (Theoretical Systems Architect), BigMama Technologies** (2023) — reasoning loops and multi-turn state machines on early Llama and GPT-2-era architectures.
-- **AI Researcher (Graduate Fellow), UESTC** (2019–2022) — Transformer architectures for sentiment analysis and text classification, under Prof. Gui Shenglin.
-- **Computer Vision Research Team Lead, Hubei University of Technology** (2019–2020) — deep learning pipelines for handwritten Chinese character OCR, 94% recognition accuracy.
+<div class="concept-card">
+<div class="concept-index">04</div>
+<h3>State decoupling &amp; sovereign deployment</h3>
+<p>Separating logical state (a persistent graph) from ephemeral inference compute, and running the whole stack locally where compliance or infrastructure rules out a hosted API.</p>
+<div class="concept-proof"><strong>In practice:</strong> the <a href="work/research/papers/cascade-context-protocol/index.html">Cascade Context Protocol</a> — an open architecture for near-unbounded context under constant memory.</div>
+</div>
 
-A detailed education and career timeline is available on the [about page](about.qmd).
+</div>
+</div>
+
+<div class="section-wrap">
+
+## Where this comes from
+
+<p class="section-sub">A condensed path — full detail on the <a href="about.qmd">about page</a>.</p>
+
+<div class="mini-strip">
+
+<div class="mini-row">
+<div class="mini-date">2024–2025</div>
+<div><div class="mini-role">Chief AI Officer &amp; Lead AI Architect</div><div class="mini-org">InfinitGraph</div></div>
+</div>
+
+<div class="mini-row">
+<div class="mini-date">2024</div>
+<div><div class="mini-role">AI Advisor &amp; Lead AI Consultant</div><div class="mini-org">Qantra.AI / InfinitGraph</div></div>
+</div>
+
+<div class="mini-row">
+<div class="mini-date">2023</div>
+<div><div class="mini-role">Data Scientist, Theoretical Systems Architect</div><div class="mini-org">BigMama Technologies</div></div>
+</div>
+
+<div class="mini-row">
+<div class="mini-date">2019–2022</div>
+<div><div class="mini-role">AI Researcher, Graduate Fellow</div><div class="mini-org">UESTC, Chengdu — under Prof. Gui Shenglin</div></div>
+</div>
+
+<div class="mini-row">
+<div class="mini-date">2019–2020</div>
+<div><div class="mini-role">Computer Vision Research Team Lead</div><div class="mini-org">Hubei University of Technology</div></div>
+</div>
+
+</div>
+</div>
+
+<div class="section-wrap">
 
 ## Publications
 
-- [CNN-Enhanced Transformer Encoder Built on Static BERT Representations](https://arxiv.org/abs/2209.06344) — arXiv:2209.06344
-- [Cross-Modal Transfer Learning for Text Classification using Vision Models](https://arxiv.org/abs/2106.12479) — arXiv:2106.12479
+<div class="pub-list">
+<div class="pub-item">
+<div class="pub-tag">arXiv:2209.06344</div>
+<a href="https://arxiv.org/abs/2209.06344">CNN-Enhanced Transformer Encoder Built on Static BERT Representations</a>
+</div>
+<div class="pub-item">
+<div class="pub-tag">arXiv:2106.12479</div>
+<a href="https://arxiv.org/abs/2106.12479">Cross-Modal Transfer Learning for Text Classification using Vision Models</a>
+</div>
+</div>
 
-Further technical write-ups, including architecture notes on context and memory in small language models, are collected under [Research](work/research/index.qmd) and [Projects](work/projects/index.qmd).
+<p class="section-sub" style="margin-top: 1.2rem;">More technical write-ups under <a href="work/research/index.html">Research</a> and <a href="work/projects/index.html">Projects</a>.</p>
+</div>
 
-## Collaboration
-
-I welcome inquiries from organizations that require sustained AI leadership — whether as an embedded architect, technical advisor, or fractional Chief AI Officer — as well as research collaborations, particularly around the **Cascade Context Protocol** and related work on context state decoupling in small models. [Get in touch](mailto:charafeddineben@gmail.com).
+<div class="closing-note">
+<div class="closing-kicker">Currently</div>
+Open to embedded architecture, advisory, and fractional AI-leadership engagements — and to research collaboration, particularly around the Cascade Context Protocol and context/memory efficiency in small models. <a href="mailto:charafeddineben@gmail.com">charafeddineben@gmail.com</a>
+</div>
