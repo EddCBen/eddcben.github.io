@@ -1,11 +1,12 @@
 ---
-layout: post
 title: "What happens if you feed a language model's embeddings to a vision model?"
 subtitle: "Cross-modal transfer learning between frozen ImageNet backbones and BERT text representations"
-date: 2021-06-01
-categories: [Research]
-tags: [Research, NLP, Computer Vision]
-paper: "https://arxiv.org/abs/2106.12479"
+date: "2021-06-01"
+categories: [Research, NLP, Computer Vision]
+format:
+  html:
+    toc: true
+    code-fold: true
 ---
 
 *This post walks through a pre-print from my masters years at UESTC,
@@ -23,7 +24,7 @@ network pretrained purely on **images** extract anything useful from a
 representation of **text** — if you're willing to be a little violent about
 turning text into an image first?
 
-### Turning sentences into pictures
+## Turning sentences into pictures
 
 The pipeline starts with BERT. For every sentence in IMDB, I pulled the
 `[CLS]` token embedding from the last six layers and stacked them into a
@@ -39,7 +40,7 @@ cloud, rotate it flat, and you have coordinates. Map each feature's value
 onto its coordinate, average collisions, and out comes a 50×50 grayscale
 image — one per sentence, 50,000 of them for the full IMDB set.
 
-### Then hand it to ImageNet's early layers
+## Then hand it to ImageNet's early layers
 
 Five pretrained vision backbones — AlexNet, ResNet, ResNeXt, ShuffleNetV2,
 VGG16 — each got sliced down to just their first couple of convolutional
@@ -52,7 +53,7 @@ picked up *something*: blobs, gradients, boundary-like structures in the
 activation maps, even though nothing in those filters had ever seen
 anything resembling text.
 
-### What actually happened
+## What actually happened
 
 All five models converged to nearly identical validation accuracy
 (0.85–0.87) despite wildly different numbers of output feature maps and

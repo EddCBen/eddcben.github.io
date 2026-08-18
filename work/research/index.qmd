@@ -1,7 +1,9 @@
 ---
 title: "Research"
 listing:
-  contents: reasoning
+  contents:
+    - reasoning
+    - papers
   sort: "date desc"
   type: default
   categories: true

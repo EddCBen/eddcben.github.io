@@ -1,13 +1,15 @@
 ---
-layout: post
 title: "Cascade Context Protocol"
-date: 2026-08-18
-categories: [Research]
-tags: [Research, Architecture, Agentic Systems, Air-Gapped]
-repo: "https://github.com/EddCBen/cascade-context-protocol"
+subtitle: "A Neuro-Symbolic Architecture for Infinite Context"
+date: "2026-08-18"
+categories: [Research, Architecture, Agentic Systems, Air-Gapped]
+format:
+  html:
+    toc: true
+    code-fold: true
+    mermaid:
+      theme: default
 ---
-
-# Cascade Context Protocol (CCP): A Neuro-Symbolic Architecture for Infinite Context
 
 **C Eddine Benarab**
 *Arkiom Research*
@@ -15,6 +17,8 @@ repo: "https://github.com/EddCBen/cascade-context-protocol"
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![Architecture](https://img.shields.io/badge/Architecture-Neuro--Symbolic-purple.svg)]()
+
+Repo: [github.com/EddCBen/cascade-context-protocol](https://github.com/EddCBen/cascade-context-protocol)
 
 ---
 
@@ -36,18 +40,18 @@ Contemporary Transformer architectures are bound by the quadratic complexity of 
 
 The first stage of the CCP pipeline is the transformation of unstructured text into structured **ContextBlocks**. Unlike fixed-size chunking strategies that arbitrarily split text every $N$ tokens, CCP employs a **Semantic Segmenter** (`SemanticChunker`) that respects the syntactic and logical boundaries of language.
 
-```mermaid
+```{mermaid}
 flowchart LR
     %% Data Flow for Segmentation
     Stream["User Input Stream"] --> Scanner{"Semantic Scanner"}
-  
-    Scanner -->|Regex: Step, Therefore| Break["Semantic Break"]
-    Scanner -->|Syntax: \n\n| Break
-    Scanner -->|Token Limit > Max| Break
+
+    Scanner -->|"Regex: Step, Therefore"| Break["Semantic Break"]
+    Scanner -->|"Syntax: newline-newline"| Break
+    Scanner -->|"Token Limit > Max"| Break
     Scanner -->|Else| Buffer["Accumulate Token"]
-  
+
     Buffer -.-> Scanner
-    Break --> Block["ContextBlock\n(Atomic Intent Unit)"]
+    Break --> Block["ContextBlock (Atomic Intent Unit)"]
     Block --> Queue[("Processing Queue")]
 
     classDef proc fill:#e1bee7,stroke:#8e24aa,color:black,stroke-width:2px;
@@ -67,29 +71,28 @@ $$
 
 Once segmented, each `ContextBlock` is transmuted into an **ExecutionNode**. The Graph allows for non-linear reasoning, where a single input can spawn parallel tool executions.
 
-```mermaid
+```{mermaid}
 graph TD
-    %% Graph Topology
-    I1("Input Node 1\nAnalyze Market") --> T1["Tool Node\nccp_search(stocks)"]
-    I1 --> T2["Tool Node\nweb_search(news)"]
-  
-    T1 --> R1("Reasoning Node\nSynthesis")
-    T2 --> R1
-  
-    R1 --> O1(("Output Node\nFinal Answer"))
+    I1("Input Node 1: Analyze Market") --> T1["Tool Node: ccp_search(stocks)"]
+    I1 --> T2["Tool Node: web_search(news)"]
 
-    style I1 fill:#9c27b0,stroke:#white,color:white
-    style T1 fill:#ff9800,stroke:#white,color:white
-    style T2 fill:#ff9800,stroke:#white,color:white
-    style R1 fill:#2196f3,stroke:#white,color:white
-    style O1 fill:#4caf50,stroke:#white,color:white
+    T1 --> R1("Reasoning Node: Synthesis")
+    T2 --> R1
+
+    R1 --> O1(("Output Node: Final Answer"))
+
+    style I1 fill:#9c27b0,stroke:#ffffff,color:white
+    style T1 fill:#ff9800,stroke:#ffffff,color:white
+    style T2 fill:#ff9800,stroke:#ffffff,color:white
+    style R1 fill:#2196f3,stroke:#ffffff,color:white
+    style O1 fill:#4caf50,stroke:#ffffff,color:white
 ```
 
 ### 3.3 Neuro-Symbolic Function Calling
 
 CCP exposes a "Glass Box" tool use mechanism. Instead of opaque function calling, the process is fully explicit.
 
-```mermaid
+```{mermaid}
 sequenceDiagram
     participant Orch as Orchestrator
     participant DB as Vector DB
@@ -98,28 +101,28 @@ sequenceDiagram
 
     Orch->>DB: Query(Input Context)
     DB-->>Orch: Return [Tool Candidates] (Signatures + Docs)
-  
+
     Orch->>LLM: Prompt: "Select Tool & Generate Args"
     LLM-->>Orch: JSON { "tool": "search", "args": {...} }
-  
+
     Orch->>Tool: Execute(args)
     Tool-->>Orch: Return Result
     Orch->>Orch: Append Result to Graph
 ```
 
-### 3.4 Block Transformation (Input $\to$ Output)
+### 3.4 Block Transformation (Input to Output)
 
 The core loop transforms an Input ContextBlock into an Output ContextBlock through retrieval and synthesis.
 
-```mermaid
+```{mermaid}
 flowchart LR
     Input["Input Block"] --> Retrieve{"Context Retrieval"}
     Retrieve -->|Relevant History| Context["Augmented Context"]
     Context --> LLM["LLM Synthesis"]
     LLM --> Output["Output Block"]
-  
+
     Output -.->|Feedback| Retrieve
-  
+
     style Input fill:#9c27b0,color:white
     style Output fill:#4caf50,color:white
     style LLM fill:#2196f3,color:white
@@ -166,44 +169,41 @@ This shift would reduce the latency of processing a 100-page document from minut
 
 The following diagram illustrates the transformation of a User Request into an internal Graph State and back to the Client.
 
-```mermaid
+```{mermaid}
 flowchart TB
-    %% Definitions
     User(["User Request"])
-    Chunker["Semantic Segmenter\nInput Stream Analysis"]
-  
-    subgraph "Cognitive Core"
+    Chunker["Semantic Segmenter: Input Stream Analysis"]
+
+    subgraph CognitiveCore["Cognitive Core"]
         direction TB
         Orch{"Orchestrator"}
-        Graph["Execution Graph\n(Dynamic DAG)"]
+        Graph["Execution Graph (Dynamic DAG)"]
     end
-  
-    subgraph "Neural-Symbolic Loop"
-        Retrieve["Hybrid Retrieval\nVector + Regex"]
-        ArgGen["Argument Generator\nLLM Decoding"]
-        ToolExec["Tool Execution\nSandbox"]
+
+    subgraph NeuralSymbolicLoop["Neural-Symbolic Loop"]
+        Retrieve["Hybrid Retrieval: Vector + Regex"]
+        ArgGen["Argument Generator: LLM Decoding"]
+        ToolExec["Tool Execution: Sandbox"]
     end
-  
+
     Output(["ContextBlock Stream"])
 
-    %% Flow
     User -->|Raw Text| Chunker
     Chunker -->|Intent Segments| Orch
     Orch -->|Spawn Node| Graph
-  
+
     Graph -->|Context Query| Retrieve
     Retrieve -->|Tool Selected| ArgGen
     ArgGen -->|JSON Args| ToolExec
     ToolExec -->|Result Edge| Graph
-  
+
     Graph -->|Synthesized Response| Output
-  
-    %% Styling
+
     classDef input fill:#9c27b0,stroke:#6a1b9a,color:white;
     classDef logic fill:#607d8b,stroke:#455a64,color:white;
     classDef loop fill:#ff9800,stroke:#ef6c00,color:white;
     classDef out fill:#4caf50,stroke:#2e7d32,color:white;
-  
+
     class User,Chunker input;
     class Orch,Graph logic;
     class Retrieve,ArgGen,ToolExec loop;
@@ -212,7 +212,7 @@ flowchart TB
 
 ---
 
-## 5. Launch Instructions
+## 6. Launch Instructions
 
 ### Prerequisites
 
@@ -244,7 +244,7 @@ To verify the system's agency, access the **Live Dashboard**. This interface is 
 
 ---
 
-## 6. Citation
+## 7. Citation
 
 ```bibtex
 @software{ccp2025,
@@ -255,7 +255,7 @@ To verify the system's agency, access the **Live Dashboard**. This interface is 
 }
 ```
 
-## 7. License & Commercial Usage
+## 8. License & Commercial Usage
 
 **Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)**
 
@@ -282,9 +282,3 @@ If you wish to use the **Cascade Context Protocol** for commercial purposes, inc
 **You MUST obtain a Commercial License.**
 
 charafeddineben@gmail.com
-
-[View Full License](LICENSE)
-
----
-
-Repo: [github.com/EddCBen/cascade-context-protocol](https://github.com/EddCBen/cascade-context-protocol)

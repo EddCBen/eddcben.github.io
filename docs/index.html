@@ -72,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -120,39 +120,48 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-layout-custom page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
+    
 <!-- main -->
+<main class="content column-page" id="quarto-document-content">
 
 
 
 
-<div class="academic-container">
-<section id="deep-intersections" class="paper-header">
-<h1>Deep Intersections</h1>
-<div class="author-block">
-Charaf Eddine BENARAB
-</div>
-<div class="institution-block">
-Independent Researcher
-</div>
-</section>
-<div class="abstract-section">
-<p><strong>Abstract.</strong> The prevailing paradigm in Artificial Intelligence is inextricably linked to the “Scaling Laws”—the axiom that emergent capabilities are strictly a function of massive compute and dataset size. This centralized approach, while powerful, relegates “intelligence” to the status of a rented utility. This paper explores an opposing vector: <strong>Local Intelligence</strong> achieved not through raw scale, but through <strong>Context Engineering</strong> and <strong>Neuro-Symbolic Architecture</strong>.</p>
-<p>We propose a modern mental model for the “SLM Era,” where Small Language Models are treated not as inferior approximations of larger models, but as specialized probabilistic kernels within deterministic software protocols. By prioritizing design-based engineering over brute-force scaling, we demonstrate that high-fidelity reasoning can be synthesized in resource-constrained, sovereign environments. This work maps the deep intersections between systems engineering and cognitive architecture, arguing that the next frontier of AI efficiency lies in the <strong>structure of execution</strong>, not just the size of the weights. <br><br> <strong>Keywords:</strong> <em>SLM, Neuro-Symbolic, Protocol Design, Context Engineering</em></p>
-</div>
-<figure class="architecture-figure paper-figure-wide figure">
-<img src="assets/images/architecture.svg?v=13" alt="Animated System Architecture" class="animated-svg figure-img">
-<figcaption>
-<strong>Figure 1:</strong> Template for Software Protocol SLM Enhancement. A standardized architecture for integrating Small Language Models (SLMs) into deterministic software protocols. The Central Reasoning Unit (CRU) acts as the probabilistic kernel, bridging multi-modal inputs with a structured, verifiable Execution Graph.
-</figcaption>
-</figure>
-</div>
+<h1 id="charaf-eddine-benarab">Charaf Eddine Benarab</h1>
+<p>I build the software layer that sits between a language model and the thing it’s supposed to be useful for. Context engineering, retrieval, agent execution graphs, and the deployment plumbing (Docker, FastAPI, Postgres, Neo4j) that turns a checkpoint into something a company can run air-gapped and trust. Based in Algiers, sometimes Kuala Lumpur.</p>
+<p>I got here backwards from most people doing this now: five years in a computational intelligence lab in Chengdu on early Transformers and sentiment analysis, before “prompt engineering” was a phrase anyone used. Small models, frozen backbones, squeezing signal out of representations instead of scaling past them — that habit never really left.</p>
+<p><a href="https://github.com/eddcben">GitHub</a> · <a href="mailto:charafeddineben@gmail.com">charafeddineben@gmail.com</a></p>
+<hr>
+<h2 id="now" class="anchored">Now</h2>
+<p>Independent AI consultant. Recently wrapped up as Chief AI Officer at <strong>InfinitGraph</strong>, where I ran the R&amp;D pipeline for an agentic discovery platform and got a 14B open-source model to hit production benchmarks that people usually assume need something much bigger — mostly by not asking the model to do things a deterministic pipeline should be doing instead.</p>
+<h2 id="what-i-actually-work-on" class="anchored">What I actually work on</h2>
+<p><strong>Context engineering over brute-force scale.</strong> Most of what I build treats the LLM as a stateless reasoning kernel, not a container of memory. Token-budget enforcement, KV-cache tricks, prefix-caching, sliding-window attention — the goal is always the same: get a small model to punch above its parameter count by giving the surrounding software more of the burden.</p>
+<p><strong>Agentic execution graphs.</strong> Stateful multi-agent systems as deterministic DAGs (LangGraph, mostly), with explicit routing and error handling instead of hoping the model self-corrects. If a system’s behavior can’t be traced node by node, I don’t trust it in production.</p>
+<p><strong>Hybrid retrieval.</strong> RAG that pairs vector search (Qdrant) with symbolic structure (Neo4j knowledge graphs), because pure nearest-neighbor retrieval quietly degrades the moment your corpus has real structure — patents, citations, compliance literature.</p>
+<p><strong>Air-gapped and on-prem deployment.</strong> A lot of my client work happens under hardware or compliance constraints that rule out hitting a hosted API. That forces good engineering: everything has to run local, cheap, and observable.</p>
+<h2 id="career-compressed" class="anchored">Career, compressed</h2>
+<ul>
+<li><strong>Chief AI Officer, InfinitGraph</strong> (2024–2025) — architecture, benchmarks, and on-prem LLM deployment for a multi-agent research platform.</li>
+<li><strong>AI Advisor, Qantra.AI / InfinitGraph</strong> (2024) — self-hosted RAG and vector search architecture for early production clients.</li>
+<li><strong>Data Scientist, BigMama Technologies</strong> (2023) — early reasoning loops and multi-turn state machines on Llama and GPT-2-era models.</li>
+<li><strong>AI Researcher, UESTC</strong> (2019–2022) — M.Sc., Transformers for sentiment analysis and text classification, under Prof.&nbsp;Gui Shenglin.</li>
+<li><strong>CV Research Lead, Hubei University of Technology</strong> (2019–2020) — handwritten Chinese character OCR, 94% recognition accuracy.</li>
+</ul>
+<p>Full history on the <a href="./about.html">about page</a>.</p>
+<h2 id="writing" class="anchored">Writing</h2>
+<p>I write up the research that doesn’t fit in client work — mostly pre-prints from the UESTC years and newer architecture notes on context and memory in small models. See <a href="./work/research/index.html">Research</a> and <a href="./work/projects/index.html">Projects</a>.</p>
+<h2 id="publications" class="anchored">Publications</h2>
+<ul>
+<li><a href="https://arxiv.org/abs/2209.06344">CNN-Enhanced Transformer Encoder Built on Static BERT Representations</a> — arXiv:2209.06344</li>
+<li><a href="https://arxiv.org/abs/2106.12479">Cross-Modal Transfer Learning for Text Classification using Vision Models</a> — arXiv:2106.12479</li>
+</ul>
 
 
 
-
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

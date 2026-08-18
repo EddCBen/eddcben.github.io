@@ -1,36 +1,50 @@
 ---
 title: ""
-page-layout: custom
+page-layout: full
 toc: false
 section-divs: false
-
 title-block-banner: false
-resources:
-  - assets/images/architecture.svg
 ---
 
-<div class="academic-container">
+# Charaf Eddine Benarab
 
-<div class="paper-header">
-# Deep Intersections
-<div class="author-block">Charaf Eddine BENARAB</div>
-<div class="institution-block">Independent Researcher</div>
-</div>
+I build the software layer that sits between a language model and the thing it's supposed to be useful for. Context engineering, retrieval, agent execution graphs, and the deployment plumbing (Docker, FastAPI, Postgres, Neo4j) that turns a checkpoint into something a company can run air-gapped and trust. Based in Algiers, sometimes Kuala Lumpur.
 
-<div class="abstract-section">
-**Abstract.** The prevailing paradigm in Artificial Intelligence is inextricably linked to the "Scaling Laws"—the axiom that emergent capabilities are strictly a function of massive compute and dataset size. This centralized approach, while powerful, relegates "intelligence" to the status of a rented utility. This paper explores an opposing vector: **Local Intelligence** achieved not through raw scale, but through **Context Engineering** and **Neuro-Symbolic Architecture**.
+I got here backwards from most people doing this now: five years in a computational intelligence lab in Chengdu on early Transformers and sentiment analysis, before "prompt engineering" was a phrase anyone used. Small models, frozen backbones, squeezing signal out of representations instead of scaling past them — that habit never really left.
 
-We propose a modern mental model for the "SLM Era," where Small Language Models are treated not as inferior approximations of larger models, but as specialized probabilistic kernels within deterministic software protocols. By prioritizing design-based engineering over brute-force scaling, we demonstrate that high-fidelity reasoning can be synthesized in resource-constrained, sovereign environments. This work maps the deep intersections between systems engineering and cognitive architecture, arguing that the next frontier of AI efficiency lies in the **structure of execution**, not just the size of the weights.
-<br><br>
-**Keywords:** *SLM, Neuro-Symbolic, Protocol Design, Context Engineering*
-</div>
+[GitHub](https://github.com/eddcben) · [charafeddineben@gmail.com](mailto:charafeddineben@gmail.com)
 
-<figure class="architecture-figure paper-figure-wide">
-  <img src="assets/images/architecture.svg?v=13" alt="Animated System Architecture" class="animated-svg">
-  <figcaption><strong>Figure 1:</strong> Template for Software Protocol SLM Enhancement. A standardized architecture for integrating Small Language Models (SLMs) into deterministic software protocols. The Central Reasoning Unit (CRU) acts as the probabilistic kernel, bridging multi-modal inputs with a structured, verifiable Execution Graph.</figcaption>
-</figure>
+---
 
+## Now
 
+Independent AI consultant. Recently wrapped up as Chief AI Officer at **InfinitGraph**, where I ran the R&D pipeline for an agentic discovery platform and got a 14B open-source model to hit production benchmarks that people usually assume need something much bigger — mostly by not asking the model to do things a deterministic pipeline should be doing instead.
 
+## What I actually work on
 
-</div>
+**Context engineering over brute-force scale.** Most of what I build treats the LLM as a stateless reasoning kernel, not a container of memory. Token-budget enforcement, KV-cache tricks, prefix-caching, sliding-window attention — the goal is always the same: get a small model to punch above its parameter count by giving the surrounding software more of the burden.
+
+**Agentic execution graphs.** Stateful multi-agent systems as deterministic DAGs (LangGraph, mostly), with explicit routing and error handling instead of hoping the model self-corrects. If a system's behavior can't be traced node by node, I don't trust it in production.
+
+**Hybrid retrieval.** RAG that pairs vector search (Qdrant) with symbolic structure (Neo4j knowledge graphs), because pure nearest-neighbor retrieval quietly degrades the moment your corpus has real structure — patents, citations, compliance literature.
+
+**Air-gapped and on-prem deployment.** A lot of my client work happens under hardware or compliance constraints that rule out hitting a hosted API. That forces good engineering: everything has to run local, cheap, and observable.
+
+## Career, compressed
+
+- **Chief AI Officer, InfinitGraph** (2024–2025) — architecture, benchmarks, and on-prem LLM deployment for a multi-agent research platform.
+- **AI Advisor, Qantra.AI / InfinitGraph** (2024) — self-hosted RAG and vector search architecture for early production clients.
+- **Data Scientist, BigMama Technologies** (2023) — early reasoning loops and multi-turn state machines on Llama and GPT-2-era models.
+- **AI Researcher, UESTC** (2019–2022) — M.Sc., Transformers for sentiment analysis and text classification, under Prof. Gui Shenglin.
+- **CV Research Lead, Hubei University of Technology** (2019–2020) — handwritten Chinese character OCR, 94% recognition accuracy.
+
+Full history on the [about page](about.qmd).
+
+## Writing
+
+I write up the research that doesn't fit in client work — mostly pre-prints from the UESTC years and newer architecture notes on context and memory in small models. See [Research](work/research/index.qmd) and [Projects](work/projects/index.qmd).
+
+## Publications
+
+- [CNN-Enhanced Transformer Encoder Built on Static BERT Representations](https://arxiv.org/abs/2209.06344) — arXiv:2209.06344
+- [Cross-Modal Transfer Learning for Text Classification using Vision Models](https://arxiv.org/abs/2106.12479) — arXiv:2106.12479
