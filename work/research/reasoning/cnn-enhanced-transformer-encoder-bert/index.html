@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2022-09-01">
 
-<title>Charaf’s Blog</title>
+<title>BERT Throws Away 11 Layers of Information at Inference Time — What If You Didn’t? – Charaf's Blog</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -29,23 +30,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-e3adbaa939bcd423dddc8c8a834270b4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../../">
+<script src="../../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../../site_libs/bootstrap/bootstrap-e3adbaa939bcd423dddc8c8a834270b4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -75,18 +76,61 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
 
-<link rel="stylesheet" href="styles.css">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../../../index.html">
     <span class="navbar-title">Charaf’s Blog</span>
     </a>
   </div>
@@ -97,19 +141,19 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../../../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./work/research/index.html"> 
+    <a class="nav-link" href="../../../../work/research/index.html"> 
 <span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./work/projects/index.html"> 
+    <a class="nav-link" href="../../../../work/projects/index.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
 </ul>
@@ -127,39 +171,84 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-layout-custom page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#the-waste-in-the-standard-pipeline" id="toc-the-waste-in-the-standard-pipeline" class="nav-link active" data-scroll-target="#the-waste-in-the-standard-pipeline">The waste in the standard pipeline</a></li>
+  <li><a href="#the-idea-stop-throwing-layers-away-and-stop-fine-tuning" id="toc-the-idea-stop-throwing-layers-away-and-stop-fine-tuning" class="nav-link" data-scroll-target="#the-idea-stop-throwing-layers-away-and-stop-fine-tuning">The idea: stop throwing layers away, and stop fine-tuning</a></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
+  <li><a href="#why-this-mattered-for-what-came-after" id="toc-why-this-mattered-for-what-came-after" class="nav-link" data-scroll-target="#why-this-mattered-for-what-came-after">Why this mattered for what came after</a></li>
+  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference">Reference</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">BERT Throws Away 11 Layers of Information at Inference Time — What If You Didn’t?</h1>
+<p class="subtitle lead">A CNN-enhanced Transformer encoder built entirely on frozen, per-layer BERT representations</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Research</div>
+    <div class="quarto-category">NLP</div>
+    <div class="quarto-category">Transformers</div>
+  </div>
+  </div>
 
 
 
+<div class="quarto-title-meta">
 
-<div class="academic-container">
-<section id="deep-intersections" class="paper-header">
-<h1>Deep Intersections</h1>
-<div class="author-block">
-Charaf Eddine BENARAB
-</div>
-<div class="institution-block">
-Independent Researcher
-</div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 1, 2022</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><em>Second pre-print from the UESTC years, <a href="https://arxiv.org/abs/2209.06344">“CNN-Enhanced Transformer Encoder Built on Static BERT Representations”</a>. Follows directly from the cross-modal transfer work — same underlying question about what BERT’s intermediate layers actually carry, taken in a more useful direction.</em></p>
+<section id="the-waste-in-the-standard-pipeline" class="level2">
+<h2 class="anchored" data-anchor-id="the-waste-in-the-standard-pipeline">The waste in the standard pipeline</h2>
+<p>Almost every downstream classifier built on top of BERT takes the last layer’s <code>[CLS]</code> token, throws a linear head on it, fine-tunes the whole stack. It works, but eleven of BERT’s twelve layers get treated as scaffolding discarded the moment the last one is reached — and probing work on what different BERT layers encode suggests that’s a real waste.</p>
 </section>
-<div class="abstract-section">
-<p><strong>Abstract.</strong> The prevailing paradigm in Artificial Intelligence is inextricably linked to the “Scaling Laws”—the axiom that emergent capabilities are strictly a function of massive compute and dataset size. This centralized approach, while powerful, relegates “intelligence” to the status of a rented utility. This paper explores an opposing vector: <strong>Local Intelligence</strong> achieved not through raw scale, but through <strong>Context Engineering</strong> and <strong>Neuro-Symbolic Architecture</strong>.</p>
-<p>We propose a modern mental model for the “SLM Era,” where Small Language Models are treated not as inferior approximations of larger models, but as specialized probabilistic kernels within deterministic software protocols. By prioritizing design-based engineering over brute-force scaling, we demonstrate that high-fidelity reasoning can be synthesized in resource-constrained, sovereign environments. This work maps the deep intersections between systems engineering and cognitive architecture, arguing that the next frontier of AI efficiency lies in the <strong>structure of execution</strong>, not just the size of the weights. <br><br> <strong>Keywords:</strong> <em>SLM, Neuro-Symbolic, Protocol Design, Context Engineering</em></p>
-</div>
-<figure class="architecture-figure paper-figure-wide figure">
-<img src="assets/images/architecture.svg?v=13" alt="Animated System Architecture" class="animated-svg figure-img">
-<figcaption>
-<strong>Figure 1:</strong> Template for Software Protocol SLM Enhancement. A standardized architecture for integrating Small Language Models (SLMs) into deterministic software protocols. The Central Reasoning Unit (CRU) acts as the probabilistic kernel, bridging multi-modal inputs with a structured, verifiable Execution Graph.
-</figcaption>
-</figure>
-</div>
+<section id="the-idea-stop-throwing-layers-away-and-stop-fine-tuning" class="level2">
+<h2 class="anchored" data-anchor-id="the-idea-stop-throwing-layers-away-and-stop-fine-tuning">The idea: stop throwing layers away, and stop fine-tuning</h2>
+<p>CNN-Trans-Enc keeps BERT completely frozen — no fine-tuning, which matters when you don’t have the compute budget to fine-tune a 110M-parameter model on every downstream task — and pulls the <code>[CLS]</code> representation from <strong>every layer</strong>, not just the last.</p>
+<p>A standard Transformer encoder builds its Query/Key/Value tensors with linear projections. Here, those linear projections are replaced with <strong>convolutional</strong> ones, applied across the stacked per-layer <code>[CLS]</code> representations. Instead of one static snapshot of “what BERT thinks,” the model gets a small convolutional receptive field sliding across BERT’s own depth, and QKV maps get built from <em>local patterns across layers</em>, not from a single layer in isolation.</p>
+</section>
+<section id="results" class="level2">
+<h2 class="anchored" data-anchor-id="results">Results</h2>
+<p>Tested across IMDB, SST-5, YELP-5, Amazon-Polarity, AG News, and DBPedia-14, evaluated with k-fold cross-validation on million-sample subsets. Headline numbers: <strong>98.9%</strong> of then-state-of-the-art on IMDB and <strong>94.8%</strong> on SST-5 without any BERT fine-tuning at all, a new top result on YELP-5, and near-SOTA on AG News and DBPedia-14.</p>
+<p>The YELP-5 result is the one worth sitting with — ahead of prior <em>fine-tuned</em> baselines on that dataset, with a frozen backbone. A fairly direct argument that a meaningful chunk of what fine-tuning buys you was already sitting in BERT’s intermediate layers, just inaccessible to a classifier that only ever looks at the last one.</p>
+</section>
+<section id="why-this-mattered-for-what-came-after" class="level2">
+<h2 class="anchored" data-anchor-id="why-this-mattered-for-what-came-after">Why this mattered for what came after</h2>
+<p>Direct precursor to how I think about context and inference budgets now: frozen backbones, no retraining, extracting more signal from representations you already have rather than paying for more compute. Same instinct, later pointed at agentic systems and air-gapped deployments instead of sentiment classifiers.</p>
+</section>
+<section id="reference" class="level2">
+<h2 class="anchored" data-anchor-id="reference">Reference</h2>
+<p>Code and reproduction steps: <a href="https://github.com/EddCBen">github.com/EddCBen</a>. Full pre-print: <a href="https://arxiv.org/abs/2209.06344">arXiv:2209.06344</a>.</p>
 
 
 
+</section>
 
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -565,5 +654,5 @@ Independent Researcher
 
 
 
-<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../../../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
