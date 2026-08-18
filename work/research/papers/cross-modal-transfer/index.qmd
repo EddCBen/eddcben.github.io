@@ -14,10 +14,15 @@ format:
 Learning and Data Transformations"](https://arxiv.org/abs/2106.12479).
 Dated to match when the work was actually done, not when I finally wrote it up.*
 
+## The question
+
 Vision and language get trained on completely separate diets. ImageNet
 teaches a network what edges, textures, and object parts look like. BERT
 teaches a network what words tend to follow other words. Nobody really
-asks what happens if you force one to eat the other's food.
+asks what happens if you force one to eat the other's food: can the early
+layers of a network pretrained purely on **images** extract anything
+useful from a representation of **text** — if you're willing to be a
+little violent about turning text into an image first?
 
 That's the question this project poked at: can the early layers of a
 network pretrained purely on **images** extract anything useful from a
@@ -28,9 +33,9 @@ turning text into an image first?
 
 The pipeline starts with BERT. For every sentence in IMDB, I pulled the
 `[CLS]` token embedding from the last six layers and stacked them into a
-single `[6 x 768]` vector — six different "opinions" the model has about
-the same sentence, one per layer, rather than just the usual last-layer
-representation everyone defaults to.
+single $6 \times 768$ vector — six different "opinions" the model has
+about the same sentence, one per layer, rather than just the usual
+last-layer representation everyone defaults to.
 
 Then the vector stops being a sequence and becomes a spatial layout: run a
 t-SNE projection (the same idea behind DeepInsight, adapted here for text)
@@ -59,8 +64,11 @@ All five models converged to nearly identical validation accuracy
 (0.85–0.87) despite wildly different numbers of output feature maps and
 learning rates. That convergence is the interesting result — it suggests
 the *general* features early conv layers extract are general enough to
-transfer even across a domain gap this severe, echoing what Yosinski et al.
-found about early-layer transferability, just pushed into a much stranger
-corner of representation space than anyone had tried.
+transfer even across a domain gap this severe, echoing what Yosinski et
+al. found about early-layer transferability, just pushed into a much
+stranger corner of representation space than anyone had tried.
+
+## Reference
 
 Code and reproduction steps: [github.com/EddCBen](https://github.com/EddCBen).
+Full pre-print: [arXiv:2106.12479](https://arxiv.org/abs/2106.12479).

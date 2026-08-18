@@ -69,6 +69,49 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../../../styles.css">
 </head>
@@ -129,9 +172,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#turning-sentences-into-pictures" id="toc-turning-sentences-into-pictures" class="nav-link active" data-scroll-target="#turning-sentences-into-pictures">Turning sentences into pictures</a></li>
+  <li><a href="#the-question" id="toc-the-question" class="nav-link active" data-scroll-target="#the-question">The question</a></li>
+  <li><a href="#turning-sentences-into-pictures" id="toc-turning-sentences-into-pictures" class="nav-link" data-scroll-target="#turning-sentences-into-pictures">Turning sentences into pictures</a></li>
   <li><a href="#then-hand-it-to-imagenets-early-layers" id="toc-then-hand-it-to-imagenets-early-layers" class="nav-link" data-scroll-target="#then-hand-it-to-imagenets-early-layers">Then hand it to ImageNet’s early layers</a></li>
   <li><a href="#what-actually-happened" id="toc-what-actually-happened" class="nav-link" data-scroll-target="#what-actually-happened">What actually happened</a></li>
+  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference">Reference</a></li>
   </ul>
 </nav>
     </div>
@@ -170,11 +215,14 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p><em>This post walks through a pre-print from my masters years at UESTC, <a href="https://arxiv.org/abs/2106.12479">“Classifying Textual Data with pretrained Vision Models through Transfer Learning and Data Transformations”</a>. Dated to match when the work was actually done, not when I finally wrote it up.</em></p>
-<p>Vision and language get trained on completely separate diets. ImageNet teaches a network what edges, textures, and object parts look like. BERT teaches a network what words tend to follow other words. Nobody really asks what happens if you force one to eat the other’s food.</p>
+<section id="the-question" class="level2">
+<h2 class="anchored" data-anchor-id="the-question">The question</h2>
+<p>Vision and language get trained on completely separate diets. ImageNet teaches a network what edges, textures, and object parts look like. BERT teaches a network what words tend to follow other words. Nobody really asks what happens if you force one to eat the other’s food: can the early layers of a network pretrained purely on <strong>images</strong> extract anything useful from a representation of <strong>text</strong> — if you’re willing to be a little violent about turning text into an image first?</p>
 <p>That’s the question this project poked at: can the early layers of a network pretrained purely on <strong>images</strong> extract anything useful from a representation of <strong>text</strong> — if you’re willing to be a little violent about turning text into an image first?</p>
+</section>
 <section id="turning-sentences-into-pictures" class="level2">
 <h2 class="anchored" data-anchor-id="turning-sentences-into-pictures">Turning sentences into pictures</h2>
-<p>The pipeline starts with BERT. For every sentence in IMDB, I pulled the <code>[CLS]</code> token embedding from the last six layers and stacked them into a single <code>[6 x 768]</code> vector — six different “opinions” the model has about the same sentence, one per layer, rather than just the usual last-layer representation everyone defaults to.</p>
+<p>The pipeline starts with BERT. For every sentence in IMDB, I pulled the <code>[CLS]</code> token embedding from the last six layers and stacked them into a single <span class="math inline">6 \times 768</span> vector — six different “opinions” the model has about the same sentence, one per layer, rather than just the usual last-layer representation everyone defaults to.</p>
 <p>Then the vector stops being a sequence and becomes a spatial layout: run a t-SNE projection (the same idea behind DeepInsight, adapted here for text) over the transposed feature matrix so that <em>features</em>, not samples, get placed on a 2D plane by similarity. Wrap a convex hull around the point cloud, rotate it flat, and you have coordinates. Map each feature’s value onto its coordinate, average collisions, and out comes a 50×50 grayscale image — one per sentence, 50,000 of them for the full IMDB set.</p>
 </section>
 <section id="then-hand-it-to-imagenets-early-layers" class="level2">
@@ -184,8 +232,11 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="what-actually-happened" class="level2">
 <h2 class="anchored" data-anchor-id="what-actually-happened">What actually happened</h2>
-<p>All five models converged to nearly identical validation accuracy (0.85–0.87) despite wildly different numbers of output feature maps and learning rates. That convergence is the interesting result — it suggests the <em>general</em> features early conv layers extract are general enough to transfer even across a domain gap this severe, echoing what Yosinski et al. found about early-layer transferability, just pushed into a much stranger corner of representation space than anyone had tried.</p>
-<p>Code and reproduction steps: <a href="https://github.com/EddCBen">github.com/EddCBen</a>.</p>
+<p>All five models converged to nearly identical validation accuracy (0.85–0.87) despite wildly different numbers of output feature maps and learning rates. That convergence is the interesting result — it suggests the <em>general</em> features early conv layers extract are general enough to transfer even across a domain gap this severe, echoing what Yosinski et al.&nbsp;found about early-layer transferability, just pushed into a much stranger corner of representation space than anyone had tried.</p>
+</section>
+<section id="reference" class="level2">
+<h2 class="anchored" data-anchor-id="reference">Reference</h2>
+<p>Code and reproduction steps: <a href="https://github.com/EddCBen">github.com/EddCBen</a>. Full pre-print: <a href="https://arxiv.org/abs/2106.12479">arXiv:2106.12479</a>.</p>
 
 
 </section>

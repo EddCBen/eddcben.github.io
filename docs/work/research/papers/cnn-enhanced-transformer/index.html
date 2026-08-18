@@ -129,9 +129,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#the-idea-stop-throwing-layers-away-and-stop-fine-tuning" id="toc-the-idea-stop-throwing-layers-away-and-stop-fine-tuning" class="nav-link active" data-scroll-target="#the-idea-stop-throwing-layers-away-and-stop-fine-tuning">The idea: stop throwing layers away, and stop fine-tuning</a></li>
+  <li><a href="#the-waste-in-the-standard-pipeline" id="toc-the-waste-in-the-standard-pipeline" class="nav-link active" data-scroll-target="#the-waste-in-the-standard-pipeline">The waste in the standard pipeline</a></li>
+  <li><a href="#the-idea-stop-throwing-layers-away-and-stop-fine-tuning" id="toc-the-idea-stop-throwing-layers-away-and-stop-fine-tuning" class="nav-link" data-scroll-target="#the-idea-stop-throwing-layers-away-and-stop-fine-tuning">The idea: stop throwing layers away, and stop fine-tuning</a></li>
   <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
   <li><a href="#why-this-mattered-for-what-came-after" id="toc-why-this-mattered-for-what-came-after" class="nav-link" data-scroll-target="#why-this-mattered-for-what-came-after">Why this mattered for what came after</a></li>
+  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference">Reference</a></li>
   </ul>
 </nav>
     </div>
@@ -170,7 +172,10 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p><em>Second pre-print from the UESTC years, <a href="https://arxiv.org/abs/2209.06344">“CNN-Enhanced Transformer Encoder Built on Static BERT Representations”</a>. Follows directly from the cross-modal transfer work — same underlying question about what BERT’s intermediate layers actually carry, taken in a more useful direction.</em></p>
+<section id="the-waste-in-the-standard-pipeline" class="level2">
+<h2 class="anchored" data-anchor-id="the-waste-in-the-standard-pipeline">The waste in the standard pipeline</h2>
 <p>Almost every downstream classifier built on top of BERT takes the last layer’s <code>[CLS]</code> token, throws a linear head on it, fine-tunes the whole stack. It works, but eleven of BERT’s twelve layers get treated as scaffolding discarded the moment the last one is reached — and probing work on what different BERT layers encode suggests that’s a real waste.</p>
+</section>
 <section id="the-idea-stop-throwing-layers-away-and-stop-fine-tuning" class="level2">
 <h2 class="anchored" data-anchor-id="the-idea-stop-throwing-layers-away-and-stop-fine-tuning">The idea: stop throwing layers away, and stop fine-tuning</h2>
 <p>CNN-Trans-Enc keeps BERT completely frozen — no fine-tuning, which matters when you don’t have the compute budget to fine-tune a 110M-parameter model on every downstream task — and pulls the <code>[CLS]</code> representation from <strong>every layer</strong>, not just the last.</p>
@@ -184,7 +189,10 @@ ul.task-list li input[type="checkbox"] {
 <section id="why-this-mattered-for-what-came-after" class="level2">
 <h2 class="anchored" data-anchor-id="why-this-mattered-for-what-came-after">Why this mattered for what came after</h2>
 <p>Direct precursor to how I think about context and inference budgets now: frozen backbones, no retraining, extracting more signal from representations you already have rather than paying for more compute. Same instinct, later pointed at agentic systems and air-gapped deployments instead of sentiment classifiers.</p>
-<p>Code and reproduction steps: <a href="https://github.com/EddCBen">github.com/EddCBen</a>.</p>
+</section>
+<section id="reference" class="level2">
+<h2 class="anchored" data-anchor-id="reference">Reference</h2>
+<p>Code and reproduction steps: <a href="https://github.com/EddCBen">github.com/EddCBen</a>. Full pre-print: <a href="https://arxiv.org/abs/2209.06344">arXiv:2209.06344</a>.</p>
 
 
 </section>

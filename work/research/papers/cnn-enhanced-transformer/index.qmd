@@ -15,6 +15,8 @@ Follows directly from the cross-modal transfer work — same underlying
 question about what BERT's intermediate layers actually carry, taken in a
 more useful direction.*
 
+## The waste in the standard pipeline
+
 Almost every downstream classifier built on top of BERT takes the last
 layer's `[CLS]` token, throws a linear head on it, fine-tunes the whole
 stack. It works, but eleven of BERT's twelve layers get treated as
@@ -58,4 +60,7 @@ representations you already have rather than paying for more compute.
 Same instinct, later pointed at agentic systems and air-gapped deployments
 instead of sentiment classifiers.
 
+## Reference
+
 Code and reproduction steps: [github.com/EddCBen](https://github.com/EddCBen).
+Full pre-print: [arXiv:2209.06344](https://arxiv.org/abs/2209.06344).

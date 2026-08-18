@@ -88,7 +88,14 @@
     "href": "work/research/papers/cnn-enhanced-transformer/index.html",
     "title": "BERT throws away 11 layers of information at inference time — what if you didn’t?",
     "section": "",
-    "text": "Second pre-print from the UESTC years, “CNN-Enhanced Transformer Encoder Built on Static BERT Representations”. Follows directly from the cross-modal transfer work — same underlying question about what BERT’s intermediate layers actually carry, taken in a more useful direction.\nAlmost every downstream classifier built on top of BERT takes the last layer’s [CLS] token, throws a linear head on it, fine-tunes the whole stack. It works, but eleven of BERT’s twelve layers get treated as scaffolding discarded the moment the last one is reached — and probing work on what different BERT layers encode suggests that’s a real waste."
+    "text": "Second pre-print from the UESTC years, “CNN-Enhanced Transformer Encoder Built on Static BERT Representations”. Follows directly from the cross-modal transfer work — same underlying question about what BERT’s intermediate layers actually carry, taken in a more useful direction."
+  },
+  {
+    "objectID": "work/research/papers/cnn-enhanced-transformer/index.html#the-waste-in-the-standard-pipeline",
+    "href": "work/research/papers/cnn-enhanced-transformer/index.html#the-waste-in-the-standard-pipeline",
+    "title": "BERT throws away 11 layers of information at inference time — what if you didn’t?",
+    "section": "The waste in the standard pipeline",
+    "text": "The waste in the standard pipeline\nAlmost every downstream classifier built on top of BERT takes the last layer’s [CLS] token, throws a linear head on it, fine-tunes the whole stack. It works, but eleven of BERT’s twelve layers get treated as scaffolding discarded the moment the last one is reached — and probing work on what different BERT layers encode suggests that’s a real waste."
   },
   {
     "objectID": "work/research/papers/cnn-enhanced-transformer/index.html#the-idea-stop-throwing-layers-away-and-stop-fine-tuning",
@@ -109,7 +116,14 @@
     "href": "work/research/papers/cnn-enhanced-transformer/index.html#why-this-mattered-for-what-came-after",
     "title": "BERT throws away 11 layers of information at inference time — what if you didn’t?",
     "section": "Why this mattered for what came after",
-    "text": "Why this mattered for what came after\nDirect precursor to how I think about context and inference budgets now: frozen backbones, no retraining, extracting more signal from representations you already have rather than paying for more compute. Same instinct, later pointed at agentic systems and air-gapped deployments instead of sentiment classifiers.\nCode and reproduction steps: github.com/EddCBen."
+    "text": "Why this mattered for what came after\nDirect precursor to how I think about context and inference budgets now: frozen backbones, no retraining, extracting more signal from representations you already have rather than paying for more compute. Same instinct, later pointed at agentic systems and air-gapped deployments instead of sentiment classifiers."
+  },
+  {
+    "objectID": "work/research/papers/cnn-enhanced-transformer/index.html#reference",
+    "href": "work/research/papers/cnn-enhanced-transformer/index.html#reference",
+    "title": "BERT throws away 11 layers of information at inference time — what if you didn’t?",
+    "section": "Reference",
+    "text": "Reference\nCode and reproduction steps: github.com/EddCBen. Full pre-print: arXiv:2209.06344."
   },
   {
     "objectID": "index.html",
@@ -130,14 +144,21 @@
     "href": "work/research/papers/cross-modal-transfer/index.html",
     "title": "What happens if you feed a language model’s embeddings to a vision model?",
     "section": "",
-    "text": "This post walks through a pre-print from my masters years at UESTC, “Classifying Textual Data with pretrained Vision Models through Transfer Learning and Data Transformations”. Dated to match when the work was actually done, not when I finally wrote it up.\nVision and language get trained on completely separate diets. ImageNet teaches a network what edges, textures, and object parts look like. BERT teaches a network what words tend to follow other words. Nobody really asks what happens if you force one to eat the other’s food.\nThat’s the question this project poked at: can the early layers of a network pretrained purely on images extract anything useful from a representation of text — if you’re willing to be a little violent about turning text into an image first?"
+    "text": "This post walks through a pre-print from my masters years at UESTC, “Classifying Textual Data with pretrained Vision Models through Transfer Learning and Data Transformations”. Dated to match when the work was actually done, not when I finally wrote it up."
+  },
+  {
+    "objectID": "work/research/papers/cross-modal-transfer/index.html#the-question",
+    "href": "work/research/papers/cross-modal-transfer/index.html#the-question",
+    "title": "What happens if you feed a language model’s embeddings to a vision model?",
+    "section": "The question",
+    "text": "The question\nVision and language get trained on completely separate diets. ImageNet teaches a network what edges, textures, and object parts look like. BERT teaches a network what words tend to follow other words. Nobody really asks what happens if you force one to eat the other’s food: can the early layers of a network pretrained purely on images extract anything useful from a representation of text — if you’re willing to be a little violent about turning text into an image first?\nThat’s the question this project poked at: can the early layers of a network pretrained purely on images extract anything useful from a representation of text — if you’re willing to be a little violent about turning text into an image first?"
   },
   {
     "objectID": "work/research/papers/cross-modal-transfer/index.html#turning-sentences-into-pictures",
     "href": "work/research/papers/cross-modal-transfer/index.html#turning-sentences-into-pictures",
     "title": "What happens if you feed a language model’s embeddings to a vision model?",
     "section": "Turning sentences into pictures",
-    "text": "Turning sentences into pictures\nThe pipeline starts with BERT. For every sentence in IMDB, I pulled the [CLS] token embedding from the last six layers and stacked them into a single [6 x 768] vector — six different “opinions” the model has about the same sentence, one per layer, rather than just the usual last-layer representation everyone defaults to.\nThen the vector stops being a sequence and becomes a spatial layout: run a t-SNE projection (the same idea behind DeepInsight, adapted here for text) over the transposed feature matrix so that features, not samples, get placed on a 2D plane by similarity. Wrap a convex hull around the point cloud, rotate it flat, and you have coordinates. Map each feature’s value onto its coordinate, average collisions, and out comes a 50×50 grayscale image — one per sentence, 50,000 of them for the full IMDB set."
+    "text": "Turning sentences into pictures\nThe pipeline starts with BERT. For every sentence in IMDB, I pulled the [CLS] token embedding from the last six layers and stacked them into a single 6 \\times 768 vector — six different “opinions” the model has about the same sentence, one per layer, rather than just the usual last-layer representation everyone defaults to.\nThen the vector stops being a sequence and becomes a spatial layout: run a t-SNE projection (the same idea behind DeepInsight, adapted here for text) over the transposed feature matrix so that features, not samples, get placed on a 2D plane by similarity. Wrap a convex hull around the point cloud, rotate it flat, and you have coordinates. Map each feature’s value onto its coordinate, average collisions, and out comes a 50×50 grayscale image — one per sentence, 50,000 of them for the full IMDB set."
   },
   {
     "objectID": "work/research/papers/cross-modal-transfer/index.html#then-hand-it-to-imagenets-early-layers",
@@ -151,7 +172,14 @@
     "href": "work/research/papers/cross-modal-transfer/index.html#what-actually-happened",
     "title": "What happens if you feed a language model’s embeddings to a vision model?",
     "section": "What actually happened",
-    "text": "What actually happened\nAll five models converged to nearly identical validation accuracy (0.85–0.87) despite wildly different numbers of output feature maps and learning rates. That convergence is the interesting result — it suggests the general features early conv layers extract are general enough to transfer even across a domain gap this severe, echoing what Yosinski et al. found about early-layer transferability, just pushed into a much stranger corner of representation space than anyone had tried.\nCode and reproduction steps: github.com/EddCBen."
+    "text": "What actually happened\nAll five models converged to nearly identical validation accuracy (0.85–0.87) despite wildly different numbers of output feature maps and learning rates. That convergence is the interesting result — it suggests the general features early conv layers extract are general enough to transfer even across a domain gap this severe, echoing what Yosinski et al. found about early-layer transferability, just pushed into a much stranger corner of representation space than anyone had tried."
+  },
+  {
+    "objectID": "work/research/papers/cross-modal-transfer/index.html#reference",
+    "href": "work/research/papers/cross-modal-transfer/index.html#reference",
+    "title": "What happens if you feed a language model’s embeddings to a vision model?",
+    "section": "Reference",
+    "text": "Reference\nCode and reproduction steps: github.com/EddCBen. Full pre-print: arXiv:2106.12479."
   },
   {
     "objectID": "work/research/reasoning/context-state-decoupling/index.html",
